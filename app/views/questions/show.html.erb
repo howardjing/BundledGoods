@@ -1,2 +1,9 @@
 <h1>Question</h1>
 <p><%= render @question %></p>
+
+<div class="row" style="padding-top: 40px;">
+  <div class="span1">
+  <%= link_to '<<Back', @question.previous_path %>
+  </div>
+  <%= link_to 'Next>>', @question.next_path, :class => "offset2" %>
+</div>
