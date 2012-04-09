@@ -1,2 +1,5 @@
-<h1>Answers#show</h1>
-<p>Find me in app/views/answers/show.html.erb</p>
+<h1><%= @answer.name %></h1>
+<p><%= render @answer %></p>
+<div style="padding-top:40px;">
+<%= link_to '<<Back', survey_question_path(@answer.question.survey, @answer.question)%>
+</div>

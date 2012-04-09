@@ -1,9 +1,11 @@
-<h1>Question</h1>
+<h1><%= @question.name %></h1>
 <p><%= render @question %></p>
+<h3><%= @question.answers.count > 1 ? 'Answers' : 'Answer' %></h3>
+<%= render @question.answers %>
 
 <div class="row" style="padding-top: 40px;">
   <div class="span1">
   <%= link_to '<<Back', @question.previous_path %>
   </div>
-  <%= link_to 'Next>>', @question.next_path, :class => "offset2" %>
+  <%= link_to 'Next>>', @question.next_path, :class => "offset1" %>
 </div>

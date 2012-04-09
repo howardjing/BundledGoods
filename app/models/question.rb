@@ -34,6 +34,10 @@ class Question < ActiveRecord::Base
   def previous_path
     self.is_first? ? url_helpers.survey_path(self.survey) : url_helpers.survey_question_path(self.survey, self.previous)
   end
+  
+  def name
+    "Question " + (self.position+1).to_s
+  end
     
     
   

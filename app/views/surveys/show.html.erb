@@ -11,5 +11,5 @@
   <div class="span1">
   <%= link_to '<<Back', surveys_path %>
   </div>
-  <%= link_to('Next>>', survey_question_path(@survey, @survey.first_question), :class => "offset2") if !@survey.questions.empty? %>
+  <%= link_to('Next>>', survey_question_path(@survey, @survey.first_question), :class => "offset1") if !@survey.questions.empty? %>
 </div>
