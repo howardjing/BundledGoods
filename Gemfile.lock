@@ -59,6 +59,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mathjax-rails (0.0.4)
+      railties (~> 3.0)
     mime-types (1.18)
     multi_json (1.2.0)
     polyglot (0.3.3)
@@ -119,6 +121,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
+  mathjax-rails
   rails (= 3.2.2)
   sass-rails (~> 3.2.3)
   sqlite3

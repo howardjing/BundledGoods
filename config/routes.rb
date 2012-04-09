@@ -5,6 +5,8 @@ BundledGoods::Application.routes.draw do
       resources :answers 
     end
   end
+  
+  mathjax 'mathjax'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
