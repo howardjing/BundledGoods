@@ -1,0 +1,10 @@
+<h1><%= @survey.name %></h1>
+<% if !@survey.instructions.blank? %>
+<div style="padding-top: 40px;">
+  <h3>Instructions: </h3>
+  <p><%= @survey.instructions %></p>
+</div>
+<% end %>
+
+
+<%= link_to 'Back', surveys_path %>
