@@ -4,7 +4,6 @@
 
 <h2>Questions</h2>
 <%= render :partial => 'admin/questions', :object => @survey.questions %>
-
 <%= link_to 'New Question', new_survey_question_path(@survey), :class => 'btn btn-primary' %> 
 <div style="padding-top: 40px">
 <%= link_to 'Back', surveys_path %>

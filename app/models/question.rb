@@ -28,7 +28,7 @@ class Question < ActiveRecord::Base
   end
   
   def next_path
-    self.is_last? ? url_helpers.surveys_path : url_helpers.survey_question_path(self.survey, self.next)
+    self.is_last? ? url_helpers.pages_thanks_path : url_helpers.survey_question_path(self.survey, self.next)
   end
   
   def previous_path

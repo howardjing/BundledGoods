@@ -1,3 +1,10 @@
 <h1>Edit Question</h1>
 <%= render 'form' %>
+
+<h2>Answers</h2>
+<%= render :partial => 'admin/answers', :object => @question.answers %>
+<%= link_to 'New Answer', new_survey_question_answer_path(@question.survey, @question), :class => 'btn btn-primary' %> 
+
+<div style="padding-top:40px">
 <%= link_to 'Back', edit_survey_path(@question.survey) %>
+</div>

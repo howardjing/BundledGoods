@@ -1,5 +1,5 @@
 <h1>Listing Surveys</h1>
-With $\LaTeX$
+<h3>With \( \LaTeX \) styling</h3>
 <table class="table table-striped">
   <thead>
   <tr>
@@ -14,11 +14,12 @@ With $\LaTeX$
 <% @surveys.each do |survey| %>
   <tr>
     <td><%= i %></td>
-    <td><%= link_to survey.name, survey %></td>
-    <td><%= link_to 'Edit', edit_survey_path(survey), :class => 'btn btn-mini btn-success' %>
-    <%= link_to 'Destroy', survey, :method => :delete, 
-                                   :confirm => "Are you sure?", 
-                                   :class => 'btn btn-mini btn-danger'%></td>
+    <td><%= survey.name %></td>
+    <td>
+      <%= link_to 'Show', survey_path(survey), :class => 'btn btn-mini btn-info'%>
+      <%= link_to 'Edit', edit_survey_path(survey), :class => 'btn btn-mini btn-success' %>
+      <%= link_to 'Destroy', survey, :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'%>
+    </td>
   </tr>
   <% i = i+1 %>
 <% end %>

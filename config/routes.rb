@@ -1,5 +1,7 @@
 BundledGoods::Application.routes.draw do
   
+  get "pages/thanks"
+
   resources :surveys do
     resources :questions do
       resources :answers 

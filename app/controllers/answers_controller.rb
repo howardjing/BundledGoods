@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
   def update
     survey = Survey.find_by_id(params[:survey_id])
     question = survey.questions.find_by_id(params[:question_id])
-    @answer = question.find_by_id(params[:id])
+    @answer = question.answers.find_by_id(params[:id])
     
     if @answer.update_attributes(params[:answer])
       redirect_to edit_survey_question_path(@answer.question.survey, @answer.question), :notice => 'Answer was successfully updated.'
@@ -32,7 +32,7 @@ class AnswersController < ApplicationController
   def edit
     survey = Survey.find_by_id(params[:survey_id])
     question = survey.questions.find_by_id(params[:question_id])
-    @answer = question.find_by_id(params[:id])
+    @answer = question.answers.find_by_id(params[:id])
   end
 
   def destroy
