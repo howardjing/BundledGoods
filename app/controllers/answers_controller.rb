@@ -44,9 +44,9 @@ class AnswersController < ApplicationController
   end
 
   def index
-    survey = Survey.find_by_id(params[:survey_id])
-    question = survey.questions.find_by_id(params[:question_id])
-    @answers = question.answers
+    @survey = Survey.find_by_id(params[:survey_id])
+    @question = @survey.questions.find_by_id(params[:question_id])
+    @answers = @question.answers
   end
 
   def show
