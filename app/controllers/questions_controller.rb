@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
     survey = Survey.find_by_id(params[:survey_id])
     @question = survey.questions.build(params[:question])
     if @question.save
-      redirect_to edit_survey_path(survey), :notice => 'Question was successfully created.'
+      redirect_to edit_survey_question_path(survey, @question), :notice => 'Question was successfully created.'
     else
       render :action => 'new'
     end
@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
     @question = survey.questions.find_by_id(params[:id])
     
     if @question.update_attributes(params[:question])
-      redirect_to edit_survey_path(survey), :notice => 'Question was successfully updated.'
+      redirect_to edit_survey_question_path(survey, @question), :notice => 'Question was successfully updated.'
     else
       render :action => 'edit'
     end
