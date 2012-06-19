@@ -1,8 +1,8 @@
 <h1><%= @question.name %></h1>
 <p><%= render @question %></p>
-<h3><%= @question.answers.count > 1 ? 'Answers' : 'Answer' %></h3>
+<h3><%= @question.goods.count > 1 ? 'Goods' : 'Good' %></h3>
 <ol>
-<%= render @question.answers %>
+<%= render @question.goods %>
 <li> Choose your own bundle </li>
 </ol>
 
