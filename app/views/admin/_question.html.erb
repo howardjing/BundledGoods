@@ -1,9 +1,9 @@
 <tr>
   <td><%= question.content %></td>
-  <td><%= question.answers.count %></td>
+  <td><%= question.goods.count %></td>
   <td>
-    <%= link_to 'Show', survey_question_path(question.survey, question), :class => 'btn btn-mini btn-info' %>
-    <%= link_to 'Edit', edit_survey_question_path(question.survey, question), :class => 'btn btn-mini btn-success' %>
-    <%= link_to 'Destroy', survey_question_path(question.survey, question), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'%>
+    <%= link_to 'Show', question_path(question), :class => 'btn btn-mini btn-info' %>
+    <%= link_to 'Edit', edit_question_path(question), :class => 'btn btn-mini btn-success' %>
+    <%= link_to 'Destroy', question_path(question), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'%>
     </td>
 </tr>

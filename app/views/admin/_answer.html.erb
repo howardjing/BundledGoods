@@ -1,9 +1,0 @@
-<tr>
-  <td><%= answer.content %></td>
-  
-  <td>
-      <%= link_to 'Show', survey_question_answer_path(answer.question.survey, answer.question, answer), :class => 'btn btn-mini btn-info' %>
-      <%= link_to 'Edit', edit_survey_question_answer_path(answer.question.survey, answer.question, answer), :class => 'btn btn-mini btn-success' %>
-      <%= link_to 'Destroy', survey_question_answer_path(answer.question.survey, answer.question, answer), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger'%>
-  </td>
-</tr>

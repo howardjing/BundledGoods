@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   
-  has_many :survey_responses
+  has_many :question_responses
   validates_presence_of :name
   
 end

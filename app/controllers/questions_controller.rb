@@ -1,49 +1,42 @@
 class QuestionsController < ApplicationController
   def new
-    survey = Survey.find_by_id(params[:survey_id])
-    @question = survey.questions.build
+    @question = Question.new
   end
 
   def create
-    survey = Survey.find_by_id(params[:survey_id])
-    @question = survey.questions.build(params[:question])
+    @question = Question.new(params[:question])
     if @question.save
-      redirect_to edit_survey_question_path(survey, @question), :notice => 'Question was successfully created.'
+      redirect_to edit_question_path(@question), :notice => 'Question was successfully created.'
     else
       render :action => 'new'
     end
   end
 
   def update
-    survey = Survey.find_by_id(params[:survey_id])
-    @question = survey.questions.find_by_id(params[:id])
+    @question = Question.find_by_id(params[:id])
     
     if @question.update_attributes(params[:question])
-      redirect_to edit_survey_question_path(survey, @question), :notice => 'Question was successfully updated.'
+      redirect_to edit_question_path(@question), :notice => 'Question was successfully updated.'
     else
       render :action => 'edit'
     end
   end
 
   def edit
-    survey = Survey.find_by_id(params[:survey_id])
-    @question = survey.questions.find_by_id(params[:id])
+    @question = Question.find_by_id(params[:id])
   end
 
   def destroy
-    survey = Survey.find_by_id(params[:survey_id])
-    @question = survey.questions.find_by_id(params[:id])
+    @question = Question.find_by_id(params[:id])
     @question.destroy
-    redirect_to edit_survey_path(survey), :notice => 'Question was successfully deleted.'
+    redirect_to questions_path, :notice => 'Question was successfully deleted.'
   end
 
   def index
-    @survey = Survey.find_by_id(params[:survey_id])
-    @questions = @survey.questions
+    @questions = Question.all
   end
 
   def show
-    survey = Survey.find_by_id(params[:survey_id])
-    @question = survey.questions.find_by_id(params[:id])
+    @question = Question.find_by_id(params[:id])
   end
 end

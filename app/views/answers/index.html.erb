@@ -1,8 +1,0 @@
-<h1>Listing Answers</h1>
-
-<%= render :partial => 'admin/answers', :object => @answers %>
-<%= link_to 'New Answer', new_survey_question_answer_path(@survey, @question), :class => 'btn btn-primary' %> <br /><br />
-
-<div style="padding-top: 40px;">
-  <%= link_to 'Back', edit_survey_question_path(@survey, @question) %>
-</div>
