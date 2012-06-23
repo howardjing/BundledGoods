@@ -1,3 +1,41 @@
 <h1>New Question</h1>
-<%= render 'form' %>
+
+<%= form_for(@question) do |f| %>
+    <% if @question.errors.any? %>
+        <div class="alert alert-error">
+          <h3><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h3>
+          <ul>
+            <% @question.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :number %>
+      <%= f.text_field :number %>
+    </div>
+
+    <div class="field">
+      <%= f.label :number_of_goods %>
+      <%=  f.text_field :number_of_goods %>
+    </div>
+
+    <div class="field">
+      <%= f.label :number_of_bundles %>
+      <%=  f.text_field :number_of_bundles %>
+    </div>
+
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.text_area :content, :class => "span12" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+    </div>
+<% end %>
+
+
 <%= link_to 'Back', questions_path %>

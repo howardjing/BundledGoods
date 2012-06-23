@@ -1,10 +1,7 @@
 <h1><%= @question.name %></h1>
 <p><%= render @question %></p>
-<h3><%= @question.answers.count > 1 ? 'Answers' : 'Answer' %></h3>
-<ol>
-<%= render @question.answers %>
-<li> Choose your own bundle </li>
-</ol>
+<h3><%= @question.goods.count > 1 ? 'Goods' : 'Good' %></h3>
+
 
 <div class="row" style="padding-top: 40px;">
   <div class="span1">

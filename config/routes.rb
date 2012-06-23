@@ -1,10 +1,15 @@
 BundledGoods::Application.routes.draw do
-  
-  get "pages/thanks"
 
   resources :questions do
-    resources :goods 
+    resources :goods
+    resources :bundles
   end
+
+  resources :users
+  resources :sessions, :only => [:destroy]
+
+  match 'thanks', :to => 'pages#thanks'
+  match 'instructions', :to => 'pages#instructions'
   
   mathjax 'mathjax'
 
@@ -57,7 +62,7 @@ BundledGoods::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'pages#home'
+  root :to => 'pages#instructions'
 
   # See how all your routes lay out with "rake routes"
 
