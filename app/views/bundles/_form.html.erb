@@ -11,13 +11,13 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.label :number %>
+      <%= f.text_field :number %>
     </div>
 
     <div class="field">
       <%= f.label :goods_list %>
-      <%= f.text_field :goods_list %>
+      <%= f.text_field :goods_list, :value => @bundle.goods_numbers %>
     </div>
 
     <div class="field">

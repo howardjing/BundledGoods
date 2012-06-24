@@ -1,11 +1,9 @@
 <h1><%= @question.name %></h1>
 <p><%= render @question %></p>
-<h3><%= @question.goods.count > 1 ? 'Goods' : 'Good' %></h3>
-
 
 <div class="row" style="padding-top: 40px;">
   <div class="span1">
-  <%= link_to '<<Back', @question.previous_path %>
+    <%= @question.is_first? ? link_to('<<Back', @question.previous_path) : "<<Back" %>
   </div>
   <%= link_to 'Next>>', @question.next_path, :class => "offset1" %>
 </div>

@@ -21,6 +21,10 @@ class Question < ActiveRecord::Base
   # ==== Methods ====
   delegate :url_helpers, to: 'Rails.application.routes'
 
+  def combo
+    @combo ||= Combo.new self.goods
+  end
+
   def is_first?
     self.number == 0
   end
@@ -49,11 +53,17 @@ class Question < ActiveRecord::Base
     "Question #{self.number}"
   end
 
+  def bundles_and_combo
+    bundles = self.bundles.to_a
+    bundles.push self.combo
+  end
+
   private
   def create_goods
     number = Integer(number_of_goods)
     number.times do |i|
-      good = self.goods.build(:number => (i+1), :price => 0, :utility => 0)
+      utils = i+1
+      good = self.goods.build(:number => utils, :price => 0, :utility => utils)
       good.save
     end
   end
@@ -61,8 +71,32 @@ class Question < ActiveRecord::Base
   def create_bundles
     number = Integer(number_of_bundles)
     number.times do |i|
-      bundle = self.bundles.build(:name => "Bundle #{i+1}", :lambda => 1)
+      bundle = self.bundles.build(:number => (i+1), :lambda => 1)
       bundle.save
+    end
+  end
+
+  class Combo
+    include GoodsModule
+
+    def initialize(goods)
+      @goods = goods
+    end
+
+    def goods
+      @goods
+    end
+
+    def lambda
+      0.5
+    end
+
+    def value
+      "placeholder"
+    end
+
+    def utility
+      "placeholder"
     end
   end
     

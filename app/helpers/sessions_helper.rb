@@ -15,7 +15,8 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= User.find_by_id(session[:remember_token])
+    user = User.find_by_id(session[:remember_token])
+    @current_user ||= user
   end
 
 end
