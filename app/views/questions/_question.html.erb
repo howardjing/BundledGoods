@@ -1,1 +1,29 @@
-<%= question.content %>
+<div>
+  <%= question.content %>
+</div>
+
+<div id='menu'>
+  There are <%= pluralize question.goods.size, 'good' %> for sale. Their prices are as follows:
+  <ul>
+    <%= render :partial => 'good', :collection => question.goods.shuffle %>
+  </ul>
+</div>
+
+<div>
+  You value the bundles in the following ways:
+  <ul>
+    <% question.bundles_and_combo.shuffle.each do |goods| %>
+      <li>
+        <div class="show-statement">[Click to show statement]</div>
+        <div class="explanation">
+            <%= goods.shuffled_goods_statement %>
+        </div>
+      </li>
+    <% end  %>
+  </ul>
+</div>
+
+<div>
+
+</div>
+

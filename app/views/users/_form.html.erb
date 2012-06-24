@@ -1,0 +1,21 @@
+<%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+        <div class="alert alert-error">
+          <h3><%= pluralize(@user.errors.count, "error") %> prohibited this question from being saved:</h3>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+    </div>
+<% end %>

@@ -1,0 +1,31 @@
+<%= form_for([@bundle.question, @bundle]) do |f| %>
+    <% if @bundle.errors.any? %>
+        <div class="alert alert-error">
+          <h3><%= pluralize(@bundle.errors.count, "error") %> prohibited this question from being saved:</h3>
+          <ul>
+            <% @bundle.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :number %>
+      <%= f.text_field :number %>
+    </div>
+
+    <div class="field">
+      <%= f.label :goods_list %>
+      <%= f.text_field :goods_list, :value => @bundle.goods_numbers %>
+    </div>
+
+    <div class="field">
+      <%= f.label :lambda %>
+      <%= f.text_field :lambda %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+    </div>
+<% end %>

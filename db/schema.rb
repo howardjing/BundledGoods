@@ -11,13 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120619035642) do
+ActiveRecord::Schema.define(:version => 20120624021857) do
+
+  create_table "bundles", :force => true do |t|
+    t.integer "number"
+    t.float   "lambda",      :default => 1.0
+    t.integer "question_id"
+    t.float   "value",       :default => 0.0
+    t.float   "utility",     :default => 0.0
+  end
+
+  create_table "bundles_goods", :id => false, :force => true do |t|
+    t.integer "bundle_id"
+    t.integer "good_id"
+  end
 
   create_table "goods", :force => true do |t|
-    t.string  "name"
-    t.float   "price"
+    t.integer "number"
+    t.float   "price",       :default => 1.0
     t.integer "question_id"
-    t.text    "utility"
+    t.float   "utility"
   end
 
   create_table "question_responses", :force => true do |t|
@@ -32,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20120619035642) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "number"
   end
 
   create_table "users", :force => true do |t|
