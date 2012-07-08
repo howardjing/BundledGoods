@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # create the 0th question, specify the number of goods and bundles (combo is automatically created)
-question0 = Question.create number: 0, number_of_goods: 3, number_of_bundles: 4
+question0 = Question.create number: 0, number_of_goods: 3, number_of_bundles: 3
 
 # update the attributes of the 3 goods owned by question0
 # arrays are 0 indexed, so question0.goods[0] and question0.goods[1]
