@@ -14,7 +14,7 @@ jQuery ->
     $(@).prev().toggle()
     $(@).toggle()
 
-#  timer 60*5
+  timer 60*5
 
 
 timer = (secondsRemaining) ->

@@ -6,7 +6,7 @@
   There are <%= pluralize question.goods.size, 'good' %> for sale. Their prices are as follows:
   <ul>
     <%= render :partial => 'good', :collection => question.goods.shuffle %>
-    <li>An all inclusive bundle of <%= question.combo.shuffled_goods_names %> for $<%= question.combo.price %></li>
+    <li>An all inclusive bundle of <%= question.combo.shuffled_goods_names %> for <%= number_to_currency question.combo.price %></li>
   </ul>
 </div>
 
