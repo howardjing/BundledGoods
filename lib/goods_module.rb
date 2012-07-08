@@ -18,4 +18,21 @@ module GoodsModule
   def shuffled_goods_statement
     "Purchasing #{self.shuffled_goods_names} #{"together" if self.goods.size > 1} makes you value the bundle #{self.lambda} #{self.lambda == 1 ? "time" : "time"} as much."
   end
+  
+  def goods_numbers
+    self.goods.map(&:number).join(', ')
+  end
+
+  def sum_goods_utility
+    self.goods.map(&:utility).reduce(0,:+)
+  end
+  
+  def sum_goods_price
+    self.goods.map(&:price).reduce(0,:+)
+  end
+
+  def update_value_and_utility
+    self.value = self.lambda * sum_goods_utility
+    self.utility = self.value - sum_goods_price
+  end
 end

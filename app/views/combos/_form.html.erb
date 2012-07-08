@@ -1,0 +1,36 @@
+<%= form_for([@question, @combo]) do |f| %>
+    <% if @combo.errors.any? %>
+        <div class="alert alert-error">
+          <h3><%= pluralize(@combo.errors.count, "error") %> prohibited this question from being saved:</h3>
+          <ul>
+            <% @combo.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :price %>
+      <%= f.text_field :price %>
+    </div>
+
+    <div class="field">
+      <%= f.label :lambda %>
+      <%= f.text_field :lambda %>
+    </div>
+
+    <div class="field">
+      <%= f.label :value %>
+      <%= f.text_field :value %>
+    </div>
+
+    <div class="field">
+      <%= f.label :utility %>
+      <%= f.text_field :utility %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+    </div>
+<% end %>

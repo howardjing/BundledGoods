@@ -2,10 +2,11 @@
   <%= question.content %>
 </div>
 
-<div id='menu'>
+<div id="menu">
   There are <%= pluralize question.goods.size, 'good' %> for sale. Their prices are as follows:
   <ul>
     <%= render :partial => 'good', :collection => question.goods.shuffle %>
+    <li>An all inclusive bundle of <%= question.combo.shuffled_goods_names %> for $<%= question.combo.price %></li>
   </ul>
 </div>
 
@@ -23,7 +24,9 @@
   </ul>
 </div>
 
-<div>
-
+<div id="timer">
+  5:00
 </div>
+
+<%=  javascript_tag 'timer(100)' %>
 
