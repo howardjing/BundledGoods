@@ -21,8 +21,9 @@ question0.goods[2].update_attributes number: 3, price: 2,   utility: 3
 question0.bundles[0].update_attributes number: 1, lambda: 1.5, goods_list: '1'
 question0.bundles[1].update_attributes number: 2, lambda: 1.2, goods_list: '1,3'
 question0.bundles[2].update_attributes number: 3, lambda: 0.5, goods_list: '2,3'
+question0.bundles[3].update_attributes number: 4, lambda: 1.0, goods_list: '1,2,3'
 
 # update the attributes of the combo (value and utility are calculated and updated automatically)
-question0.combo.update_attributes price: 3, lambda: 1
+question0.combo.update_attributes price: 2.75, lambda: 1
 
 # repeat the above for all your questions
