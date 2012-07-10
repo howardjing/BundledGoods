@@ -148,3 +148,65 @@ question4.bundles[24].update_attributes number: 22, lambda: 0.9, goods_list: '1,
 question4.bundles[25].update_attributes number: 22, lambda: 1.0, goods_list: '1,2,3,4,5'
 
 question4.combo.update_attributes price: 13, lambda: 1
+
+#question 5
+
+question5 = Question.create number: 5, number_of_goods: 4, number_of_bundles: 11
+
+question5.goods[0].update_attributes number: 1, price: 1.5, utility: 1
+question5.goods[1].update_attributes number: 2, price: 2.25, utility: 2
+question5.goods[2].update_attributes number: 3, price: 2,   utility: 3
+question5.goods[3].update_attributes number: 4, price: 2.25,   utility: 4
+
+question5.bundles[0].update_attributes number: 1, lambda: 1.5, goods_list: '1,2'
+question5.bundles[1].update_attributes number: 2, lambda: 1.25, goods_list: '1,3'
+question5.bundles[2].update_attributes number: 3, lambda: 1.1, goods_list: '1,4'
+question5.bundles[3].update_attributes number: 4, lambda: 1.1, goods_list: '2,3'
+question5.bundles[4].update_attributes number: 5, lambda: 1.2, goods_list: '2,4'
+question5.bundles[5].update_attributes number: 6, lambda: 0.9, goods_list: '3,4'
+question5.bundles[6].update_attributes number: 7, lambda: 1.1, goods_list: '1,2,3'
+question5.bundles[7].update_attributes number: 8, lambda: 1.1, goods_list: '1,2,4'
+question5.bundles[8].update_attributes number: 9, lambda: 0.9, goods_list: '1,3,4'
+question5.bundles[9].update_attributes number: 10, lambda: 0.9, goods_list: '2,3,4'
+question5.bundles[10].update_attributes number: 11, lambda: 1, goods_list: '1,2,3,4'
+
+question5.combo.update_attributes price: 7.75, lambda: 1
+
+#question 6
+
+question6 = Question.create number: 6, number_of_goods: 5, number_of_bundles: 26
+
+question6.goods[0].update_attributes number: 1, price: 2.25, utility: 1
+question6.goods[1].update_attributes number: 2, price: 1.75, utility: 2
+question6.goods[2].update_attributes number: 3, price: 3.25,   utility: 3
+question6.goods[3].update_attributes number: 4, price: 2.5,   utility: 4
+question6.goods[4].update_attributes number: 5, price: 3.75,   utility: 5
+
+question6.bundles[0].update_attributes number: 1, lambda: 1.75, goods_list: '1,2'
+question6.bundles[1].update_attributes number: 2, lambda: 1.75, goods_list: '1,3'
+question6.bundles[2].update_attributes number: 3, lambda: 1.25, goods_list: '1,4'
+question6.bundles[3].update_attributes number: 4, lambda: 1.1, goods_list: '1,5'
+question6.bundles[4].update_attributes number: 5, lambda: 1.25, goods_list: '2,3'
+question6.bundles[5].update_attributes number: 6, lambda: 1, goods_list: '2,4'
+question6.bundles[6].update_attributes number: 7, lambda: 0.9, goods_list: '2,5'
+question6.bundles[7].update_attributes number: 8, lambda: 1.1, goods_list: '3,4'
+question6.bundles[8].update_attributes number: 9, lambda: 1, goods_list: '3,5'
+question6.bundles[9].update_attributes number: 10, lambda: 0.75, goods_list: '4,5'
+question6.bundles[10].update_attributes number: 11, lambda: 1.5, goods_list: '1,2,3'
+question6.bundles[11].update_attributes number: 12, lambda: 1.5, goods_list: '1,2,4'
+question6.bundles[12].update_attributes number: 13, lambda: 1.1, goods_list: '1,2,5'
+question6.bundles[13].update_attributes number: 14, lambda: 1.1, goods_list: '1,3,4'
+question6.bundles[14].update_attributes number: 15, lambda: 1.2, goods_list: '1,3,5'
+question6.bundles[15].update_attributes number: 16, lambda: 0.9, goods_list: '1,4,5'
+question6.bundles[16].update_attributes number: 17, lambda: 1, goods_list: '2,3,4'
+question6.bundles[17].update_attributes number: 18, lambda: 1, goods_list: '2,3,5'
+question6.bundles[18].update_attributes number: 19, lambda: 0.9, goods_list: '2,4,5'
+question6.bundles[19].update_attributes number: 20, lambda: 1.0, goods_list: '3,4,5'
+question6.bundles[20].update_attributes number: 21, lambda: 1.1, goods_list: '1,2,3,4'
+question6.bundles[21].update_attributes number: 22, lambda: 0.9, goods_list: '2,3,4,5'
+question6.bundles[22].update_attributes number: 22, lambda: 1.1, goods_list: '1,2,3,5'
+question6.bundles[23].update_attributes number: 22, lambda: 1.0, goods_list: '1,3,4,5'
+question6.bundles[24].update_attributes number: 22, lambda: 0.9, goods_list: '1,2,4,5'
+question6.bundles[25].update_attributes number: 22, lambda: 1.0, goods_list: '1,2,3,4,5'
+
+question6.combo.update_attributes price: 13, lambda: 1
