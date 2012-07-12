@@ -3,6 +3,7 @@ BundledGoods::Application.routes.draw do
   resources :questions do
     resources :goods
     resources :bundles
+    resources :combos, :only => [:edit, :update]
   end
 
   resources :users

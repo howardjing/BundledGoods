@@ -19,31 +19,9 @@
 
 <div class="page-header" id="combo">
   <h2>Combo</h2>
-  <table class="table table-striped">
-    <thead class>
-    <tr>
-      <th>Name</th>
-      <th>Goods</th>
-      <th>\(\lambda\)</th>
-      <th>Value</th>
-      <th>Utility</th>
-      <th></th>
-
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr>
-      <td>All Goods</td>
-      <td><%= @question.combo.goods_names %></td>
-      <td><%= @question.combo.lambda %></td>
-      <td><%= @question.combo.value %></td>
-      <td><%= @question.combo.utility %></td>
-      <td></td>
-    </tr>
-    </tbody>
-  </table>
+  <%=  render :partial => 'admin/combo', :object => @question.combo %>
 </div>
+
 <div style="padding-top:40px">
   <%= link_to 'Back', questions_path %>
 </div>

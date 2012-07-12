@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624021857) do
+ActiveRecord::Schema.define(:version => 20120707151612) do
 
   create_table "bundles", :force => true do |t|
     t.integer "number"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(:version => 20120624021857) do
   create_table "bundles_goods", :id => false, :force => true do |t|
     t.integer "bundle_id"
     t.integer "good_id"
+  end
+
+  create_table "combos", :force => true do |t|
+    t.integer "question_id"
+    t.float   "price"
+    t.float   "lambda"
+    t.float   "utility"
+    t.float   "value"
   end
 
   create_table "goods", :force => true do |t|

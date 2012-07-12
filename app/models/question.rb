@@ -2,28 +2,22 @@ class Question < ActiveRecord::Base
   
   has_many :goods, :dependent => :destroy
   has_many :bundles, :dependent => :destroy
+  has_one  :combo, :dependent => :destroy
   has_many :question_responses
 
-  validates_presence_of :number
   validates_uniqueness_of :number
   validates_numericality_of :number, :only_integer => true
 
   attr_accessor :number_of_goods
-  validates_presence_of :number_of_goods, :on => :create
   validates_numericality_of :number_of_goods, :on => :create, :only_integer => true
 
   attr_accessor :number_of_bundles
-  validates_presence_of :number_of_bundles, :on => :create
   validates_numericality_of :number_of_bundles, :on => :create, :only_integer => true
 
-  after_create :create_goods, :create_bundles
+  after_create :create_goods, :create_bundles, :create_combo
 
   # ==== Methods ====
   delegate :url_helpers, to: 'Rails.application.routes'
-
-  def combo
-    @combo ||= Combo.new self.goods
-  end
 
   def is_first?
     self.number == 0
@@ -55,51 +49,36 @@ class Question < ActiveRecord::Base
 
   def bundles_and_combo
     bundles = self.bundles.to_a
-    bundles.push self.combo
+    bundles << self.combo unless self.combo.nil?
+    bundles
   end
 
   private
   def create_goods
     number = Integer(number_of_goods)
-    number.times do |i|
-      utils = i+1
-      good = self.goods.build(:number => utils, :price => 0, :utility => utils)
-      good.save
+    if number > 0
+      number.times do |i|
+        utils = i+1
+        good = self.goods.build(:number => utils, :price => 0, :utility => utils)
+        good.save
+      end
     end
   end
 
   def create_bundles
     number = Integer(number_of_bundles)
-    number.times do |i|
-      bundle = self.bundles.build(:number => (i+1), :lambda => 1)
-      bundle.save
+    if number > 0
+      number.times do |i|
+        bundle = self.bundles.build(:number => (i+1), :lambda => 1)
+        bundle.save
+      end
     end
   end
-
-  class Combo
-    include GoodsModule
-
-    def initialize(goods)
-      @goods = goods
-    end
-
-    def goods
-      @goods
-    end
-
-    def lambda
-      0.5
-    end
-
-    def value
-      "placeholder"
-    end
-
-    def utility
-      "placeholder"
-    end
+  
+  def create_combo
+    combo = self.build_combo(:price => 0, :lambda => 1)
+    combo.save
   end
-    
     
   
 end

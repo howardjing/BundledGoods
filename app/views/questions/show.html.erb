@@ -3,7 +3,7 @@
 
 <div class="row" style="padding-top: 40px;">
   <div class="span1">
-    <%= @question.is_first? ? link_to('<<Back', @question.previous_path) : "<<Back" %>
   </div>
+  <%= @question.is_first? ? link_to('<<Back', @question.previous_path) : "<<Back" %>
   <%= link_to 'Next>>', @question.next_path, :class => "offset1" %>
 </div>
