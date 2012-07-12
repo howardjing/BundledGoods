@@ -210,3 +210,15 @@ question6.bundles[24].update_attributes number: 25, lambda: 0.9, goods_list: '1,
 question6.bundles[25].update_attributes number: 26, lambda: 1.0, goods_list: '1,2,3,4,5'
 
 question6.combo.update_attributes price: 13, lambda: 1.0
+
+
+# ====== Insert your pre-question content here ======
+question0.update_attributes content: <<-END
+<h1>Hello World</h1>
+<p>I like math</p>
+END
+
+question1.update_attributes content: <<-asdf
+<h1>This is the second question</h1>
+<p>as;dflkjadsf</p>
+asdf

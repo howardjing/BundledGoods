@@ -1,32 +1,34 @@
 <div>
-  <%= question.content %>
+  <%= render :partial => 'prequestion', :locals => { :question => question } %>
 </div>
+<div class="row">
+	<div class="span7">
+		<div id="menu">
+		  There are <%= pluralize question.goods.size, 'good' %> for sale. Their prices are as follows:
 
-<div id="menu">
-  There are <%= pluralize question.goods.size, 'good' %> for sale. Their prices are as follows:
-  <ul>
-    <%= render :partial => 'good', :collection => question.goods.shuffle %>
-    <li>An all inclusive bundle of <%= question.combo.shuffled_goods_names %> for <%= number_to_currency question.combo.price %></li>
-  </ul>
+			<ul>
+		    <%= render :partial => 'good', :collection => question.goods.shuffle %>
+		    <li>An all inclusive bundle of <%= question.combo.shuffled_goods_names %> for <%= number_to_currency question.combo.price %></li>
+		  </ul>
+		</div>
+
+		<div>
+		  You value the bundles in the following ways:
+		  <ul>
+		    <% question.bundles_and_combo.shuffle.each do |goods| %>
+		      <li>
+		        <div class="show-statement">[Click to show statement]</div>
+		        <div class="explanation">
+		            <%= goods.shuffled_goods_statement %>
+		        </div>
+		      </li>
+		    <% end  %>
+		  </ul>
+		</div>
+	</div>
+	
+	<div class="span5">
+		<%= render :partial => 'choices', :locals => { :goods => question.goods }%>
+	</div>
 </div>
-
-<div>
-  You value the bundles in the following ways:
-  <ul>
-    <% question.bundles_and_combo.shuffle.each do |goods| %>
-      <li>
-        <div class="show-statement">[Click to show statement]</div>
-        <div class="explanation">
-            <%= goods.shuffled_goods_statement %>
-        </div>
-      </li>
-    <% end  %>
-  </ul>
-</div>
-
-<div id="timer">
-  5:00
-</div>
-
-<%=  javascript_tag 'timer(100)' %>
 

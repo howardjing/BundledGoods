@@ -1,0 +1,16 @@
+<h2>Choice Menu</h2>
+<div class="row">
+	<div class="span1">
+	<% goods.each do |good| %>
+		<%= check_box_tag 'custom_bundle', good.number %>
+		<%= good.name %><br />
+	<% end %>
+	</div>
+	<div class="offset1 span1">
+		<h2>Or</h2>
+	</div>
+	<div class="span2">
+		<%= check_box_tag 'all_inclusive_bundle', 'combo' %>
+		Combo Package
+	</div>
+</div>
