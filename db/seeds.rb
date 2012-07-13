@@ -223,7 +223,7 @@ of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</s
 utility value 2...)</li>
 <br>
 <li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>; x<sub>j</sub> ; i &ne; j with substitute complement
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
@@ -236,7 +236,8 @@ would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two together makes you value the bundle three quarter 
 times as much."</i> <br></li><br>
-<li>There will be a menu of prices offered for each good.</li><br>
+<li>There will be a menu of prices offered for each good. The prices are arranged
+randomly.</li><br>
 <li>The total utility from the transaction is the utility gained from purchasing
 the goods you have chosen minus their posted prices.</li><br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
@@ -248,14 +249,15 @@ END
 question1.update_attributes content: <<-asdf
 <ol>
 <li>You will be faced with a decision to purchase a bundle of arbitrary goods
-x<sub>1</sub>, x<sub>2</sub> x<sub>3</sub> denoted as Good 1, Good 2, and Good 3.</li>
+x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub> denoted as Good 1, Good 2, 
+Good 3, and Good 4.</li>
 <br>
 <li>Each good has a utility value associated with each good based on the subscript
 of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</sub>) has
 utility value 2...)</li>
 <br>
 <li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>; x<sub>j</sub> ; i &ne; j with substitute complement
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
@@ -268,9 +270,130 @@ would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two together makes you value the bundle three quarter 
 times as much."</i> <br></li><br>
-<li>There will be a menu of prices offered for each good.</li><br>
+<li>There will be a menu of prices offered for each good. The prices will be arranged
+randomly.</li><br>
 <li>The total utility from the transaction is the utility gained from purchasing
 the goods you have chosen minus their posted prices.</li><br>
+<li>Your monetary reward is based on the total utility from your final choice.</li>
+<br>
+asdf
+
+question2.update_attributes content: <<-asdf
+<ol>
+<li>You will be faced with a decision to purchase a bundle of arbitrary goods
+x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub>, denoted as 
+Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
+<br>
+<li>Each good has a utility value associated with each good based on the subscript
+of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</sub>) has
+utility value 2...)</li>
+<br>
+<li> Purchasing goods together will have substitute and complement effects however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+effect &lambda;<sub>i,j</sub>,
+<br>
+<br>
+<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> together makes you value the bundle '&lambda;<sub>i,j</sub>' as
+much."</i>
+<br>
+<br>
+<li>For a concrete example, the statement for bundle with goods two, three, four,
+and five would be as follows:</li>
+<br>
+<i>"Purchasing goods two, three, four, and five together makes you value the bundle three quarter 
+times as much."</i> <br></li><br>
+<li>There will be a menu of prices offered for each good. The prices will be arranged
+randomly.</li><br>
+<li>The total utility from the transaction is the utility gained from purchasing
+the goods you have chosen minus their posted prices.</li><br>
+<li>Your monetary reward is based on the total utility from your final choice.</li>
+<br>
+asdf
+
+question3.update_attributes content: <<-asdf
+<ol>
+<li>You will be faced with a decision to purchase a bundle of arbitrary goods
+x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub> denoted as Good 1, Good 2, 
+Good 3, and Good 4.</li>
+<br>
+<li>Each good has a utility value associated with each good based on the subscript
+of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</sub>) has
+utility value 2...)</li>
+<br>
+<li> Purchasing goods together will have substitute and complement effects however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+effect &lambda;<sub>i,j</sub>,
+<br>
+<br>
+<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> together makes you value the bundle '&lambda;<sub>i,j</sub>' as
+much."</i>
+<br>
+<br>
+<li>For a concrete example, the statement for bundle with goods one and two
+would be as follows:</li>
+<br>
+<i>"Purchasing goods one and two together makes you value the bundle three quarter 
+times as much."</i> <br></li><br>
+<li> In mathematical terms,
+<br>
+<br>
+<i> V(x<sub>1</sub>, x<sub>2</sub>) = .75 [u(x<sub>1</sub>) + u(x<sub>2</sub>)].</i></li>
+<br>
+<li>There will be a menu of prices offered for each good. The prices will be arranged
+randomly.</li><br>
+<li>The total utility from the transaction is the utility gained from purchasing
+the goods you have chosen minus their posted prices.
+<br>
+<br>
+For example, if you choose to purchase goods 2 and 4...
+<br>
+<br>
+<i>Total Utility = V(x<sub>2</sub>, x<sub>4</sub>) - [P(x<sub>2</sub>, x<sub>4</sub>)].</i></li>
+<br>
+<li>Your monetary reward is based on the total utility from your final choice.</li>
+<br>
+asdf
+
+question4.update_attributes content: <<-asdf
+<ol>
+<li>You will be faced with a decision to purchase a bundle of arbitrary goods
+x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub> denoted as Good 1, Good 2, 
+Good 3, Good 4, and Good 5.</li>
+<br>
+<li>Each good has a utility value associated with each good based on the subscript
+of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</sub>) has
+utility value 2...)</li>
+<br>
+<li> Purchasing goods together will have substitute and complement effects however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+effect &lambda;<sub>i,j</sub>,
+<br>
+<br>
+<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> together makes you value the bundle '&lambda;<sub>i,j</sub>' as
+much."</i>
+<br>
+<br>
+<li>For a concrete example, the statement for bundle with goods one and two
+would be as follows:</li>
+<br>
+<i>"Purchasing goods one and two together makes you value the bundle three quarter 
+times as much."</i> <br></li><br>
+<li> In mathematical terms,
+<br>
+<br>
+<i> V(x<sub>1</sub>, x<sub>2</sub>) = .75 [u(x<sub>1</sub>) + u(x<sub>2</sub>)].</i></li>
+<br>
+<li>There will be a menu of prices offered for each good. The prices will be arranged
+randomly.</li><br>
+<li>The total utility from the transaction is the utility gained from purchasing
+the goods you have chosen minus their posted prices.
+<br>
+<br>
+For example, if you choose to purchase goods 2 and 4...
+<br>
+<br>
+<i>Total Utility = V(x<sub>2</sub>, x<sub>4</sub>) - [P(x<sub>2</sub>, x<sub>4</sub>)].</i></li>
+<br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
 asdf
