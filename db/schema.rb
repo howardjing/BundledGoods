@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707151612) do
+ActiveRecord::Schema.define(:version => 20120715190248) do
 
   create_table "bundles", :force => true do |t|
     t.integer "number"
@@ -41,7 +41,14 @@ ActiveRecord::Schema.define(:version => 20120707151612) do
     t.float   "utility"
   end
 
-  create_table "question_responses", :force => true do |t|
+  create_table "questions", :force => true do |t|
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "number"
+  end
+
+  create_table "responses", :force => true do |t|
     t.integer  "question_id"
     t.text     "content"
     t.datetime "created_at",  :null => false
@@ -49,12 +56,7 @@ ActiveRecord::Schema.define(:version => 20120707151612) do
     t.integer  "user_id"
   end
 
-  create_table "questions", :force => true do |t|
-    t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "number"
-  end
+  add_index "responses", ["content"], :name => "index_question_responses_on_content"
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   has_many :goods, :dependent => :destroy
   has_many :bundles, :dependent => :destroy
   has_one  :combo, :dependent => :destroy
-  has_many :question_responses
+  has_many :responses
 
   validates_uniqueness_of :number
   validates_numericality_of :number, :only_integer => true
@@ -19,12 +19,12 @@ class Question < ActiveRecord::Base
   # ==== Methods ====
   delegate :url_helpers, to: 'Rails.application.routes'
 
-  def is_first?
+  def first?
     self.number == 0
   end
 
-  def is_last?
-    self.number == self.class.count - 1
+  def last?
+    self.number == self.class.last.number
   end
 
   def next
@@ -36,11 +36,11 @@ class Question < ActiveRecord::Base
   end
 
   def next_path
-    self.is_last? ? url_helpers.thanks_path : self.next
+    self.last? ? url_helpers.thanks_path : self.next
   end
 
   def previous_path
-    self.is_first? ? url_helpers.instructions_path : self.previous
+    self.first? ? url_helpers.instructions_path : self.previous
   end
 
   def name

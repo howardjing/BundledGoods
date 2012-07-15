@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   # change flash message class to bootstrapped type
   def bootstrapped(type)
     case type
@@ -29,6 +29,8 @@ module ApplicationHelper
       array_rest = array.inject{|string, n| "#{string}, #{n}"}
       return "#{array_rest}, and #{array_tail}"
     end
-
   end
+
+
+
 end

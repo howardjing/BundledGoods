@@ -7,6 +7,9 @@
 		<%= question.content.html_safe unless question.content.nil? %>
   </div>
   <div class="modal-footer">
+    <%#=  link_to 'MyClose',
+                 create_question_start_question_path(question),
+                 remote: true, method: 'post', 'data-dismiss' => 'modal' %>
     <a href="#" class="btn" data-dismiss="modal">Close</a>
   </div>
 </div>

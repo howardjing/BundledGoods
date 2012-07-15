@@ -1,8 +1,11 @@
 class PagesController < ApplicationController
-
+  include ResponsesHelper
   before_filter :require_user
 
+
   def thanks
+    content = end_question(Question.last.id)
+    Response.create(user_id: current_user.id, question_id: Question.last.id, content: content)
   end
   
   def instructions
