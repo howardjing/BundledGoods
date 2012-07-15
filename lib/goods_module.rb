@@ -16,7 +16,7 @@ module GoodsModule
   end
 
   def shuffled_goods_statement
-    "Purchasing #{self.shuffled_goods_names} #{"together" if self.goods.size > 1} makes you value the bundle #{self.lambda} #{self.lambda == 1 ? "time" : "time"} as much."
+    "Purchasing #{self.shuffled_goods_names} #{"in an exclusive bundle" if self.goods.size > 1} makes you value the bundle #{self.lambda} #{self.lambda == 1 ? "time" : "times"} as much as if you summed the individual utilities."
   end
   
   def goods_numbers
