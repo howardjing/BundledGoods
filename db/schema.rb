@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120715190248) do
+ActiveRecord::Schema.define(:version => 20120715223931) do
 
   create_table "bundles", :force => true do |t|
     t.integer "number"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20120715190248) do
     t.float   "utility"
     t.float   "value"
   end
+
+  create_table "explanations", :force => true do |t|
+    t.integer "question_id"
+    t.integer "user_id"
+    t.string  "content"
+  end
+
+  add_index "explanations", ["content"], :name => "index_explanations_on_content"
 
   create_table "goods", :force => true do |t|
     t.integer "number"

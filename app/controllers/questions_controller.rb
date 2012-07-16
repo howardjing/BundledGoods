@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   include ResponsesHelper
 
+  before_filter :require_signed_in
+
   def new
     @question = Question.new
   end
@@ -43,21 +45,44 @@ class QuestionsController < ApplicationController
 
     # create a new question_response to end the previous question
     unless @question.first?
-      Response.create(user_id: current_user.id, question_id: @question.previous.id,
-                              content: end_question(@question.previous.id))
+      Response.create(
+          user_id: current_user.id,
+          question_id: @question.previous.id,
+          content: end_question(@question.previous.id)
+      )
     end
   end
 
   # Methods for recording user interactions
   def create_question_start
     content = start_question(params[:id])
-    Response.create(user_id: current_user.id, question_id: params[:id], content: content)
+    create_row_helper(Response, content);
     render nothing: true
   end
 
   def create_question_answer
-
+    content = params[:content];
+    create_row_helper(Response, content);
     render nothing: true
-
   end
+
+  def create_question_explanation
+    content = params[:content];
+    create_row_helper(Explanation, content);
+    render nothing: true
+  end
+
+  private
+  def require_signed_in
+    redirect_to new_user_path if current_user.nil?
+  end
+
+  def create_row_helper(klass, content)
+    klass.create(
+        user_id: current_user.id,
+        question_id: params[:id],
+        content: content
+    )
+  end
+
 end

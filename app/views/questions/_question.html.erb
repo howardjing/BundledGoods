@@ -32,3 +32,27 @@
 	</div>
 </div>
 
+<script>
+  $(function() {
+      $('.show-statement').click(function() {
+          var content = "exposing: " + $.trim($(this).next().text());
+          console.log(content);
+          createQuestionExplanation(content);
+      });
+
+      $('.explanation').click(function() {
+          var content = "hiding: " + $.trim($(this).text());
+          console.log(content);
+          createQuestionExplanation(content);
+      });
+  });
+
+  createQuestionExplanation = function(content) {
+      $.ajax({
+          type: 'POST',
+          url: '<%= create_question_explanation_question_url %>',
+          data: { content: content }
+      });
+  }
+</script>
+

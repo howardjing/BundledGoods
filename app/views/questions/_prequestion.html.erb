@@ -1,4 +1,4 @@
-<div class="modal hide fade in out" id="myModal">
+<div class="modal hide fade in out" id="instructionsModal">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">×</button>
     <h3><%= question.name %> Instructions</h3>
@@ -7,14 +7,22 @@
 		<%= question.content.html_safe unless question.content.nil? %>
   </div>
   <div class="modal-footer">
-    <%#=  link_to 'MyClose',
-                 create_question_start_question_path(question),
-                 remote: true, method: 'post', 'data-dismiss' => 'modal' %>
     <a href="#" class="btn" data-dismiss="modal">Close</a>
   </div>
 </div>
 
-<%= javascript_tag "$('#myModal').modal('show');" %>
+
+<script>
+  $('#instructionsModal').modal('show');
+  $(function() {
+      $('#instructionsModal').on('hidden', function() {
+          $.ajax({
+              type: 'POST',
+              url: '<%= create_question_start_question_url %>'
+          });
+      });
+  });
+</script>
 
 
 

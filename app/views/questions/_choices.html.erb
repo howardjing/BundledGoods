@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="span1">
 	<% goods.each do |good| %>
-		<%= check_box_tag 'custom_bundle', good.number %>
+		<%= check_box_tag good.name, good.number, false, class: 'bundle' %>
 		<%= good.name %><br />
 	<% end %>
 	</div>
@@ -11,8 +11,44 @@
 		<h2>Or</h2>
 	</div>
 	<div class="span2">
-		<%= check_box_tag 'all_inclusive_bundle', 'combo' %>
+		<%= check_box_tag 'Combo', 'combo' %>
 		Combo Package
 	</div>
 </div>
 </div>
+
+<script>
+  $(function() {
+      $('.bundle').click( function() {
+          var checked = $(this).prop('checked');
+          var content = this.id + " clicked: " + $(this).prop('checked');
+          console.log(content);
+          createQuestionAnswer(content);
+          if (checked) {
+              turnOtherCheckboxesOff($('#Combo'));
+          }
+      });
+
+      $('#Combo').click( function() {
+          var checked = $(this).prop('checked');
+          var content = this.id + " clicked: " + checked;
+          console.log(content);
+          createQuestionAnswer(content);
+          if (checked) {
+              turnOtherCheckboxesOff($('.bundle'));
+          }
+      });
+  });
+
+  turnOtherCheckboxesOff = function(selector) {
+      selector.prop('checked', false);
+  }
+
+  createQuestionAnswer = function(content) {
+      $.ajax({
+          type: 'POST',
+          url: '<%= create_question_answer_question_url %>',
+          data: { content: content }
+      });
+  }
+</script>

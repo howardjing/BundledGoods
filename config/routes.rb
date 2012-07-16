@@ -8,6 +8,7 @@ BundledGoods::Application.routes.draw do
     member do
       post 'create_question_start'
       post 'create_question_answer'
+      post 'create_question_explanation'
     end
 
   end
