@@ -9,6 +9,8 @@ class PagesController < ApplicationController
   end
   
   def instructions
+    content = begin_experiment(Question.first.id)
+    Response.create(user_id: current_user.id, question_id: Question.first.id, content: content)
   end
 
   private

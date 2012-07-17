@@ -20,7 +20,7 @@ class Bundle < ActiveRecord::Base
   def name
     "Bundle #{self.number}"
   end
-
+  
   private
   def add_goods
     if !goods_list.blank? && goods_list != goods_numbers

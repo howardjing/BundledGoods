@@ -52,6 +52,22 @@ class Question < ActiveRecord::Base
     bundles << self.combo unless self.combo.nil?
     bundles
   end
+  
+  def find_bundle_given_goods(goods_set)
+    
+    # empty set
+    if goods_set.nil? || goods_set.empty?
+      return nil
+    end
+    
+    # have to do work
+    chosen_bundle = nil;
+    self.bundles.each do |bundle|
+      goods = bundle.goods.to_set
+      chosen_bundle = bundle if goods == goods_set
+    end
+    chosen_bundle
+  end
 
   private
   def create_goods
