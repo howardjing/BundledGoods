@@ -75,7 +75,7 @@ class Question < ActiveRecord::Base
     if number > 0
       number.times do |i|
         utils = i+1
-        good = self.goods.build(:number => utils, :price => 0, :utility => utils)
+        good = self.goods.build(:number => utils, :price => 0, :value => utils)
         good.save
       end
     end

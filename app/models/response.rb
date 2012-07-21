@@ -4,6 +4,7 @@ class Response < ActiveRecord::Base
   belongs_to :question
 
   # Returns the set of goods for the given user and question
+  # returns either nil, the combo, the bundle, or the single good
   def self.final_answer(user_id, question_id)
     
     # puts "Userid: #{user_id}, Questionid: #{question_id}"

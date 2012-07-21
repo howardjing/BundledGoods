@@ -9,12 +9,20 @@ class Good < ActiveRecord::Base
   validates_numericality_of :number, :only_integer => true
 
   validates_numericality_of :price
-  validates_numericality_of :utility
+  validates_numericality_of :value
   
   after_save :update_bundles_and_combo
 
   def name
     "Good #{number}"
+  end
+  
+  def utility
+    value - price
+  end
+  
+  def lambda
+    1.0
   end
 
   def bundles_and_combo

@@ -3,8 +3,8 @@
   <tr>
     <th>Name</th>
     <th>Goods</th>
-    <th>Price</th>
     <th>\(\lambda\)</th>
+		<th>Price</th>
     <th>Value</th>
     <th>Utility</th>
     <th></th>
@@ -16,8 +16,8 @@
   <tr>
     <td>All Goods</td>
     <td><%= @question.combo.goods_names %></td>
+		<td><%= @question.combo.lambda %></td>
     <td><%= @question.combo.price %></td>
-    <td><%= @question.combo.lambda %></td>
     <td><%= @question.combo.value %></td>
     <td><%= @question.combo.utility %></td>
     <td><%= link_to 'Edit', edit_question_combo_path(@question, @question.combo), :class => 'btn btn-mini btn-success' %></td>

@@ -21,6 +21,10 @@ class Bundle < ActiveRecord::Base
     "Bundle #{self.number}"
   end
   
+  def price
+    goods.map(&:price).reduce(0,:+)
+  end
+  
   private
   def add_goods
     if !goods_list.blank? && goods_list != goods_numbers

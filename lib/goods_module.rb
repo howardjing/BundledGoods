@@ -23,8 +23,8 @@ module GoodsModule
     self.goods.map(&:number).join(', ')
   end
 
-  def sum_goods_utility
-    self.goods.map(&:utility).reduce(0,:+)
+  def sum_goods_value
+    self.goods.map(&:value).reduce(0,:+)
   end
   
   def sum_goods_price
@@ -32,7 +32,7 @@ module GoodsModule
   end
 
   def update_value_and_utility
-    self.value = self.lambda * sum_goods_utility
+    self.value = self.lambda * sum_goods_value
     self.utility = self.value - sum_goods_price
   end
 end
