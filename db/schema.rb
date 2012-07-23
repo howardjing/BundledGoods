@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720044654) do
+ActiveRecord::Schema.define(:version => 20120723011055) do
 
   create_table "bundles", :force => true do |t|
     t.integer "number"
@@ -51,9 +51,10 @@ ActiveRecord::Schema.define(:version => 20120720044654) do
 
   create_table "questions", :force => true do |t|
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "number"
+    t.boolean  "display_equation", :default => false
   end
 
   create_table "responses", :force => true do |t|

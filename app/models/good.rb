@@ -16,6 +16,10 @@ class Good < ActiveRecord::Base
   def name
     "Good #{number}"
   end
+
+  def equation_name
+    "x_#{number}"
+  end
   
   def utility
     value - price

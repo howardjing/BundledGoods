@@ -87,7 +87,7 @@ question2.combo.update_attributes price: 13, lambda: 1.0
 
 #question 3
 puts "q3"
-question3 = Question.create number: 3, number_of_goods: 4, number_of_bundles: 10
+question3 = Question.create number: 3, number_of_goods: 4, number_of_bundles: 10, display_equation: true
 
 question3.goods[0].update_attributes number: 1, price: 1.75, value: 1
 question3.goods[1].update_attributes number: 2, price: 2, value: 2
@@ -109,7 +109,7 @@ question3.combo.update_attributes price: 8.5, lambda: 1
 
 #question 4
 puts "q4"
-question4 = Question.create number: 4, number_of_goods: 5, number_of_bundles: 25
+question4 = Question.create number: 4, number_of_goods: 5, number_of_bundles: 25, display_equation: true
 
 question4.goods[0].update_attributes number: 1, price: 2.25, value: 1
 question4.goods[1].update_attributes number: 2, price: 2.25, value: 2

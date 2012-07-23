@@ -1,7 +1,7 @@
 module GoodsModule
 
-  def goods_names
-    self.goods.map(&:name).join(', ')
+  def goods_names(name = :name)
+    self.goods.map(&name).join(', ')
   end
 
   def shuffled_goods_names
@@ -16,7 +16,19 @@ module GoodsModule
   end
 
   def shuffled_goods_statement
+    self.question.display_equation ? equation_statement : verbose_statement
+  end
+
+  def verbose_statement
     "Purchasing #{self.shuffled_goods_names} #{"in an exclusive bundle" if self.goods.size > 1} makes you value the bundle #{self.lambda} #{self.lambda == 1 ? "time" : "times"} as much as if you summed the individual utilities."
+  end
+
+  def equation_statement
+    "\\( V(#{self.goods_names(:equation_name)}) = #{lambda}[#{goods_utilities}] \\)"
+  end
+
+  def goods_utilities
+    self.goods.map { |good| "u(#{good.equation_name})" }.join(" + ")
   end
   
   def goods_numbers

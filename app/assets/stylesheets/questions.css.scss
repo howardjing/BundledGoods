@@ -4,14 +4,15 @@
 
 $width: 800px;
 .modal { 
-	width: 800px;
-	margin-left: -($width/2);
+  width: 800px;
+  margin-left: -($width/2);
 }
 
 div.floating-menu {
-	position:fixed;
+  position: fixed;
 }
 
 div.floating-menu a, div.floating-menu h3 {
-	display:block;margin:0 0.5em;
+  display: block;
+  margin: 0 0.5em;
 }
