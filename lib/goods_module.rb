@@ -16,7 +16,7 @@ module GoodsModule
   end
 
   def shuffled_goods_statement
-    self.question.display_equation ? equation_statement : verbose_statement
+    self.question.display_equation? ? equation_statement : verbose_statement
   end
 
   def verbose_statement
