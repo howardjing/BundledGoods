@@ -68,6 +68,12 @@ class Question < ActiveRecord::Base
     end
     chosen_bundle
   end
+  
+  def menu_items
+    goods = self.goods.to_a
+    goods << combo unless combo.nil?
+    goods
+  end
 
   private
   def create_goods

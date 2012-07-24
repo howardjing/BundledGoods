@@ -17,11 +17,14 @@ class Combo < ActiveRecord::Base
   before_save :update_value_and_utility
   
   def name
-    "All Inclusive Bundle"
+    "Combo Package"
   end
   
   def sum_goods_price
     self.price
   end
 
+  def menu_name
+    "#{name} consisting of #{shuffled_goods_names}"
+  end
 end

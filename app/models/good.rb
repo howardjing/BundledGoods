@@ -41,5 +41,13 @@ class Good < ActiveRecord::Base
       bundle.save!
     end
   end
+  
+  def menu_name
+    name
+  end
 
+  # goods_names is just itself
+  def goods_names
+    name
+  end
 end

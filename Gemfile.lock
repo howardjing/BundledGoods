@@ -89,6 +89,7 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
+    rubystats (0.2.3)
     sass (3.1.15)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -123,6 +124,7 @@ DEPENDENCIES
   jquery-rails
   mathjax-rails
   rails (= 3.2.2)
+  rubystats
   sass-rails (~> 3.2.3)
   sqlite3
   twitter-bootstrap-rails

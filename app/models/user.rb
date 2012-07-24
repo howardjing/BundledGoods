@@ -5,11 +5,13 @@ class User < ActiveRecord::Base
   
   def calculate_final_score
     score = 0
-    Question.all.each do |question|
+    questions = Question.all.to_a
+    questions.delete(Question.first)
+    questions.each do |question|
       final_answer = Response.final_answer(self.id, question.id)
       score += final_answer.utility unless final_answer.nil?
     end
-    score
+    score.round
   end
   
 end

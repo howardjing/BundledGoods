@@ -7,8 +7,7 @@
 		  There are <%= pluralize question.goods.size, 'good' %> for sale. Their prices are as follows:
 
 			<ul>
-		    <%= render :partial => 'good', :collection => question.goods.shuffle %>
-		    <li>An all inclusive bundle of <%= question.combo.shuffled_goods_names %> for <%= number_to_currency question.combo.price %></li>
+		    <%= render :partial => 'good', :collection => question.menu_items.shuffle %>
 		  </ul>
 		</div>
 
@@ -19,7 +18,7 @@
 		      <li>
 		        <div class="show-statement">[Click to show statement]</div>
 		        <div class="explanation">
-		            <%= goods.shuffled_goods_statement %>
+		            <%= simple_format goods.shuffled_goods_statement %>
 		        </div>
 		      </li>
 		    <% end  %>
