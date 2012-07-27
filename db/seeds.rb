@@ -396,3 +396,99 @@ For example, if you choose to purchase goods 2 and 4...
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
 asdf
+
+question5.update_attributes content: <<-asdf
+<ol>
+<li>You will be faced with a decision to purchase a bundle of arbitrary goods
+x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub> denoted as Good 1, Good 2, 
+Good 3, and Good 4.</li>
+<br>
+<li>Each good has a utility value associated with each good based on the subscript
+of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</sub>) has
+utility value 2...)</li>
+<br>
+<li> Purchasing goods together will have substitute and complement effects however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+effect &lambda;<sub>i,j</sub>,
+<br>
+<br>
+<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
+makes you value the bundle '&lambda;<sub>i,j</sub>' as much as if you summed the individual
+utilities."</i>
+<br>
+<br>
+<li>For a concrete example, the statement for bundle with goods one and two
+would be as follows:</li>
+<br>
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle three quarter 
+times as much as if you summed the individual utilities."</i> <br></li><br>
+<li>There will be a menu of prices offered for each good. The prices will be arranged
+randomly.</li><br>
+<li>The total utility from the transaction is the utility gained from purchasing
+the goods you have chosen minus their posted prices.</li><br>
+<li>Your monetary reward is based on the total utility from your final choice.</li>
+<br>
+<li>In this experiment, a time picked at random between 1 and t seconds, which is described by 
+  the graph below, will be randomly selected. Whatever option you have selected at that time 
+  will be your final choice for that particular experiment. Therefore, it is in your best interest 
+  to "choose as you go" in the sense that, if you prefer a particular option more to the one you 
+  have selected, to change your selection. This experiment will be different from the other 
+  experiments as your final choice is not necessarily the choice you selected when you click "finish", 
+  but the choice that you have selected at the randomly determined time. </li>
+  <br>
+<li>The time that is selected will be determined by drawing from a random integer number between
+  1 and t seconds from the given distribution pictured below. The x axis is the possible times 
+  with the probability of the time happening on appearing on the y axis. For example, there is a
+  X percent chance that t_1 will be the time selected and a Y percent chance that t_2 will be the 
+  time selected.</li>
+<br>
+<H1>**INSERT IMAGE**</H1>
+asdf
+
+question6.update_attributes content: <<-asdf
+<ol>
+<li>You will be faced with a decision to purchase a bundle of arbitrary goods
+x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub>, denoted as 
+Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
+<br>
+<li>Each good has a utility value associated with each good based on the subscript
+of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</sub>) has
+utility value 2...)</li>
+<br>
+<li> Purchasing goods together will have substitute and complement effects however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+effect &lambda;<sub>i,j</sub>,
+<br>
+<br>
+<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
+makes you value the bundle '&lambda;<sub>i,j</sub>' as much as if you summed the individual
+utilities."</i>
+<br>
+<br>
+<li>For a concrete example, the statement for bundle with goods two, three, four,
+and five would be as follows:</li>
+<br>
+<i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle three quarter 
+times as much as if you summed the individual utilities."</i> <br></li><br>
+<li>There will be a menu of prices offered for each good. The prices will be arranged
+randomly.</li><br>
+<li>The total utility from the transaction is the utility gained from purchasing
+the goods you have chosen minus their posted prices.</li><br>
+<li>Your monetary reward is based on the total utility from your final choice.</li>
+<br>
+<li>In this experiment, a time picked at random between 1 and t seconds, which is described by 
+  the graph below, will be randomly selected. Whatever option you have selected at that time 
+  will be your final choice for that particular experiment. Therefore, it is in your best interest 
+  to "choose as you go" in the sense that, if you prefer a particular option more to the one you 
+  have selected, to change your selection. This experiment will be different from the other 
+  experiments as your final choice is not necessarily the choice you selected when you click "finish", 
+  but the choice that you have selected at the randomly determined time. </li>
+<br>
+<li>The time that is selected will be determined by drawing from a random integer number between
+  1 and t seconds from the given distribution pictured below. The x axis is the possible times 
+  with the probability of the time happening on appearing on the y axis. For example, there is a
+  X percent chance that t_1 will be the time selected and a Y percent chance that t_2 will be the 
+  time selected.</li>
+<br>
+<H1>**INSERT IMAGE**</H1>
+asdf
