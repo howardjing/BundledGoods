@@ -36,7 +36,7 @@ class Question < ActiveRecord::Base
   end
 
   def next_path
-    self.last? ? url_helpers.thanks_path : self.next
+    self.last? ? url_helpers.edit_user_path : self.next
   end
 
   def previous_path

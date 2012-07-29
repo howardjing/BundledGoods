@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   
   has_many :responses
-  validates_presence_of :name
+  validates_presence_of :lab_number, :on => :create
   
   def calculate_final_score
     score = 0

@@ -13,7 +13,7 @@ BundledGoods::Application.routes.draw do
 
   end
 
-  resources :users
+  resource :user
   resources :sessions, :only => [:destroy]
 
   match 'thanks', :to => 'pages#thanks'

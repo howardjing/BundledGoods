@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def new
+    puts "hi"
     @user = User.new
+    puts "Hihi"
   end
 
   def create
@@ -10,6 +12,33 @@ class UsersController < ApplicationController
       redirect_to instructions_path
     else
       render :action => 'new'
+    end
+  end
+ 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    # update the end (this will be removed later)
+    @user = current_user
+    @response = @user.responses.find_by_question_id Question.last.id
+
+    if !response.nil?
+      if response.end_time.nil?
+        response.update_attribute :end_time, Time.now
+      else
+        response.update_attribute :misc, 
+        "#{response.misc}; User tried to end question again at #{Time.now}"
+      end
+    else
+      puts "Tried to end question without appropriate response"
+    end
+
+    if @user.update_attributes params[:user]
+      redirect_to thanks_path
+    else 
+      render :action => 'edit'
     end
   end
 end

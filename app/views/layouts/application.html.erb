@@ -14,8 +14,6 @@
   <% end %>
 
   <%= mathjax_tag %>
-
-  <%= "Welcome #{current_user.name}" if !current_user.nil? %>
   <%= yield %>
 </div>
 
