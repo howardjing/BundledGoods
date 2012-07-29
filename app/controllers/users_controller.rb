@@ -17,12 +17,8 @@ class UsersController < ApplicationController
  
   def edit
     @user = current_user
-  end
-
-  def update
-    # update the end (this will be removed later)
-    @user = current_user
-    @response = @user.responses.find_by_question_id Question.last.id
+    # end the last question (will be removed later)
+    response = @user.responses.find_by_question_id Question.last.id
 
     if !response.nil?
       if response.end_time.nil?
@@ -34,7 +30,10 @@ class UsersController < ApplicationController
     else
       puts "Tried to end question without appropriate response"
     end
+  end
 
+  def update
+    @user = current_user
     if @user.update_attributes params[:user]
       redirect_to thanks_path
     else 
