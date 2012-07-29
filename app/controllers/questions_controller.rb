@@ -44,7 +44,7 @@ class QuestionsController < ApplicationController
     @question = Question.find_by_id(params[:id])
 
     # end the previous question
-    end_previous_quesiton
+    end_previous_question
   end
 
   # Methods for recording user interactions
