@@ -8,7 +8,7 @@
 
 puts "q0"
 # create the 0th question, specify the number of goods and bundles (combo is automatically created)
-question0 = Question.create number: 0, number_of_goods: 3, number_of_bundles: 3
+question0 = Question.create number: 0, number_of_goods: 3, number_of_bundles: 4
 
 # update the attributes of the 3 goods owned by question0
 # arrays are 0 indexed, so question0.goods[0] and question0.goods[1]
@@ -22,13 +22,15 @@ question0.goods[2].update_attributes number: 3, price: 2,   value: 3
 question0.bundles[0].update_attributes number: 1, lambda: 1.5, goods_list: '1,2'
 question0.bundles[1].update_attributes number: 2, lambda: 1.2, goods_list: '1,3'
 question0.bundles[2].update_attributes number: 3, lambda: 0.5, goods_list: '2,3'
+question0.bundles[3].update_attributes number: 4, lambda: 1.0, goods_list: '1,2,3'
+
 
 # update the attributes of the combo (value and utility are calculated and updated automatically)
 question0.combo.update_attributes price: 2.75, lambda: 1
 
 # repeat the above for all your questions
 puts "q1"
-question1 = Question.create number: 1, number_of_goods: 4, number_of_bundles: 10
+question1 = Question.create number: 1, number_of_goods: 4, number_of_bundles: 11
 
 question1.goods[0].update_attributes number: 1, price: 1.75, value: 1
 question1.goods[1].update_attributes number: 2, price: 2, value: 2
@@ -45,10 +47,12 @@ question1.bundles[6].update_attributes number: 7, lambda: 0.9, goods_list: '1,2,
 question1.bundles[7].update_attributes number: 8, lambda: 0.9, goods_list: '1,2,4'
 question1.bundles[8].update_attributes number: 9, lambda: 0.9, goods_list: '1,3,4'
 question1.bundles[9].update_attributes number: 10, lambda: 0.8, goods_list: '2,3,4'
+question1.bundles[10].update_attributes number: 11, lambda: 1.0, goods_list: '1,2,3,4'
+
 
 question1.combo.update_attributes price: 8.5, lambda: 1.0
 puts "q2"
-question2 = Question.create number: 2, number_of_goods: 5, number_of_bundles: 25
+question2 = Question.create number: 2, number_of_goods: 5, number_of_bundles: 26
 
 question2.goods[0].update_attributes number: 1, price: 2.75, value: 1
 question2.goods[1].update_attributes number: 2, price: 1.75, value: 2
@@ -81,13 +85,15 @@ question2.bundles[21].update_attributes number: 22, lambda: 0.9, goods_list: '2,
 question2.bundles[22].update_attributes number: 23, lambda: 1.1, goods_list: '1,2,3,5'
 question2.bundles[23].update_attributes number: 24, lambda: 1.0, goods_list: '1,3,4,5'
 question2.bundles[24].update_attributes number: 25, lambda: 0.9, goods_list: '1,2,4,5'
+question2.bundles[25].update_attributes number: 26, lambda: 1.0, goods_list: '1,2,3,4,5'
+
 
 question2.combo.update_attributes price: 13, lambda: 1.0
 
 
 #question 3
 puts "q3"
-question3 = Question.create number: 3, number_of_goods: 4, number_of_bundles: 10, display_equation: true
+question3 = Question.create number: 3, number_of_goods: 4, number_of_bundles: 11, display_equation: true
 
 question3.goods[0].update_attributes number: 1, price: 1.75, value: 1
 question3.goods[1].update_attributes number: 2, price: 2, value: 2
@@ -104,12 +110,14 @@ question3.bundles[6].update_attributes number: 7, lambda: 1.1, goods_list: '1,2,
 question3.bundles[7].update_attributes number: 8, lambda: 1.1, goods_list: '1,2,4'
 question3.bundles[8].update_attributes number: 9, lambda: 1.1, goods_list: '1,3,4'
 question3.bundles[9].update_attributes number: 10, lambda: 0.9, goods_list: '2,3,4'
+question3.bundles[10].update_attributes number: 11, lambda: 1.0, goods_list: '1,2,3,4'
+
 
 question3.combo.update_attributes price: 8.5, lambda: 1
 
 #question 4
 puts "q4"
-question4 = Question.create number: 4, number_of_goods: 5, number_of_bundles: 25, display_equation: true
+question4 = Question.create number: 4, number_of_goods: 5, number_of_bundles: 26, display_equation: true
 
 question4.goods[0].update_attributes number: 1, price: 2.25, value: 1
 question4.goods[1].update_attributes number: 2, price: 2.25, value: 2
@@ -142,12 +150,14 @@ question4.bundles[21].update_attributes number: 22, lambda: 0.9, goods_list: '2,
 question4.bundles[22].update_attributes number: 23, lambda: 1.1, goods_list: '1,2,3,5'
 question4.bundles[23].update_attributes number: 24, lambda: 0.9, goods_list: '1,3,4,5'
 question4.bundles[24].update_attributes number: 25, lambda: 0.9, goods_list: '1,2,4,5'
+question4.bundles[25].update_attributes number: 26, lambda: 1.0, goods_list: '1,2,3,4,5'
+
 
 question4.combo.update_attributes price: 13, lambda: 1.0
 
 #question 5
 puts "q5"
-question5 = Question.create number: 5, number_of_goods: 4, number_of_bundles: 10
+question5 = Question.create number: 5, number_of_goods: 4, number_of_bundles: 11
 
 question5.goods[0].update_attributes number: 1, price: 1.5, value: 1
 question5.goods[1].update_attributes number: 2, price: 2.25, value: 2
@@ -164,12 +174,14 @@ question5.bundles[6].update_attributes number: 7, lambda: 1.1, goods_list: '1,2,
 question5.bundles[7].update_attributes number: 8, lambda: 1.1, goods_list: '1,2,4'
 question5.bundles[8].update_attributes number: 9, lambda: 0.9, goods_list: '1,3,4'
 question5.bundles[9].update_attributes number: 10, lambda: 0.9, goods_list: '2,3,4'
+question5.bundles[10].update_attributes number: 11, lambda: 1.0, goods_list: '1,2,3,4'
+
 
 question5.combo.update_attributes price: 7.75, lambda: 1
 
 #question 6
 
-question6 = Question.create number: 6, number_of_goods: 5, number_of_bundles: 25
+question6 = Question.create number: 6, number_of_goods: 5, number_of_bundles: 26
 
 question6.goods[0].update_attributes number: 1, price: 2.25, value: 1
 question6.goods[1].update_attributes number: 2, price: 1.75, value: 2
@@ -202,6 +214,8 @@ question6.bundles[21].update_attributes number: 22, lambda: 0.9, goods_list: '2,
 question6.bundles[22].update_attributes number: 23, lambda: 1.1, goods_list: '1,2,3,5'
 question6.bundles[23].update_attributes number: 24, lambda: 1.0, goods_list: '1,3,4,5'
 question6.bundles[24].update_attributes number: 25, lambda: 0.9, goods_list: '1,2,4,5'
+question6.bundles[25].update_attributes number: 26, lambda: 1.0, goods_list: '1,2,3,4,5'
+
 
 question6.combo.update_attributes price: 13, lambda: 1.0
 
