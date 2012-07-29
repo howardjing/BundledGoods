@@ -54,7 +54,8 @@ class Question < ActiveRecord::Base
   end
   
   def find_bundle_given_goods(goods_set)
-    
+   
+    goods_set = goods_set.to_set
     # empty set
     if goods_set.nil? || goods_set.empty?
       return nil
@@ -101,6 +102,5 @@ class Question < ActiveRecord::Base
     combo = self.build_combo(:price => 0, :lambda => 1)
     combo.save
   end
-    
   
 end

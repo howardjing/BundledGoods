@@ -2,7 +2,7 @@
 <p>You've finished!</p>
 <ol>Your answers:
 <% Question.all.each do |question| %>
-<li><%= "#{question.name}) You picked: #{chosen_answer(current_user.id, question.id)}" %></li>
+<li><%= "#{question.name}) You picked: #{chosen_answer(question.id)}" %></li>
 <% end %>
 </ol>
 <p>Your score was: <%= @final_score %></p>

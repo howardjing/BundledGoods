@@ -3,15 +3,18 @@ class PagesController < ApplicationController
   before_filter :require_user
 
   def thanks
-    content = end_question(Question.last.id)
-    Response.create(user_id: current_user.id, question_id: Question.last.id, content: content)
-    
+    response = current_user.responses.find_by_question_id Question.last.id
+
+    if !response.nil? && response.end_time.nil?
+      response.update_attribute :end_time, Time.now
+    else
+      response.update_attribute :misc, "#{response.misc}; User tried to end question again at #{Time.now}"
+    end
     @final_score = current_user.calculate_final_score
   end
   
   def instructions
-    content = begin_experiment(Question.first.id)
-    Response.create(user_id: current_user.id, question_id: Question.first.id, content: content)
+    Explanation.create user_id: current_user.id, question_id: Question.first.id, content: "Viewing instructions page"
   end
 
   private

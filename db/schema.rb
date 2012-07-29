@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723011055) do
+ActiveRecord::Schema.define(:version => 20120729182733) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "response_id"
+    t.boolean  "selected"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["name"], :name => "index_answers_on_name"
 
   create_table "bundles", :force => true do |t|
     t.integer "number"
@@ -55,17 +65,18 @@ ActiveRecord::Schema.define(:version => 20120723011055) do
     t.datetime "updated_at",                          :null => false
     t.integer  "number"
     t.boolean  "display_equation", :default => false
+    t.boolean  "timed",            :default => false
   end
 
   create_table "responses", :force => true do |t|
+    t.integer  "duration"
     t.integer  "question_id"
-    t.text     "content"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
     t.integer  "user_id"
+    t.datetime "end_time"
+    t.text     "misc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "responses", ["content"], :name => "index_question_responses_on_content"
 
   create_table "users", :force => true do |t|
     t.string   "name"

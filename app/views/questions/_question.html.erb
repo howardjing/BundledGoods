@@ -14,7 +14,7 @@
 		<div>
 		  You value the bundles in the following ways:
 		  <ul>
-		    <% question.bundles_and_combo.shuffle.each do |goods| %>
+		    <% question.bundles.shuffle.each do |goods| %>
 		      <li>
 		        <div class="show-statement">[Click to show statement]</div>
 		        <div class="explanation">
@@ -34,7 +34,7 @@
 <script>
   $(function() {
       $('.show-statement').click(function() {
-          var content = "exposing: " + $.trim($(this).next().text());
+          var content = "showing: " + $.trim($(this).next().text());
           console.log(content);
           createQuestionExplanation(content);
       });
@@ -51,7 +51,7 @@
           type: 'POST',
           url: '<%= create_question_explanation_question_url %>',
           data: { content: content }
-      });
+        });
   }
 </script>
 
