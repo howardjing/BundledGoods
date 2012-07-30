@@ -64,9 +64,9 @@ class QuestionsController < ApplicationController
     else
       response.update_attribute :misc, "#{response.misc}; User tried to start question again at time #{Time.now}"
     end
-    render nothing: true
+    millis = response.question.millis_left(current_user.id)
+    render json: { millis_left: millis, random: response.question.timed? }.to_json
   end
-
 
   def create_question_answer
     puts "Recording answer for user: #{current_user.id}, 

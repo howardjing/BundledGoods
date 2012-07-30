@@ -16,8 +16,9 @@ class Question < ActiveRecord::Base
 
   after_create :create_goods, :create_bundles, :create_combo
 
+  STANDARD_DURATION = 60     # number of seconds for a normal question
+
   # ==== Methods ====
-  delegate :url_helpers, to: 'Rails.application.routes'
 
   def first?
     self.number == 0
@@ -33,14 +34,6 @@ class Question < ActiveRecord::Base
 
   def previous
     self.class.find_by_number(self.number - 1)
-  end
-
-  def next_path
-    self.last? ? url_helpers.edit_user_path : self.next
-  end
-
-  def previous_path
-    self.first? ? url_helpers.instructions_path : self.previous
   end
 
   def name
@@ -76,6 +69,19 @@ class Question < ActiveRecord::Base
     goods
   end
 
+  def millis_left(user_id)
+    response = self.responses.find_by_user_id user_id
+
+    time_passed = Time.now.in_time_zone - response.created_at
+
+    duration = self.timed? ? response.duration : STANDARD_DURATION
+    if response.duration > time_passed
+      return (duration - time_passed) * 1000
+    else
+      return 0
+    end
+  end
+
   private
   def create_goods
     number = Integer(number_of_goods)
@@ -102,5 +108,5 @@ class Question < ActiveRecord::Base
     combo = self.build_combo(:price => 0, :lambda => 1)
     combo.save
   end
-  
+
 end

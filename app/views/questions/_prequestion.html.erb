@@ -18,10 +18,46 @@
       $('#instructionsModal').on('hidden', function() {
           $.ajax({
               type: 'POST',
-              url: '<%= create_question_start_question_url %>'
+              url: '<%= create_question_start_question_url %>',
+              success: function(response) {
+
+                  if (!response.random) {
+                      timer(Math.floor(response.millis_left / 1000));
+                  }
+
+                  setTimeout(function() {
+                      window.location.href = '<%= next_url question %>';
+                  }, response.millis_left);
+              }
           });
       });
   });
+
+  var timer;
+  timer = function(secondsRemaining) {
+    if (secondsRemaining >= 0) {
+        var minutes = Math.floor(secondsRemaining / 60);
+        var seconds = secondsRemaining % 60;
+
+        // update text
+        $('#timer').text(doubleDigits(minutes) + ":" + doubleDigits(seconds));
+
+        if (secondsRemaining > 0) {
+            secondsRemaining--;
+            setTimeout(function() {
+                timer(secondsRemaining)
+            }, 1000);
+        }
+    }
+  };
+
+  var doubleDigits;
+  doubleDigits = function (number) {
+      if (Math.abs(number) < 10) {
+          return '0' + number;
+      }
+      return number;
+  };
 </script>
 
 
