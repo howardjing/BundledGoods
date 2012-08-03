@@ -8,6 +8,18 @@ class PagesController < ApplicationController
     @final_score = current_user.calculate_final_score
   end
 
+  def demo1
+  end
+  
+  def demo2
+  end
+  
+  def demo3
+  end
+  
+  def demo4
+  end
+  
   private
   def require_user
     unless !current_user.nil?

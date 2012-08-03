@@ -18,6 +18,10 @@ BundledGoods::Application.routes.draw do
 
   match 'thanks', :to => 'pages#thanks'
   match 'instructions', :to => 'pages#instructions'
+  match 'demo1', :to => 'pages#demo1'
+  match 'demo2', :to => 'pages#demo2'
+  match 'demo3', :to => 'pages#demo3'  
+  match 'demo4', :to => 'pages#demo4'
   
   mathjax 'mathjax'
 

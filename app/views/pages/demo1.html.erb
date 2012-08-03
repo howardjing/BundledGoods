@@ -1,0 +1,50 @@
+<h1>Tutorial</h1>
+
+<STYLE type="text/css">
+  DIV.mypars {text-align: left}
+ </STYLE>
+<BODY>
+
+<DIV style="position: absolute; top:125px; left:110px; width:550px; height:50px">
+ <DIV class="mypars">
+<P>
+	This tutorial will guide you through interpreting the statements that will be given in the
+	experiment. You will not be able to move forward until you plug in the correct answers in 
+	the fields.
+<P>
+	You will learn how to calculate the value, or utility, of single goods in this tutorial. 
+	Here are the instructions that will be given to you in the experiment.
+<ol>
+	<li>You will be faced with a decision to purchase a bundle of arbitrary goods
+	x<sub>1</sub>, x<sub>2</sub> x<sub>3</sub> denoted as Good 1, Good 2, and Good 3.
+	</li>
+<br>
+	<li>Each good has a utility value associated with each good based on the subscript
+	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</sub>) has
+	utility value 2...) Utility value is just an arbitrary preference scale over the set of 
+	goods. The value will come into play for calculating your final payment.
+	</li>
+</ol>
+<br>
+
+<P>
+	Based on these intructions, enter the correct field into the box below.
+<P>
+	<b>How much do you value good 1 based on the instructions?</b>
+<P>
+<form>
+	Utility Value of Good 1: <input type="text" name="utility1" /><br />
+</form>
+<P>
+	<b>How much do you value good 3 based on the instructions?</b>
+<form>
+	Utility Value of Good 3: <input type="text" name="utility3" /><br />
+</form>
+<P>
+	<b>How much do you value good 100, given there were 100 goods,
+	 based on the instructions?</b>
+<form>
+	Utility Value of Good 100: <input type="text" name="utility100" /><br />
+</form>
+</div>
+<%= link_to 'Next', demo2_path, :class => 'btn btn-primary' %>
