@@ -19,10 +19,12 @@ class User < ActiveRecord::Base
   def final_answer(question_id)
 
     response = self.responses.find_by_question_id question_id
-    puts "Computing the final answer for question: #{response.question.name}" 
+
     # Case 1: no response for this question or no answers
     return nil if response.nil? || response.answers.empty?
-    
+
+    puts "Computing the final answer for question: #{response.question.name}"
+
     # Otherwise get the last chronological answer
     answer = response.answers.last
     
@@ -55,8 +57,22 @@ class User < ActiveRecord::Base
 
   # Returns the set of selected goods contained in the response
   def find_chosen_goods_set(response)
-    good_answers = {}
+
+    # find the last time combo happened
+    latest_combo = nil
     response.answers.each do |answer|
+      if answer.combo? && (latest_combo.nil? || answer.created_at > latest_combo.created_at)
+        latest_combo = answer
+      end
+    end
+
+    # find the relevant set of answers
+    answers = response.answers.find_all do |answer|
+        answer.good? && (latest_combo.nil? ? true : (answer.created_at > latest_combo.created_at))
+    end
+
+    good_answers = {}
+    answers.each do |answer|
       if answer.good?
         if good_answers.include? answer.good
           # update the hash if the current answer is more current

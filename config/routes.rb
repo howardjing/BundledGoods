@@ -1,19 +1,20 @@
 BundledGoods::Application.routes.draw do
 
-  resources :questions do
-    resources :goods
-    resources :bundles
-    resources :combos, only: [:edit, :update]
+
+  resources :questions, :only => :none do
 
     member do
-      post 'create_question_start'
-      post 'create_question_answer'
-      post 'create_question_explanation'
+      post 'start'
+      post 'answer'
+      post 'explanation'
+      post 'end'
     end
 
   end
 
-  resource :user
+  match 'experiment', :to => 'questions#experiment'
+
+  resource :users
   resources :sessions, :only => [:destroy]
 
   match 'thanks', :to => 'pages#thanks'
@@ -22,7 +23,9 @@ BundledGoods::Application.routes.draw do
   match 'demo2', :to => 'pages#demo2'
   match 'demo3', :to => 'pages#demo3'  
   match 'demo4', :to => 'pages#demo4'
-  
+
+  match 'signout', :to => 'sessions#destroy'
+
   mathjax 'mathjax'
 
   # The priority is based upon order of creation:

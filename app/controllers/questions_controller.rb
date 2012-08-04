@@ -40,24 +40,38 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  def show
-    @question = Question.find_by_id(params[:id])
+  def experiment
+    question_number = Question.current_question_number current_user.id
 
-    # end the previous question
-    end_previous_question
+    if question_number > Question.last.number
+      redirect_to edit_users_path
+    else
+      @question = Question.find_by_number question_number
+      puts "the question number is: #{@question.number}"
+
+      # if the question has been started, get the final answer
+      current_answer = current_user.final_answer @question.id
+      if current_answer.nil?
+        @current_answer = nil
+      elsif current_answer.class == Good
+        @current_answer = current_answer.name.gsub(" ", "_")
+      elsif current_answer.class == Bundle
+        @current_answer = current_answer.goods.map { |good| good.name.gsub(" ", "_") }.join(', ')
+      else
+        @current_answer = 'Combo'
+      end
+      puts "The current answer is: #{@current_answer}"
+    end
+
   end
 
   # Methods for recording user interactions
-  def create_question_explanation
-    content = params[:content];
-    puts "content is: #{content}"
-    create_row_helper(Explanation, content);
-    render nothing: true
-  end
 
-  def create_question_start
+  def start
+    question = Question.find_by_id params[:id]
+    puts "creating question start for question number: #{question.number}"
     response = current_user.responses.find_by_question_id params[:id]
-    puts "Hitting question start, current response is: #{response}"
+
     if response.nil?
       response = current_user.responses.build question_id: params[:id]
       response.save
@@ -68,7 +82,14 @@ class QuestionsController < ApplicationController
     render json: { millis_left: millis, random: response.question.timed? }.to_json
   end
 
-  def create_question_answer
+  def explanation
+    content = params[:content];
+    puts "content is: #{content}"
+    create_row_helper(Explanation, content);
+    render nothing: true
+  end
+
+  def answer
     puts "Recording answer for user: #{current_user.id}, 
                                question: #{params[:id]},
                                select: #{params[:checked]}"
@@ -78,10 +99,30 @@ class QuestionsController < ApplicationController
     render nothing: true
   end
 
+  # end the last response that a user made
+  def end
+
+    response = current_user.responses.find_by_question_id params[:id]
+    if response.end_time.nil?
+      response.update_attributes :end_time => Time.now, :misc => params[:misc]
+    else
+      misc = params[:misc].blank? ? "User tried to end question again at #{Time.now}" : params[:misc]
+      puts "misc is: #{misc}"
+      response.update_attribute :misc, "#{response.misc}; #{misc}"
+    end
+
+    if !response.question.last?
+      redirect_to experiment_path
+    else
+      redirect_to edit_users_path
+    end
+
+  end
+
   private
   
   def require_signed_in
-    redirect_to new_user_path if current_user.nil?
+    redirect_to new_users_path if current_user.nil?
   end
 
   def create_row_helper(klass, content)
@@ -90,17 +131,6 @@ class QuestionsController < ApplicationController
         question_id: params[:id],
         content: content
     )
-  end
-
-  def end_previous_question
-    unless @question.first?
-      response = current_user.responses.find_by_question_id @question.previous.id
-      if !response.nil? && response.end_time.nil?
-        response.update_attribute :end_time, Time.now
-      else
-        response.update_attribute :misc, "#{response.misc}; User tried to end question again at #{Time.now}"
-      end
-    end
   end
 
 end

@@ -36,6 +36,15 @@ class Question < ActiveRecord::Base
     self.class.find_by_number(self.number - 1)
   end
 
+  def started?(user_id)
+    user = User.find_by_id user_id
+    if user.responses.blank?
+      return false
+    else
+      return !(user.responses.find_by_question_id self.id).nil?
+    end
+  end
+
   def name
     "Question #{self.number}"
   end
@@ -75,10 +84,26 @@ class Question < ActiveRecord::Base
     time_passed = Time.now.in_time_zone - response.created_at
 
     duration = self.timed? ? response.duration : STANDARD_DURATION
-    if response.duration > time_passed
+    if duration > time_passed
       return (duration - time_passed) * 1000
     else
       return 0
+    end
+  end
+
+  # finds the current question number for a given user
+  # this is defined to be the first unended question that a user has
+  def self.current_question_number(user_id)
+    current_user = User.find_by_id user_id
+    if current_user.responses.empty?
+      return 0
+    end
+
+    latest_response = current_user.responses.last
+    if latest_response.end_time.nil?
+      return latest_response.question.number
+    else
+      return latest_response.question.number + 1
     end
   end
 

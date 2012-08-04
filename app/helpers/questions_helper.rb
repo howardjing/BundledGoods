@@ -5,15 +5,11 @@ module QuestionsHelper
   end
 
   def next_path(question)
-    question.last? ? edit_user_path : question_path(question.next)
+    question.last? ? edit_users_path : question_path(question.next)
   end
 
   def previous_path(question)
     question.first? ? instructions_path : question_path(question.previous)
-  end
-
-  def next_url(question)
-    question.last? ? edit_user_url : question_url(question.next)
   end
 
   def previous_url(question)

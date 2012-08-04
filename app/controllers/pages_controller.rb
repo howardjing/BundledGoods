@@ -23,7 +23,7 @@ class PagesController < ApplicationController
   private
   def require_user
     unless !current_user.nil?
-      redirect_to new_user_path
+      redirect_to new_users_path
     end
   end
 end

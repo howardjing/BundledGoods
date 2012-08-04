@@ -13,25 +13,58 @@
 
 
 <script>
-  $('#instructionsModal').modal('show');
-  $(function() {
+  <% if !question.started? current_user %>
+    $('#instructionsModal').modal('show');
+
+    $(function() {
       $('#instructionsModal').on('hidden', function() {
           $.ajax({
               type: 'POST',
-              url: '<%= create_question_start_question_url %>',
+              url: '<%= start_question_url question %>',
               success: function(response) {
 
                   if (!response.random) {
                       timer(Math.floor(response.millis_left / 1000));
                   }
 
-                  setTimeout(function() {
-                      window.location.href = '<%= next_url question %>';
-                  }, response.millis_left);
+                  setTimeout(handleTimeout, response.millis_left);
               }
           });
       });
-  });
+    });
+
+  <% else %>
+
+    $(function() {
+      $.ajax({
+          type: 'POST',
+          url: '<%= start_question_url question %>',
+          success: function(response) {
+
+              if (!response.random) {
+                  timer(Math.floor(response.millis_left / 1000));
+              }
+
+              setTimeout(handleTimeout, response.millis_left);
+          }
+      });
+    });
+
+  <% end %>
+
+  var handleTimeout
+  handleTimeout = function() {
+
+      $.ajax({
+          type: 'POST',
+          url: '<%= end_question_url question %>',
+          data: { misc: "Forcibly ending question"},
+          success: function(response) {
+              location.reload();
+          }
+      });
+
+  }
 
   var timer;
   timer = function(secondsRemaining) {

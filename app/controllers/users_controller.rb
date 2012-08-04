@@ -17,19 +17,6 @@ class UsersController < ApplicationController
  
   def edit
     @user = current_user
-    # end the last question (will be removed later)
-    response = @user.responses.find_by_question_id Question.last.id
-
-    if !response.nil?
-      if response.end_time.nil?
-        response.update_attribute :end_time, Time.now
-      else
-        response.update_attribute :misc, 
-        "#{response.misc}; User tried to end question again at #{Time.now}"
-      end
-    else
-      puts "Tried to end question without appropriate response"
-    end
   end
 
   def update

@@ -7,7 +7,7 @@
   <div class="span1">
   </div>
   <%= @question.first? ? link_to('<<Back', previous_path(@question)) : "<<Back" %>
-  <%= link_to 'Next>>', next_path(@question), :class => "offset1" %>
+  <%= link_to 'Next>>', end_question_path(@question), :class => "offset1", :method => :post, :id => 'end' %>
 </div>
 
 

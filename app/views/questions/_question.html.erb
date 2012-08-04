@@ -27,7 +27,7 @@
 	</div>
 	
 	<div class="span5">
-		<%= render :partial => 'choices', :locals => { :goods => question.goods }%>
+		<%= render :partial => 'choices', :locals => { :question => question }%>
 	</div>
 </div>
 
@@ -35,13 +35,11 @@
   $(function() {
       $('.show-statement').click(function() {
           var content = "showing: " + $.trim($(this).next().text());
-          console.log(content);
           createQuestionExplanation(content);
       });
 
       $('.explanation').click(function() {
           var content = "hiding: " + $.trim($(this).text());
-          console.log(content);
           createQuestionExplanation(content);
       });
   });
@@ -49,7 +47,7 @@
   createQuestionExplanation = function(content) {
       $.ajax({
           type: 'POST',
-          url: '<%= create_question_explanation_question_url %>',
+          url: '<%= explanation_question_url question %>',
           data: { content: content }
         });
   }

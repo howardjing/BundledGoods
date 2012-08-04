@@ -2,7 +2,7 @@
   <h2>Choice Menu</h2>
   <div class="row">
     <div class="span1">
-      <% goods.each do |good| %>
+      <% question.goods.each do |good| %>
         <%= check_box_tag good.name, good.number, false, class: 'bundle' %>
         <%= good.name %><br />
       <% end %>
@@ -45,8 +45,19 @@
   createQuestionAnswer = function(answer_id, checked) {
     $.ajax({
       type: 'POST',
-      url: '<%= create_question_answer_question_url %>',
+      url: '<%= answer_question_url question %>',
       data: { answer_id: answer_id,  checked: checked }
     });
   }
+
+// if the user has started this question, get the final answer, and check the appropriate boxes
+<% if question.started? current_user %>
+  var answers = "<%= @current_answer %>".split(', ');
+  $.each(answers, function(index, value) {
+      $('#' + value).prop('checked', true);
+  });
+
+<% end %>
+
+
 </script>
