@@ -3,8 +3,6 @@ class Combo < ActiveRecord::Base
   
   belongs_to :question
 
-  delegate :goods, :to => :question
-
   validates_presence_of :price
   validates_numericality_of :price
 
@@ -22,6 +20,17 @@ class Combo < ActiveRecord::Base
   
   def sum_goods_price
     self.price
+  end
+  
+  def goods
+    # puts "The values are: #{self.question.goods.map(&value)}" 
+    goods = self.question.goods
+    goods.each do |good|
+      puts "the value was #{good.value}"
+      good.value = good.number * 2
+      puts "the value is now #{good.value}"
+    end 
+    goods
   end
 
   def menu_name

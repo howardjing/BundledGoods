@@ -5,7 +5,7 @@
  </STYLE>
 <BODY>
 
-<DIV style="position: absolute; top:125px; left:110px; width:550px; height:50px">
+<DIV style="position: absolute; top:125px; left:110px; width:650px; height:50px">
  <DIV class="mypars">
 
 <P>
@@ -18,10 +18,12 @@
 		x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub> denoted as Good 1, Good 2, 
 		Good 3, and Good 4.</li>
 <br>
-	<li>Each good has a utility value associated with each good based on the subscript
-	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</sub>) has
-	utility value 2...) Utility value is just an arbitrary preference scale over the set of 
-	goods. The value will come into play for calculating your final payment.</li>
+	<li>Each good has a utility value associated with each good based on <i>two times</i> the subscript
+	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 2, Good 2 (x<sub>2</sub>) has
+	utility value 4, Good <i>i</i> (x<sub>i</sub> has utility value 2 times i...) 
+	Utility value is just an arbitrary preference scale over the set of 
+	goods. The value will come into play for calculating your final payment.
+	</li>
 <br>
 	<li> Purchasing goods together will have substitute and complement effects however. 
 	It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
@@ -45,58 +47,47 @@
 	<b>"Purchasing goods one and two in an exclusive bundle makes you <i>value the bundle three quarter 
 		times as much</i> as if you <i>summed the individual utilities</i>.
 <P>
-	<form>
+</div>
+	<form class="well form-inline">
 	<span style="display:inline-block">
     	<label for=foo style="display:block">Substitute/Complement Effect</label>
-    	<input type=text name=foo id=foo size="3"/>
-	</span> 
-	</form>
-	
-	<form>
-	<span style="display:inline-block">
+    		<input type="text" class="input-small" placeholder="Lambda Value">
+    </span> 
+    <span style="display:inline-block">
     	<label for=foo style="display:block">Mathematical Operator</label>
-			<select>
+			<select class="input-medium">
   				<option>+</option>
   				<option>-</option>
   				<option>/</option>
   				<option>*</option>
 			</select>	
-	</span> 
-	</form>
-	
-	[<form>
+	</span>
+	(
 	<span style="display:inline-block">
     	<label for=foo style="display:block">Utility of Good 1</label>
-    	<input type=text name=foo id=foo size="3"/>
-	</span> 
-	</form>
-	
-	<form>
-	<span style="display:inline-block">
+    		<input type="text" class="input-small" placeholder="Good 1">
+    </span> 
+    <span style="display:inline-block">
     	<label for=foo style="display:block">Mathematical Operator</label>
-			<select>
+			<select class="input-medium">
   				<option>+</option>
   				<option>-</option>
   				<option>/</option>
   				<option>*</option>
 			</select>	
 	</span> 
-	</form>
-	<form>
 	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of Good 3</label>
-    	<input type=text name=foo id=foo size="3"/>
-	</span> 
-	</form>]
-	=
-<br>
-	<form>
+    	<label for=foo style="display:block">Utility of Good 2</label>
+  			<input type="text" class="input-small" placeholder="Good 2"> 
+  	</span>
+  	)
+  	=
 	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of goods 1 and 2</label>
-    	<input type=text name=foo id=foo size="3"/>
-	</span> 
+    	<label for=foo style="display:block">Value of Goods 1 and 2</label>
+    		<input type="text" class="input-small" placeholder="Good 1 and 3">
+    </span> 
+    <button type="submit" class="btn">Submit</button>
 	</form>		
 		
-</div>
 <P>
-<%= link_to 'Next', experiment_path, :class => 'btn btn-primary' %>
+<%= link_to 'Next', instructions2_path, :class => 'btn btn-primary' %>

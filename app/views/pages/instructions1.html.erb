@@ -1,0 +1,23 @@
+<h1>Instructions</h1>
+
+<br />
+<STYLE type="text/css">
+  DIV.mypars {text-align: left}
+ </STYLE>
+<BODY>
+
+<DIV style="position: absolute; top:125px; left:110px; width:550px; height:50px">
+ <DIV class="mypars">
+ 
+   <P>Alongside the menu of choices and prices, there will be statements that you can open and close that affect the valuation of certain bundles. 
+  <P>Here is an example of a statement link:
+  <P><%= image_tag("'show' statement.png")%>
+  <P>Here is an example of an open statement:
+  <P><%= image_tag("open 'show' statement.png")%>
+  <P>You are free to open and close however many statements you would like before making a final choice. There is no penalty for not opening all of the statements. The statements will also be randomly arranged. 
+  <P>Statements are independent of all previous viewed statements. For example, a statement containing good 1 and good 2 <b>DOES NOT</b> affect 
+  a statement containing good 1, good 2, and good 3. Interpret each statement independent of 
+  any other statement you have viewed before or that you view in the future.
+ </div>
+ 
+ <%= link_to 'Next', demo2_path, :class => 'btn btn-primary' %>

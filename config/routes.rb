@@ -1,8 +1,11 @@
 BundledGoods::Application.routes.draw do
 
 
-  resources :questions, :only => :none do
-
+  resources :questions do
+    resources :goods
+    resources :bundles
+    resources :combos, :only => [:edit, :update]
+	
     member do
       post 'start'
       post 'answer'
@@ -19,6 +22,9 @@ BundledGoods::Application.routes.draw do
 
   match 'thanks', :to => 'pages#thanks'
   match 'instructions', :to => 'pages#instructions'
+  match 'instructions1', :to => 'pages#instructions1'
+  match 'instructions2', :to => 'pages#instructions2'
+  match 'instructions3', :to => 'pages#instructions3'
   match 'demo1', :to => 'pages#demo1'
   match 'demo2', :to => 'pages#demo2'
   match 'demo3', :to => 'pages#demo3'  

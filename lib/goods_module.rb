@@ -36,15 +36,29 @@ module GoodsModule
   end
 
   def sum_goods_value
-    self.goods.map(&:value).reduce(0,:+)
+    sum = self.goods.map(&:value).reduce(0,:+)
+    puts "This #{self.class}'s for #{self.question.number}'s sum goods value is #{sum}" 
+    puts "we can see this by adding the following goods"
+    accum = 0
+    self.goods.each do |good|
+      accum += good.value
+      puts "good with value #{good.value} and class #{good.class} accumulated is #{accum} "
+    end
+    sum
+
   end
   
   def sum_goods_price
-    self.goods.map(&:price).reduce(0,:+)
+    price = self.goods.map(&:price).reduce(0,:+)
+    puts "Price is #{price}"
+    price
   end
 
   def update_value_and_utility
     self.value = self.lambda * sum_goods_value
     self.utility = self.value - sum_goods_price
+    
+    puts "This #{self.class} for #{self.question.number}'s value is #{self.value}"
+    puts "this #{self.class} for #{self.question.number}'s utility is #{self.utility}"
   end
 end

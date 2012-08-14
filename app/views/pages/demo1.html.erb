@@ -1,5 +1,21 @@
 <h1>Tutorial</h1>
-
+<script>
+  $(function() {
+    $("#utility1submit").click(function() {
+      console.log("value for utility 1 is: " + $("#utility1").val());
+      var correct = "2";
+      var answer = $("#utility1").val();
+      if (answer !== correct) {
+        console.log("YOU ARE WRONG");
+        var parent = $("#utility1").parent();
+        parent.attr('class', 'control-group error');
+        parent.children.filter("span").text("WRONG");
+      } else {
+        console.log("YOU ARE RIGHT");
+      }
+    });
+  });
+</script>
 <STYLE type="text/css">
   DIV.mypars {text-align: left}
  </STYLE>
@@ -19,9 +35,10 @@
 	x<sub>1</sub>, x<sub>2</sub> x<sub>3</sub> denoted as Good 1, Good 2, and Good 3.
 	</li>
 <br>
-	<li>Each good has a utility value associated with each good based on the subscript
-	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</sub>) has
-	utility value 2...) Utility value is just an arbitrary preference scale over the set of 
+	<li>Each good has a utility value associated with each good based on <i>two times</i> the subscript
+	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 2, Good 2 (x<sub>2</sub>) has
+	utility value 4, Good <i>i</i> (x<sub>i</sub> has utility value 2 times i...) 
+	Utility value is just an arbitrary preference scale over the set of 
 	goods. The value will come into play for calculating your final payment.
 	</li>
 </ol>
@@ -32,19 +49,28 @@
 <P>
 	<b>How much do you value good 1 based on the instructions?</b>
 <P>
-<form>
-	Utility Value of Good 1: <input type="text" name="utility1" /><br />
-</form>
+<div class="well">
+  	<label>Utility of Good 1</label>
+    <div>
+  	<input type="text" class="span3" id="utility1" placeholder="What is it's value?…">
+  	<button class="btn" id="utility1submit">Submit</button>
+    <span class="help-inline"></span>
+    </div>
+</div>
 <P>
 	<b>How much do you value good 3 based on the instructions?</b>
-<form>
-	Utility Value of Good 3: <input type="text" name="utility3" /><br />
+<form class="well">
+  	<label>Utility of Good 3</label>
+  		<input type="text" class="span3" placeholder="What is it's value?…">
+  	<button type="submit" class="btn">Submit</button>
 </form>
 <P>
 	<b>How much do you value good 100, given there were 100 goods,
 	 based on the instructions?</b>
-<form>
-	Utility Value of Good 100: <input type="text" name="utility100" /><br />
+<form class="well">
+  	<label>Utility of Good 100</label>
+  		<input type="text" class="span3" placeholder="What is it's value?…">
+  	<button type="submit" class="btn">Submit</button>
 </form>
 </div>
-<%= link_to 'Next', demo2_path, :class => 'btn btn-primary' %>
+<%= link_to 'Next', instructions1_path, :class => 'btn btn-primary' %>

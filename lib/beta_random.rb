@@ -1,7 +1,7 @@
 module BetaRandom
     
   def self.get_seconds
-    (get_random * 100).round
+    (get_random * 1200).round
   end
   
   private

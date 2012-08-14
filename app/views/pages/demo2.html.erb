@@ -5,19 +5,20 @@
  </STYLE>
 <BODY>
 
-<DIV style="position: absolute; top:125px; left:110px; width:550px; height:50px">
+<DIV style="position: absolute; top:125px; left:110px; width:650px; height:50px">
  <DIV class="mypars">
 <P>
 	You will know be guided in how to interpret statements. Here are the instructions for 
-	how to evaluate utilites of goods.
+	how to evaluate utilites of more than one good together.
 <ol>
 	<li>You will be faced with a decision to purchase a bundle of arbitrary goods
 	x<sub>1</sub>, x<sub>2</sub> x<sub>3</sub> denoted as Good 1, Good 2, and Good 3.
 	</li>
 <br>
-	<li>Each good has a utility value associated with each good based on the subscript
-	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 1, Good 2 (x<sub>2</sub>) has
-	utility value 2...) Utility value is just an arbitrary preference scale over the set of 
+	<li>Each good has a utility value associated with each good based on <i>two times</i> the subscript
+	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 2, Good 2 (x<sub>2</sub>) has
+	utility value 4, Good <i>i</i> (x<sub>i</sub> has utility value 2 times i...) 
+	Utility value is just an arbitrary preference scale over the set of 
 	goods. The value will come into play for calculating your final payment.
 	</li>
 </ol>
@@ -26,75 +27,66 @@
 	instructions as they are important for interpreting the more complex statements that are 
 	to follow.
 <P>
+<P> 
+	Statements are independent of all previous viewed statements. For example, a statement 
+	containing good 1 and good 2 <b>DOES NOT</b> affect a statement containing good 1, 
+	good 2, and good 3. 
+<P>	
 	<b>You are purchasing goods one and two. <i>Sum up their individual utilities</i></b>
 <P>
-	<form>
+	
+	<form class="well form-inline">
 	<span style="display:inline-block">
     	<label for=foo style="display:block">Utility of Good 1</label>
-    	<input type=text name=foo id=foo size="3"/>
-	</span> 
-	</form>
-	
-	<form>
-	<span style="display:inline-block">
+    		<input type="text" class="input-small" placeholder="Good 1">
+    </span> 
+    <span style="display:inline-block">
     	<label for=foo style="display:block">Mathematical Operator</label>
-			<select>
+			<select class="input-medium">
   				<option>+</option>
   				<option>-</option>
   				<option>/</option>
   				<option>*</option>
 			</select>	
 	</span> 
-	</form>
-	<form>
 	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of Good 3</label>
-    	<input type=text name=foo id=foo size="3"/>
-	</span> 
-	</form>
-	=
-<br>
-	<form>
+    	<label for=foo style="display:block">Utility of Good 2</label>
+  			<input type="text" class="input-small" placeholder="Good 2"> 
+  	</span>
+  	=
 	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of goods 1 and 3</label>
-    	<input type=text name=foo id=foo size="3"/>
-	</span> 
+    	<label for=foo style="display:block">Utility of Good 1 and 2</label>
+    		<input type="text" class="input-small" placeholder="Good 1 and 3">
+    </span> 
+    <button type="submit" class="btn">Submit</button>
 	</form>
-
 <P>
 	<b>Given that goods 15 and 35 exist, <i>sum up their individual utilities</i></b>
 <P>
-	<form>
+	<form class="well form-inline">
 	<span style="display:inline-block">
     	<label for=foo style="display:block">Utility of Good 15</label>
-    	<input type=text name=foo id=foo size="3"/>
-	</span> 
-	</form>
-	
-	<form>
-	<span style="display:inline-block">
+    		<input type="text" class="input-small" placeholder="Good 15">
+    </span> 
+    <span style="display:inline-block">
     	<label for=foo style="display:block">Mathematical Operator</label>
-			<select>
+			<select class="input-medium">
   				<option>+</option>
   				<option>-</option>
   				<option>/</option>
   				<option>*</option>
 			</select>	
 	</span> 
-	</form>
-	<form>
 	<span style="display:inline-block">
     	<label for=foo style="display:block">Utility of Good 35</label>
-    	<input type=text name=foo id=foo size="3"/>
-	</span> 
-	</form>
-	=
-<br>
-	<form>
+  			<input type="text" class="input-small" placeholder="Good 35"> 
+  	</span>
+  	=
 	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of goods 15 and 35</label>
-    	<input type=text name=foo id=foo size="3"/>
-	</span> 
+    	<label for=foo style="display:block">Utility of Good 15 and 35</label>
+    		<input type="text" class="input-small" placeholder="Good 15 and 35">
+    </span> 
+    <button type="submit" class="btn">Submit</button>
 	</form>
 </div>
 <%= link_to 'Next', demo3_path, :class => 'btn btn-primary' %>

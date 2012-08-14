@@ -16,7 +16,7 @@ class Question < ActiveRecord::Base
 
   after_create :create_goods, :create_bundles, :create_combo
 
-  STANDARD_DURATION = 60     # number of seconds for a standard question
+  STANDARD_DURATION = 1200     # number of seconds for a standard question
 
   # ==== Methods ====
 
