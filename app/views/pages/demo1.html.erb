@@ -1,20 +1,42 @@
 <h1>Tutorial</h1>
 <script>
+
   $(function() {
-    $("#utility1submit").click(function() {
-      console.log("value for utility 1 is: " + $("#utility1").val());
-      var correct = "2";
-      var answer = $("#utility1").val();
-      if (answer !== correct) {
-        console.log("YOU ARE WRONG");
-        var parent = $("#utility1").parent();
-        parent.attr('class', 'control-group error');
-        parent.children.filter("span").text("WRONG");
-      } else {
-        console.log("YOU ARE RIGHT");
+    // validate questions
+    validator($("#utility1"), "2");    
+    validator($("#utility2"), "6");
+    validator($("#utility3"), "200");
+  
+    // if not everything is answered correctly, disable the next button
+    $("#next").click(function(event) {
+      if (!isValid()) {
+        event.preventDefault();
       }
     });
   });
+
+  var validator = function(elem, correct) {
+    elem.children("input").blur(function() {
+      var input = elem.children("input").val();
+      if (input !== "" && input !== correct) {
+        elem.attr('class', 'control-group error');
+        elem.children("span").text("You are incorrect, please try again.");
+      } else if (input === correct) {
+        elem.attr('class', 'control-group success');
+        elem.children("span").text("You've got it!");
+      }
+    });
+  }
+
+  var isValid = function() {
+    var questions = $("div").filter(function() { return this.id.match("utility"); });
+    var answers = $.makeArray(questions.map(function(){ return $(this).attr('class') === 'control-group success'; }));
+    if (answers.reduce(function(x,y){ return x && y; })) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 </script>
 <STYLE type="text/css">
   DIV.mypars {text-align: left}
@@ -50,27 +72,30 @@
 	<b>How much do you value good 1 based on the instructions?</b>
 <P>
 <div class="well">
-  	<label>Utility of Good 1</label>
-    <div>
-  	<input type="text" class="span3" id="utility1" placeholder="What is it's value?…">
-  	<button class="btn" id="utility1submit">Submit</button>
+  <label>Utility of Good 1</label>
+  <div id="utility1" class="question">
+    <input type="text" class="span3" placeholder="What is it's value?…">
     <span class="help-inline"></span>
-    </div>
+  </div>
 </div>
 <P>
 	<b>How much do you value good 3 based on the instructions?</b>
-<form class="well">
-  	<label>Utility of Good 3</label>
-  		<input type="text" class="span3" placeholder="What is it's value?…">
-  	<button type="submit" class="btn">Submit</button>
-</form>
+<div class="well">
+  <label>Utility of Good 3</label>
+  <div id="utility2" class="question">
+  	<input type="text" class="span3" placeholder="What is it's value?…">
+    <span class="help-inline"></span>
+  </div>
+</div>
 <P>
 	<b>How much do you value good 100, given there were 100 goods,
 	 based on the instructions?</b>
-<form class="well">
-  	<label>Utility of Good 100</label>
-  		<input type="text" class="span3" placeholder="What is it's value?…">
-  	<button type="submit" class="btn">Submit</button>
-</form>
+<div class="well">
+  <label>Utility of Good 100</label>
+  <div id="utility3" class="question">
+    <input type="text" class="span3" placeholder="What is it's value?…">
+    <span class="help-inline"></span>
+  </div>
 </div>
-<%= link_to 'Next', instructions1_path, :class => 'btn btn-primary' %>
+</div>
+<%= button_to 'Next', instructions1_path, :class => 'btn btn-primary', :id => 'next', :method => 'get' %>
