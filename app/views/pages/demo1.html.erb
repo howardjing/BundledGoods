@@ -3,34 +3,50 @@
 
   $(function() {
     // validate questions
-    validator($("#utility1"), "2");    
-    validator($("#utility2"), "6");
-    validator($("#utility3"), "200");
+    validator($("#utility1"));    
+    validator($("#utility2"));
+    validator($("#utility3"));
   
     // if not everything is answered correctly, disable the next button
     $("#next").click(function(event) {
-      if (!isValid()) {
+      if (!isEverythingValid()) {
         event.preventDefault();
       }
     });
   });
 
-  var validator = function(elem, correct) {
+  var validator = function(elem) {
     elem.children("input").blur(function() {
       var input = elem.children("input").val();
-      if (input !== "" && input !== correct) {
-        elem.attr('class', 'control-group error');
-        elem.children("span").text("You are incorrect, please try again.");
-      } else if (input === correct) {
+      var correct = elem.children(":hidden").val();
+      var response = isValid(input, correct);
+      if (response === true) {
         elem.attr('class', 'control-group success');
         elem.children("span").text("You've got it!");
+      } else if (response === false) {
+        elem.attr('class', 'control-group error');
+        elem.children("span").text("You are incorrect, please try again.");
       }
     });
   }
 
-  var isValid = function() {
+  var isValid = function(input, correct) {
+    if (input !== "" && input !== correct) {
+      return false;
+    } else if (input === correct) {
+      return true;
+    } else {
+      return null;
+    }
+  }
+
+  var isEverythingValid = function() {
     var questions = $("div").filter(function() { return this.id.match("utility"); });
-    var answers = $.makeArray(questions.map(function(){ return $(this).attr('class') === 'control-group success'; }));
+    var answers = $.makeArray(questions.map(function(){
+      var input = $(this).children("input").val();
+      var correct = $(this).children(":hidden").val();
+      return isValid(input, correct) === true;
+    }));
     if (answers.reduce(function(x,y){ return x && y; })) {
       return true;
     } else {
@@ -75,6 +91,7 @@
   <label>Utility of Good 1</label>
   <div id="utility1" class="question">
     <input type="text" class="span3" placeholder="What is it's value?…">
+    <input type="hidden" value="2" />
     <span class="help-inline"></span>
   </div>
 </div>
@@ -84,6 +101,7 @@
   <label>Utility of Good 3</label>
   <div id="utility2" class="question">
   	<input type="text" class="span3" placeholder="What is it's value?…">
+    <input type="hidden" value="6" />
     <span class="help-inline"></span>
   </div>
 </div>
@@ -94,6 +112,8 @@
   <label>Utility of Good 100</label>
   <div id="utility3" class="question">
     <input type="text" class="span3" placeholder="What is it's value?…">
+    <span class="help-inline"></span>
+    <input type="hidden" value="200" />
     <span class="help-inline"></span>
   </div>
 </div>
