@@ -1,5 +1,65 @@
 <h1>Tutorial</h1>
 
+<script>
+
+  $(function() {
+    // validate questions
+    validator($("#utility1"));    
+    validator($("#math1"));    
+    validator($("#utility2"));
+    validator($("#utility_sol1"));
+    validator($("#utility15"));
+    validator($("#utility35"));
+    validator($("#utility_sol2"));
+  
+    // if not everything is answered correctly, disable the next button
+    $("#next").click(function(event) {
+      if (!isEverythingValid()) {
+        event.preventDefault();
+      }
+    });
+  });
+
+  var validator = function(elem) {
+    elem.children("input").blur(function() {
+      var input = elem.children("input").val();
+      var correct = elem.children(":hidden").val();
+      var response = isValid(input, correct);
+      if (response === true) {
+        elem.attr('class', 'control-group success');
+        elem.children("span").text("You've got it!");
+      } else if (response === false) {
+        elem.attr('class', 'control-group error');
+        elem.children("span").text("You are incorrect, please try again.");
+      }
+    });
+  }
+
+  var isValid = function(input, correct) {
+    if (input !== "" && input !== correct) {
+      return false;
+    } else if (input === correct) {
+      return true;
+    } else {
+      return null;
+    }
+  }
+
+  var isEverythingValid = function() {
+    var questions = $("div").filter(function() { return this.id.match("utility"); });
+    var answers = $.makeArray(questions.map(function(){
+      var input = $(this).children("input").val();
+      var correct = $(this).children(":hidden").val();
+      return isValid(input, correct) === true;
+    }));
+    if (answers.reduce(function(x,y){ return x && y; })) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+</script>
+
 <STYLE type="text/css">
   DIV.mypars {text-align: left}
  </STYLE>
@@ -34,59 +94,96 @@
 <P>	
 	<b>You are purchasing goods one and two. <i>Sum up their individual utilities</i></b>
 <P>
-	
-	<form class="well form-inline">
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of Good 1</label>
-    		<input type="text" class="input-small" placeholder="Good 1">
-    </span> 
-    <span style="display:inline-block">
-    	<label for=foo style="display:block">Mathematical Operator</label>
-			<select class="input-medium">
-  				<option>+</option>
-  				<option>-</option>
-  				<option>/</option>
-  				<option>*</option>
-			</select>	
-	</span> 
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of Good 2</label>
-  			<input type="text" class="input-small" placeholder="Good 2"> 
-  	</span>
-  	=
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of Good 1 and 2</label>
-    		<input type="text" class="input-small" placeholder="Good 1 and 3">
-    </span> 
-    <button type="submit" class="btn">Submit</button>
-	</form>
+
+<div class="well form-inline">
+<span style="display:inline-block">
+  <label>Utility of Good 1</label>
+  <div id="utility1" class="question">
+    <input type="text" class="span2" placeholder="What is it's value?…">
+    <input type="hidden" value="2" />
+    <span class="help-inline"></span>
+  </div>
+</span>
+
+<span style="display:inline-block">
+<label for=foo style="display:block">Mathematical Operator</label>
+	<div id="math1" class="question"?>
+		<select class="input-small">
+			<option> </option>
+  			<option>+</option>
+  			<option>-</option>
+  			<option>/</option>
+  			<option>*</option>
+  		<input type="hidden" option="+" />
+  		<span class="help-inline"></span>
+  		</select>
+  	</div>
+</span>
+
+<span style="display:inline-block">
+  <label>Utility of Good 2</label>
+  <div id="utility2" class="question">
+    <input type="text" class="span2" placeholder="What is it's value?…">
+    <input type="hidden" value="4" />
+    <span class="help-inline"></span>
+  </div>
+</span>
+=
+<span style="display:inline-block">
+  <label>Utility of Goods 1 and 2</label>
+  <div id="utility_sol1" class="question">
+    <input type="text" class="span2" placeholder="What is it's value?…">
+    <input type="hidden" value="6" />
+    <span class="help-inline"></span>
+  </div>
+</span>
+</span>	
+</div>
+
 <P>
 	<b>Given that goods 15 and 35 exist, <i>sum up their individual utilities</i></b>
 <P>
-	<form class="well form-inline">
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of Good 15</label>
-    		<input type="text" class="input-small" placeholder="Good 15">
-    </span> 
-    <span style="display:inline-block">
-    	<label for=foo style="display:block">Mathematical Operator</label>
-			<select class="input-medium">
-  				<option>+</option>
-  				<option>-</option>
-  				<option>/</option>
-  				<option>*</option>
-			</select>	
-	</span> 
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of Good 35</label>
-  			<input type="text" class="input-small" placeholder="Good 35"> 
-  	</span>
-  	=
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of Good 15 and 35</label>
-    		<input type="text" class="input-small" placeholder="Good 15 and 35">
-    </span> 
-    <button type="submit" class="btn">Submit</button>
-	</form>
+	<div class="well form-inline">
+<span style="display:inline-block">
+  <label>Utility of Good 15</label>
+  <div id="utility15" class="question">
+    <input type="text" class="span2" placeholder="What is it's value?…">
+    <input type="hidden" value="30" />
+    <span class="help-inline"></span>
+  </div>
+</span>
+
+<span style="display:inline-block">
+<label for=foo style="display:block">Mathematical Operator</label>
+		<select class="input-small">
+			<option> </option>
+  			<option>+</option>
+  			<option>-</option>
+  			<option>/</option>
+  			<option>*</option>
+  		</select>
+  		<span class="help-inline"></span>
+</span>
+
+<span style="display:inline-block">
+  <label>Utility of Good 35</label>
+  <div id="utility35" class="question">
+    <input type="text" class="span2" placeholder="What is it's value?…">
+    <input type="hidden" value="70" />
+    <span class="help-inline"></span>
+  </div>
+</span>
+=
+<span style="display:inline-block">
+  <label>Utility of Goods 15 and 35</label>
+  <div id="utility_sol2" class="question">
+    <input type="text" class="span2" placeholder="What is it's value?…">
+    <input type="hidden" value="100" />
+    <span class="help-inline"></span>
+  </div>
+</span>
+</span>	
 </div>
-<%= link_to 'Next', demo3_path, :class => 'btn btn-primary' %>
+
+</div>
+<%= button_to 'Next', demo3_path, :class => 'btn btn-primary', :id => 'next', :method => 'get' %>

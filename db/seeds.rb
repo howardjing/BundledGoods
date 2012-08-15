@@ -8,7 +8,7 @@
 
 puts "q0"
 # create the 0th question, specify the number of goods and bundles (combo is automatically created)
-question0 = Question.create number: 0, number_of_goods: 3, number_of_bundles: 4
+question0 = Question.create number: 0, number_of_goods: 3, number_of_bundles: 4, duration: 600
 
 # update the attributes of the 3 goods owned by question0
 # arrays are 0 indexed, so question0.goods[0] and question0.goods[1]
@@ -30,7 +30,7 @@ question0.combo.update_attributes price: 2.75, lambda: 1
 
 # repeat the above for all your questions
 puts "q1"
-question1 = Question.create number: 1, number_of_goods: 4, number_of_bundles: 11
+question1 = Question.create number: 1, number_of_goods: 4, number_of_bundles: 11, duration: 900
 
 question1.goods[0].update_attributes number: 1, price: 2, value: 2
 question1.goods[1].update_attributes number: 2, price: 3.5, value: 4
@@ -52,7 +52,7 @@ question1.bundles[10].update_attributes number: 11, lambda: 1.0, goods_list: '1,
 
 question1.combo.update_attributes price: 12.25, lambda: 1.0
 puts "q2"
-question2 = Question.create number: 2, number_of_goods: 5, number_of_bundles: 26
+question2 = Question.create number: 2, number_of_goods: 5, number_of_bundles: 26, duration: 1200
 
 question2.goods[0].update_attributes number: 1, price: 2.5, value: 2
 question2.goods[1].update_attributes number: 2, price: 3.5, value: 4
@@ -93,7 +93,7 @@ question2.combo.update_attributes price: 22, lambda: 1.0
 
 #question 3
 puts "q3"
-question3 = Question.create number: 3, number_of_goods: 4, number_of_bundles: 11, display_equation: true
+question3 = Question.create number: 3, number_of_goods: 4, number_of_bundles: 11, display_equation: true, duration: 900
 
 question3.goods[0].update_attributes number: 1, price: 2.5, value: 2
 question3.goods[1].update_attributes number: 2, price: 2.5, value: 4
@@ -117,7 +117,7 @@ question3.combo.update_attributes price: 12.25, lambda: 1.0
 
 #question 4
 puts "q4"
-question4 = Question.create number: 4, number_of_goods: 5, number_of_bundles: 26, display_equation: true
+question4 = Question.create number: 4, number_of_goods: 5, number_of_bundles: 26, display_equation: true, duration: 1200
 
 question4.goods[0].update_attributes number: 1, price: 3, value: 2
 question4.goods[1].update_attributes number: 2, price: 4, value: 4

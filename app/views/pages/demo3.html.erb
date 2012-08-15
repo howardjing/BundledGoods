@@ -1,5 +1,62 @@
 <h1>Tutorial</h1>
 
+<script>
+
+  $(function() {
+    // validate questions
+    validator($("#utility_sub"));    
+    validator($("#utility1"));    
+    validator($("#utility2"));
+    validator($("#utility_sol1"));
+  
+    // if not everything is answered correctly, disable the next button
+    $("#next").click(function(event) {
+      if (!isEverythingValid()) {
+        event.preventDefault();
+      }
+    });
+  });
+
+  var validator = function(elem) {
+    elem.children("input").blur(function() {
+      var input = elem.children("input").val();
+      var correct = elem.children(":hidden").val();
+      var response = isValid(input, correct);
+      if (response === true) {
+        elem.attr('class', 'control-group success');
+        elem.children("span").text("You've got it!");
+      } else if (response === false) {
+        elem.attr('class', 'control-group error');
+        elem.children("span").text("You are incorrect, please try again.");
+      }
+    });
+  }
+
+  var isValid = function(input, correct) {
+    if (input !== "" && input !== correct) {
+      return false;
+    } else if (input === correct) {
+      return true;
+    } else {
+      return null;
+    }
+  }
+
+  var isEverythingValid = function() {
+    var questions = $("div").filter(function() { return this.id.match("utility"); });
+    var answers = $.makeArray(questions.map(function(){
+      var input = $(this).children("input").val();
+      var correct = $(this).children(":hidden").val();
+      return isValid(input, correct) === true;
+    }));
+    if (answers.reduce(function(x,y){ return x && y; })) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+</script>
+
 <STYLE type="text/css">
   DIV.mypars {text-align: left}
  </STYLE>
@@ -48,10 +105,15 @@
 		times as much</i> as if you <i>summed the individual utilities</i>.
 <P>
 </div>
-	<form class="well form-inline">
+	
+<div class="well form-inline">
 	<span style="display:inline-block">
     	<label for=foo style="display:block">Substitute/Complement Effect</label>
+    	<div id="utility_sub" class="question">
     		<input type="text" class="input-small" placeholder="Lambda Value">
+    		<input type="hidden" value=".75" />
+    		<span class ="help_inline"></span>
+    </div>
     </span> 
     <span style="display:inline-block">
     	<label for=foo style="display:block">Mathematical Operator</label>
@@ -65,7 +127,11 @@
 	(
 	<span style="display:inline-block">
     	<label for=foo style="display:block">Utility of Good 1</label>
-    		<input type="text" class="input-small" placeholder="Good 1">
+    		<div id="utility1" class="question">
+    		<input type="text" class="input-small" placeholder="Good 1 Value">
+    		<input type="hidden" value="2" />
+    		<span class="help-inline"></span>
+    		</div>
     </span> 
     <span style="display:inline-block">
     	<label for=foo style="display:block">Mathematical Operator</label>
@@ -78,16 +144,23 @@
 	</span> 
 	<span style="display:inline-block">
     	<label for=foo style="display:block">Utility of Good 2</label>
-  			<input type="text" class="input-small" placeholder="Good 2"> 
+    		<div id="utility2" class="question">
+  			<input type="text" class="input-small" placeholder="Good 2 Value">
+  			<input type="hidden" value="4" />
+  			<span class="help-inline"></span> 
+  			</div>
   	</span>
   	)
   	=
 	<span style="display:inline-block">
     	<label for=foo style="display:block">Value of Goods 1 and 2</label>
+    		<div id="utility_sol1" class="question">
     		<input type="text" class="input-small" placeholder="Good 1 and 3">
+    		<input type ="hidden" value="4.5" />
+    		<span class="help_inline"></span>
+    		</div>
     </span> 
-    <button type="submit" class="btn">Submit</button>
-	</form>		
+</div>	
 		
 <P>
-<%= link_to 'Next', instructions2_path, :class => 'btn btn-primary' %>
+<%= link_to 'Next', instructions2_path, :class => 'btn btn-primary', :id => 'next', :method => 'get' %>
