@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :responses
   validates_presence_of :lab_number, :on => :create
   
-  def calculate_final_score
+  def calculate_final_score_deprecated
     score = 0
     questions = Question.all.to_a
     questions.delete(Question.first) # ignore the demo question
@@ -14,6 +14,19 @@ class User < ActiveRecord::Base
     end
     score.round
   end
+
+  def calculate_final_score
+    chosen_question = rand(Question.count - 1) + 1
+    puts "The chosen question is: #{chosen_question}"
+    question = Question.find_by_number chosen_question
+    
+    score = 0
+    final_answer = self.final_answer question.id
+    score += final_answer.utility unless final_answer.nil?
+    puts "the unrounded score is: #{score}"
+    score.round 
+  end
+
   
   # returns either nil, the combo, the bundle, or the single good
   def final_answer(question_id)
