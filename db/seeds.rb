@@ -157,7 +157,7 @@ question4.combo.update_attributes price: 22.0, lambda: 1.0
 
 #question 5
 puts "q5"
-question5 = Question.create number: 5, number_of_goods: 4, number_of_bundles: 11, timed: true
+question5 = Question.create number: 5, number_of_goods: 4, number_of_bundles: 11, random_duration: true
 
 question5.goods[0].update_attributes number: 1, price: 2.0, value: 2
 question5.goods[1].update_attributes number: 2, price: 2.5, value: 4
@@ -181,7 +181,7 @@ question5.combo.update_attributes price: 12.25, lambda: 1.0
 
 #question 6
 
-question6 = Question.create number: 6, number_of_goods: 5, number_of_bundles: 26, timed: true
+question6 = Question.create number: 6, number_of_goods: 5, number_of_bundles: 26, random_duration: true
 
 question6.goods[0].update_attributes number: 1, price: 3.5, value: 2
 question6.goods[1].update_attributes number: 2, price: 4.0, value: 4

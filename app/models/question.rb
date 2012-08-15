@@ -83,7 +83,7 @@ class Question < ActiveRecord::Base
 
     time_passed = Time.now.in_time_zone - response.created_at
 
-    duration = self.timed? ? response.duration : STANDARD_DURATION
+    duration = self.random_duration? ? response.duration : self.duration
     if duration > time_passed
       return (duration - time_passed) * 1000
     else
