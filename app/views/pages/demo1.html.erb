@@ -16,7 +16,7 @@
   });
 
   var validator = function(elem) {
-    elem.children("input").blur(function() {
+    elem.children("button").click(function() {
       var input = elem.children("input").val();
       var correct = elem.children(":hidden").val();
       var response = isValid(input, correct);
@@ -31,13 +31,7 @@
   }
 
   var isValid = function(input, correct) {
-    if (input !== "" && input !== correct) {
-      return false;
-    } else if (input === correct) {
-      return true;
-    } else {
-      return null;
-    }
+    return (input === correct);
   }
 
   var isEverythingValid = function() {
@@ -92,7 +86,8 @@
   <div id="utility1" class="question">
     <input type="text" class="span3" placeholder="What is it's value?…">
     <input type="hidden" value="2" />
-    <span class="help-inline"></span>
+    <button class="btn btn-primary">Check</button>
+    <span class="help-block"></span>
   </div>
 </div>
 <P>
@@ -102,7 +97,8 @@
   <div id="utility2" class="question">
   	<input type="text" class="span3" placeholder="What is it's value?…">
     <input type="hidden" value="6" />
-    <span class="help-inline"></span>
+    <button class="btn btn-primary">Check</button>
+    <span class="help-block"></span>
   </div>
 </div>
 <P>
@@ -112,9 +108,9 @@
   <label>Utility of Good 100</label>
   <div id="utility3" class="question">
     <input type="text" class="span3" placeholder="What is it's value?…">
-    <span class="help-inline"></span>
     <input type="hidden" value="200" />
-    <span class="help-inline"></span>
+    <button class="btn btn-primary">Check</button>
+    <span class="help-block"></span>
   </div>
 </div>
 </div>
