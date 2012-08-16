@@ -41,11 +41,7 @@
       var correct = $(this).children(":hidden").val();
       return isValid(input, correct) === true;
     }));
-    if (answers.reduce(function(x,y){ return x && y; })) {
-      return true;
-    } else {
-      return false;
-    }
+    return answers.reduce(function(x,y){ return x && y; });
   }
 </script>
 <STYLE type="text/css">
@@ -84,7 +80,7 @@
 <div class="well">
   <label>Utility of Good 1</label>
   <div id="utility1" class="question">
-    <input type="text" class="span3" placeholder="What is it's value?…">
+    <input type="text" class="span3" placeholder="What is it's value?…" />
     <input type="hidden" value="2" />
     <button class="btn btn-primary">Check</button>
     <span class="help-block"></span>
@@ -95,7 +91,7 @@
 <div class="well">
   <label>Utility of Good 3</label>
   <div id="utility2" class="question">
-  	<input type="text" class="span3" placeholder="What is it's value?…">
+  	<input type="text" class="span3" placeholder="What is it's value?…" />
     <input type="hidden" value="6" />
     <button class="btn btn-primary">Check</button>
     <span class="help-block"></span>
@@ -107,7 +103,7 @@
 <div class="well">
   <label>Utility of Good 100</label>
   <div id="utility3" class="question">
-    <input type="text" class="span3" placeholder="What is it's value?…">
+    <input type="text" class="span3" placeholder="What is it's value?…" />
     <input type="hidden" value="200" />
     <button class="btn btn-primary">Check</button>
     <span class="help-block"></span>
