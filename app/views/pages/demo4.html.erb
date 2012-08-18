@@ -2,16 +2,10 @@
 
 <script>
 
+
   $(function() {
-    // validate questions
-    validator($("#utility_sub"));    
-    validator($("#utility1"));    
-    validator($("#utility2"));
-    validator($("#utility_price1"));   
-    validator($("#utility_price2"));    
-    validator($("#utility_final"));     
-  
-    // if not everything is answered correctly, disable the next button
+    validator($("#problem1"));
+    
     $("#next").click(function(event) {
       if (!isEverythingValid()) {
         event.preventDefault();
@@ -20,43 +14,66 @@
   });
 
   var validator = function(elem) {
-    elem.children("input").blur(function() {
-      var input = elem.children("input").val();
-      var correct = elem.children(":hidden").val();
-      var response = isValid(input, correct);
-      if (response === true) {
-        elem.attr('class', 'control-group success');
-        elem.children("span").text("You've got it!");
-      } else if (response === false) {
-        elem.attr('class', 'control-group error');
-        elem.children("span").text("You are incorrect, please try again.");
+  
+    elem.children("button").click(function() {
+        
+      var success = 'control-group success';
+      var error = 'control-group error';
+      var everythingCorrect = true;
+
+      elem.children(".question").each(function() {
+
+        if (isValid($(this))) {
+          if ($(this).attr('class').search(success) === -1) {
+            $(this).removeClass(error);
+            $(this).addClass(success);
+          }
+        } else {
+          if ($(this).attr('class').search(error) === -1) {
+            $(this).removeClass(success);
+            $(this).addClass(error);
+          }
+          everythingCorrect = false;
+        }
+      });
+
+      if (everythingCorrect) {
+        elem.removeClass(error);
+        elem.addClass(success);
+        elem.children(".feedback").text("You've got it!");
+      } else {
+        elem.removeClass(success);
+        elem.addClass(error);
+        elem.children(".feedback").text("You are incorrect, please try again.");
       }
+
     });
+  
   }
 
-  var isValid = function(input, correct) {
-    if (input !== "" && input !== correct) {
-      return false;
-    } else if (input === correct) {
-      return true;
-    } else {
-      return null;
-    }
+  var isValid = function(elem) {
+    return elem.children(".response").val() === elem.children(":hidden").val();
   }
 
   var isEverythingValid = function() {
-    var questions = $("div").filter(function() { return this.id.match("utility"); });
-    var answers = $.makeArray(questions.map(function(){
-      var input = $(this).children("input").val();
-      var correct = $(this).children(":hidden").val();
-      return isValid(input, correct) === true;
-    }));
-    if (answers.reduce(function(x,y){ return x && y; })) {
-      return true;
-    } else {
-      return false;
-    }
+    var problems = $("div").filter(function() { return this.id.match("problem"); });
+    
+    var areQuestionsForEveryProblemCorrect = problems.map(function() {
+      
+      var areQuestionsForProblemCorrect = $(this).children(".question").map(function() {
+        return isValid($(this));  
+      });
+
+      var booleanArray = $.makeArray(areQuestionsForProblemCorrect);
+      return booleanArray.reduce(function(x,y) { return x && y; });
+       
+    });
+
+    var booleanArray = $.makeArray(areQuestionsForEveryProblemCorrect);
+    return booleanArray.reduce(function(x,y) { return x && y; });
+
   }
+
 </script>
 
 <STYLE type="text/css">
@@ -64,7 +81,7 @@
  </STYLE>
 <BODY>
 
-<DIV style="position: absolute; top:125px; left:110px; width:550px; height:50px">
+<div class="container">
  <DIV class="mypars">
 
 <P>
@@ -135,88 +152,84 @@
 	<b>"Purchasing goods one and two in an exclusive bundle makes you <i>value the bundle three quarter 
 		times as much</i> as if you <i>summed the individual utilities</i>.</b>
 <P>
-<div class="well form-inline">
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Substitute/Complement Effect</label>
-    	<div id="utility_sub" class="question">
-    		<input type="text" class="input-small" placeholder="Lambda Value">
-    		<input type="hidden" value=".75" />
-    		<span class ="help_inline"></span>
-    </div>
+<div class="well" id="problem1">
+	<span style="display:inline-block" class="question">
+    	<label>Substitute/Complement Effect</label>
+    	<input type="text" class="san2 response" placeholder="Lambda Value">
+    	<input type="hidden" value=".75" />
     </span> 
-    <span style="display:inline-block">
-    	<label for=foo style="display:block">Mathematical Operator</label>
-			<select class="input-medium">
-  				<option>+</option>
-  				<option>-</option>
-  				<option>/</option>
-  				<option>*</option>
-			</select>	
-	</span>
+    
+    <span style="display:inline-block" class="question">
+    <label style="display:block">Operator</label>
+		<select class="input-small response">
+		  <option> </option>
+  	  <option>+</option>
+  	  <option>-</option>
+  	  <option>/</option>
+  	  <option>*</option>
+    </select>
+    <input type="hidden" value="*" />
+  </span>
 	(
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of Good 1</label>
-    		<div id="utility1" class="question">
-    		<input type="text" class="input-small" placeholder="Good 1 Value">
-    		<input type="hidden" value="2" />
-    		<span class="help-inline"></span>
-    		</div>
-    </span> 
-    <span style="display:inline-block">
-    	<label for=foo style="display:block">Mathematical Operator</label>
-			<select class="input-medium">
-  				<option>+</option>
-  				<option>-</option>
-  				<option>/</option>
-  				<option>*</option>
-			</select>	
-	</span> 
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Utility of Good 2</label>
-    		<div id="utility2" class="question">
-  			<input type="text" class="input-small" placeholder="Good 2 Value">
-  			<input type="hidden" value="4" />
-  			<span class="help-inline"></span> 
-  			</div>
+	
+	<span style="display:inline-block" class="question">
+    <label>Good 1's Utility</label>
+    <input type="text" class="span2 response" placeholder="What is it's value?…" />
+    <input type="hidden" value="2" />
   	</span>
+  
+    <span style="display:inline-block" class="question">
+    <label style="display:block">Operator</label>
+		<select class="input-small response">
+		  <option> </option>
+  	  <option>+</option>
+  	  <option>-</option>
+  	  <option>/</option>
+  	  <option>*</option>
+    </select>
+    <input type="hidden" value="+" />
+  	</span>
+  
+	<span style="display:inline-block" class="question">
+    <label>Good 2's Utility</label>
+    <input type="text" class="span2 response" placeholder="What is it's value?…" />
+    <input type="hidden" value="4" />
+  </span>
   	)
   	-
   	(
-  	<span style="display:inline-block">
-    	<label for=foo style="display:block">Price of Good 1</label>
-    		<div id="utility_price1" class=question">
-  			<input type="text" class="input-small" placeholder="Good 1 Price"> 
+	<span style="display:inline-block" class="question">
+    	<label>Price of Good 1</label>
+  			<input type="text" class="span2 response" placeholder="Good 1 Price"> 
   			<input type="hidden" value="2" />
-  			<span class="help-inline"></span> 
-  			</div>
   	</span>
-  	<span style="display:inline-block">
-    	<label for=foo style="display:block">Mathematical Operator</label>
-			<select class="input-medium">
-  				<option>+</option>
-  				<option>-</option>
-  				<option>/</option>
-  				<option>*</option>
-			</select>	
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Price of Good 2</label>
-    		<div id="utility_price2" class=question">
-  			<input type="text" class="input-small" placeholder="Good 2 Price"> 
+  	
+  	<span style="display:inline-block" class="question">
+    <label style="display:block">Operator</label>
+		<select class="input-small response">
+		  <option> </option>
+  	  <option>+</option>
+  	  <option>-</option>
+  	  <option>/</option>
+  	  <option>*</option>
+    </select>
+    <input type="hidden" value="+" />
+  	</span>
+  		
+	<span style="display:inline-block" class="question">
+    	<label>Price of Good 2</label>
+  			<input type="text" class="span2 response" placeholder="Good 1 Price"> 
   			<input type="hidden" value="1" />
-  			<span class="help-inline"></span> 
-  			</div>
   	</span>
   	)
   	=
-	<span style="display:inline-block">
-    	<label for=foo style="display:block">Final Utility of Goods 1 and 2</label>
-    		<div id="utility_final" class=question">
-    		<input type="text" class="input-small" placeholder="Goods 1 and 2 final utility">
-    		<input type="hidden" value="1.5" />
-    		<span class="help-inline"></span>
-    		</div>
-    </span> 
+	<span style="display:inline-block" class="question">
+    <label>Goods 1 and 2's Utility</label>
+    <input type="text" class="span2 response" placeholder="What is it's value?…" />
+    <input type="hidden" value="1.5" />
+ 	 </span>
+  <span class="help-block feedback"></span>
+  <button class="btn btn-primary">Check</button>
 </div>	
-</div>
 
-<%= link_to 'Next', instructions3_path, :class => 'btn btn-primary', :id => 'next', :method => 'get' %>
+<%= button_to 'Next', instructions3_path, :class => 'btn btn-primary', :id => 'next', :method => 'get' %>
