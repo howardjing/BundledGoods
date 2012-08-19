@@ -26,9 +26,7 @@ class Combo < ActiveRecord::Base
     # puts "The values are: #{self.question.goods.map(&value)}" 
     goods = self.question.goods
     goods.each do |good|
-      puts "the value was #{good.value}"
       good.value = good.number * 2
-      puts "the value is now #{good.value}"
     end 
     goods
   end

@@ -20,6 +20,10 @@ class Question < ActiveRecord::Base
 
   # ==== Methods ====
 
+  def demo?
+    first?
+  end
+  
   def first?
     self.number == 0
   end

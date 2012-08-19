@@ -2,7 +2,8 @@ class QuestionsController < ApplicationController
   include ResponsesHelper
 
   before_filter :require_signed_in
-
+  before_filter :handle_demo, :only => [:end]
+  
   def new
     @question = Question.new
   end
@@ -101,7 +102,7 @@ class QuestionsController < ApplicationController
 
   # end the last response that a user made
   def end
-
+    
     response = current_user.responses.find_by_question_id params[:id]
     if response.end_time.nil?
       response.update_attributes :end_time => Time.now, :misc => params[:misc]
@@ -120,6 +121,19 @@ class QuestionsController < ApplicationController
   end
 
   private
+  
+  def handle_demo
+    question = Question.find(params[:id])
+    
+    if question.demo?
+      puts "handling demo"
+      demo_answer = current_user.final_answer question
+      unless demo_answer.nil? || demo_answer.utility == 12
+        flash[:error] = "You chose poorly, try again."
+        redirect_to experiment_path
+      end
+    end
+  end
   
   def require_signed_in
     redirect_to new_users_path if current_user.nil?

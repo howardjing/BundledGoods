@@ -55,14 +55,18 @@
   var handleTimeout
   handleTimeout = function() {
 
-      $.ajax({
-          type: 'POST',
-          url: '<%= end_question_url question %>',
-          data: { misc: "Forcibly ending question"},
-          success: function(response) {
-              location.reload();
-          }
-      });
+      <% if @question.demo? %>
+        <%= puts "This is the demo, ignoring timer" %>
+      <% else %>
+        $.ajax({
+            type: 'POST',
+            url: '<%= end_question_url question %>',
+            data: { misc: "Forcibly ending question"},
+            success: function(response) {
+                location.reload();
+            }
+        });
+      <% end %>
 
   }
 
