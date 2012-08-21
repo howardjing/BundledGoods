@@ -1,10 +1,10 @@
 BundledGoods::Application.routes.draw do
 
 
-  resources :questions do
-    resources :goods
-    resources :bundles
-    resources :combos, :only => [:edit, :update]
+  resources :questions, :only => [] do
+    # resources :goods
+    # resources :bundles
+    # resources :combos, :only => [:edit, :update]
 	
     member do
       post 'start'
@@ -83,7 +83,7 @@ BundledGoods::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'questions#index'
+  root :to => 'pages#instructions'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
