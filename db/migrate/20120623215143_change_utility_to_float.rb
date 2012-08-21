@@ -1,5 +1,6 @@
 class ChangeUtilityToFloat < ActiveRecord::Migration
   def change
-    change_column :goods, :utility, :float
+    remove_column :goods, :utility
+    add_column :goods, :utility, :float
   end
 end

@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20120815041517) do
   add_index "answers", ["name"], :name => "index_answers_on_name"
 
   create_table "bundles", :force => true do |t|
-    t.integer "number"
     t.float   "lambda",      :default => 1.0
     t.integer "question_id"
+    t.integer "number"
     t.float   "value",       :default => 0.0
     t.float   "utility",     :default => 0.0
   end
@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(:version => 20120815041517) do
   add_index "explanations", ["content"], :name => "index_explanations_on_content"
 
   create_table "goods", :force => true do |t|
-    t.integer "number"
     t.float   "price",       :default => 1.0
     t.integer "question_id"
+    t.integer "number"
     t.float   "value"
   end
 

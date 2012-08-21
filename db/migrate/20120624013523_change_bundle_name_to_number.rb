@@ -1,6 +1,6 @@
 class ChangeBundleNameToNumber < ActiveRecord::Migration
   def change
-    change_column :bundles, :name, :integer
-    rename_column :bundles, :name, :number
+    remove_column :bundles, :name
+    add_column :bundles, :number, :integer
   end
 end
