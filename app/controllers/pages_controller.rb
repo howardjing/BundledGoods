@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
-
+  
+  before_filter :require_user
+  
   def instructions
     Explanation.create user_id: current_user.id, question_id: Question.first.id, content: "Viewing instructions page"
   end
