@@ -18,6 +18,13 @@
   <P>Statements are independent of all previous viewed statements. For example, a statement containing good 1 and good 2 <b>DOES NOT</b> affect 
   a statement containing good 1, good 2, and good 3. Interpret each statement independent of 
   any other statement you have viewed before or that you view in the future.
+  <P>
+  	For example, if you opened a statement containing Goods 1 and 2 as follows.
+  <P>
+  	<%= image_tag("statement1_2.png")%>
+  <P>
+  	It would <B>NOT</b> affect the statement displayed below containing Goods 1, 2, and 4.
+  <P><%= image_tag("statement1_2_4.png")%>
  </div>
  
- <%= link_to 'Next', demo2_path, :class => 'btn btn-primary' %>
+ <%= link_to 'Next', demo3_path, :class => 'btn btn-primary' %>
