@@ -53,7 +53,17 @@
   }
 
   var isValid = function(elem) {
-    return elem.children(".response").val() === elem.children(":hidden").val();
+    var input = elem.children(".response").val();
+    var correct = elem.children(":hidden").val();
+    if (input === correct) {
+      return true;
+    // if answer is numeric, then compare numbers
+    } else {
+      if (!isNaN(correct - 0)) {
+        return (correct - 0 === input - 0);
+      }
+    }
+    return false;
   }
 
   var isEverythingValid = function() {
