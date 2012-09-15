@@ -1,26 +1,33 @@
 module GoodsModule
 
   def goods_names(name = :name)
-    self.goods.map(&name).join(', ')
+    goods.map(&name).join(', ')
   end
 
   def shuffled_goods_names
-    shuffled_names = self.goods.shuffle.map(&:name)
-    shuffled_names[-1] = "and #{shuffled_names.last}" if shuffled_names.size > 1
+    shuffled_names = goods.shuffle.map(&:name)
+    verbose_goods_names shuffled_names
+  end
 
-    if shuffled_names.size > 2
-      shuffled_names.join(", ")  # Good 1, Good 2, and Good 3
-    else
-      shuffled_names.join(" ")   # Good 1 and Good 2
-    end
+  def ordered_goods_names
+    names = goods.map(&:name) 
+    verbose_goods_names names
   end
 
   def shuffled_goods_statement
-    self.question.display_equation? ? "#{verbose_statement}\n#{equation_statement}" : verbose_statement
+    question.display_equation? ? "#{shuffled_verbose_statement}\n#{equation_statement}" : shuffled_verbose_statement
   end
 
-  def verbose_statement
-    "Purchasing #{self.shuffled_goods_names} #{"in an exclusive bundle" if self.goods.size > 1} makes you value the bundle #{self.lambda} #{self.lambda == 1 ? "time" : "times"} as much as if you summed the individual utilities."
+  def ordered_goods_statement
+    question.display_equation? ? "#{ordered_verbose_statement}\n#{equation_statement}" : ordered_verbose_statement
+  end
+
+  def shuffled_verbose_statement
+    verbose_statement shuffled_goods_names
+  end
+
+  def ordered_verbose_statement
+    verbose_statement ordered_goods_names
   end
 
   def equation_statement
@@ -60,5 +67,21 @@ module GoodsModule
     
     puts "This #{self.class} for #{self.question.number}'s value is #{self.value}"
     puts "this #{self.class} for #{self.question.number}'s utility is #{self.utility}"
+  end
+
+  private
+
+  def verbose_goods_names(names)
+    names[-1] = "and #{names.last}" if names.size > 1
+
+    if names.size > 2
+      names.join(", ")  # Good 1, Good 2, and Good 3
+    else
+      names.join(" ")   # Good 1 and Good 2
+    end
+  end
+
+  def verbose_statement(verbose_names)
+    "Purchasing #{verbose_names} #{"in an exclusive bundle" if goods.size > 1} makes you value the bundle #{self.lambda} #{self.lambda == 1 ? "time" : "times"} as much as if you summed the individual utilities."
   end
 end
