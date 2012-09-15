@@ -16,9 +16,9 @@
 		  <ul>
 		    <% question.bundles.shuffle.each do |goods| %>
 		      <li>
-		        <div class="show-statement">[Click to show statement]</div>
+          <div class="show-statement">[Click to show statement] (<%= goods.goods_names(:number) %>)</div>
 		        <div class="explanation">
-		            <%= simple_format goods.shuffled_goods_statement %>
+		            <%= simple_format goods.ordered_goods_statement %>
 		        </div>
 		      </li>
 		    <% end  %>
