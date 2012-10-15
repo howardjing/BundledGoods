@@ -9,32 +9,67 @@
 <DIV style="position: absolute; top:125px; left:110px; width:550px; height:50px">
  <DIV class="mypars">
 
-  <P>The Experiment is divided into seven sections, with each experiment presenting a different menu and statements. There will be an easy three good practice round to test if you fully understand the problem that is facing you. You will not be able to continue on until you make the correct choice that maximizes your utility. 
-  <P>Experiments 1 and 2 will deal with a four and five good problem respectively, while Experiments 3 and 4 will deal with the four and five good problem, but provide you with formulas to calculate the values. Experiments 5 and 6 will be a timed trial similar to Experiment 1 and 2.
-  <P>Experiments 1 and 3, which deal with the four good case, will be given a timer of 15 minutes to complete the experiment. Similarly, 
-  Experiments 2 and 4, which deal with the five good case, will be given a timer of 20 minutes. The choice you have selected when the timer runs out 
-  will be your final choice. You are free to use the whole alloted time, or to make a choice and move onto the next experiment before the time runs out.
-  <P>In Experiment 5 and 6, a time picked at random between 1 and 900 seconds (15 minutes) for experiment 5, and a time between 1 and 1200 seconds (20 minutes) for experiment 6, which is described by 
-  the graph below, will be randomly selected. Whatever option you have selected at that time 
-  will be your final choice for that particular experiment. Therefore, it is in your best interest 
-  to "choose as you go" in the sense that if you prefer a particular option more to the one you 
-  have selected to change your selection. Experiment 5 and 6 will be different from the other 
-  experiments as your final choice is not necessarily the choice you selected when you click "Next", 
-  but the choice that you have selected at the randomly determined time. 
-  <P>The time that is selected will be determined by drawing from a random integer number between
-  1 and 900 seconds (15 minutes) from the given distribution pictured below. The x axis is the possible times 
-  with the probability of the time happening on appearing on the y axis. For example, there is 
-  approximately a 5 percent chance that 1 minute, or sixty seconds, will be the time selected and approximately a 6.5 percent chance that 5 minutes, 300 seconds, will be the 
-  time selected. Below is the graph of the probability distribution for Experiment 5.
-  <P> <%= image_tag("beta15dashed.png")%>
-  <P>Experiment 6 will be described as below. There is approximately a 7 percent chance that 
-  2 minutes, or 120 seconds, will be selected and approximately a 4 percent chance that 9 minutes, 
-  or 540 seconds, will be selected.
-  <P><%= image_tag("beta20dashed.png")%>
-  <P>Before each experiment, there will be instructions on how to evaluate each bundle that will stay the same throughout the experiment. The only things that have been manipulated are the values of certain parameters. Feel free to use scratch paper as you perform calculations.
+  <P>The Experiment is divided into seven sections, with each experiment presenting a different menu and statements. There will be a three good practice round to test if you fully understand the problem that is facing you. You will not be able to continue on until you make the correct choice that maximizes your utility. 
+  <P>Below is a table of characteristics of each experiment.
+  <table class="table table-bordered">
+  	<thead>
+  		<tr>
+  			<th>Experiment Number</th>
+  			<th>Number of Goods</th>
+  			<th>Contains Formulas</th>
+  			<th>Time Limit</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		<tr>
+  			<td>Experiment 1</td>
+  			<td>4</td>
+  			<td>No</td>
+  			<td>15 minutes</td>
+  		</tr>
+  		<tr>
+  			<td>Experiment 2</td>
+  			<td>5</td>
+  			<td>No</td>
+  			<td>20 minutes</td>
+  		</tr>
+  		<tr>
+  			<td>Experiment 3</td>
+  			<td>4</td>
+  			<td>Yes</td>
+  			<td>15 minutes</td>
+  		</tr>
+  		<tr>
+  			<td>Experiment 4</td>
+  			<td>5</td>
+  			<td>Yes</td>
+  			<td>20 minutes</td>
+  		</tr>
+  		<tr>
+  			<td>Experiment 5</td>
+  			<td>4</td>
+  			<td>No</td>
+  			<td>Special Beta Timer</td>
+  		</tr>
+  		<tr>
+  			<td>Experiment 6</td>
+  			<td>5</td>
+  			<td>No</td>
+  			<td>Special Beta Timer</td>
+  		</tr>
+  	</tbody>
+  </table>
+  <P>The choice you have selected when the timer runs out will be your final choice. 
+  You are free to use the whole alloted time, or to make a choice and move onto the next experiment 
+  before the time runs out.
+  <P>Before each experiment, there will be instructions similar to the instructions given 
+  in the tutorials. Utility calculation will remain the same throughout the experiment, but values of
+  certain parameters will be manipulated. Feel free to use scratch paper as you perform calculations.
+  <P><b>Experiment 5 and 6 have special instructions before the experiment. READ THE INSTRUCTIONS BEFORE 
+  ATTEMPTING.</b>
   <P>Your monetary reward depends directly on the choices you make. In addition to the flat show up fee, 
   you have the ability to either make as little as 1 dollar or make up to eight and a half dollars during each experiment. 
-  Choices you made in the easy three good practice round will not be counted towards your final payment. A reward you have chosen from 
+  Choices you made in the three good practice round will not be counted towards your final payment. A reward you have chosen from 
   Experiments 1 through 6 will be chosen at random to be your payment. It is in your best interest to perform each experiment to the best 
   of your ability as each experiment has a one in six chance of being picked as your monetary reward. 
 </div>
