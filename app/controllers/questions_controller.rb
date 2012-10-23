@@ -128,7 +128,7 @@ class QuestionsController < ApplicationController
     if question.demo?
       puts "handling demo"
       demo_answer = current_user.final_answer question
-      unless demo_answer.nil? || demo_answer.utility == 12
+      unless demo_answer.nil? || demo_answer.utility == 7
         flash[:error] = "You chose poorly, try again."
         redirect_to experiment_path
       end

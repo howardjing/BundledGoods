@@ -31,7 +31,7 @@ module GoodsModule
   end
 
   def equation_statement
-    "\\( V(#{self.goods_names(:equation_name)}) = #{lambda}[#{goods_utilities}] \\)"
+    "\\( V(#{self.goods_names(:equation_name)}) = [#{goods_utilities}] #{self.lambda >= 0 ? "+ #{self.lambda}" : "#{self.lambda}"} \\)" #changed to be consistent with new value function
   end
 
   def goods_utilities
@@ -62,7 +62,7 @@ module GoodsModule
   end
 
   def update_value_and_utility
-    self.value = self.lambda * sum_goods_value
+    self.value = self.lambda + sum_goods_value #changing the '*' to '+' for new way to calculate
     self.utility = self.value - sum_goods_price
     
     puts "This #{self.class} for #{self.question.number}'s value is #{self.value}"
@@ -82,6 +82,6 @@ module GoodsModule
   end
 
   def verbose_statement(verbose_names)
-    "Purchasing #{verbose_names} #{"in an exclusive bundle" if goods.size > 1} makes you value the bundle #{self.lambda} #{self.lambda == 1 ? "time" : "times"} as much as if you summed the individual utilities."
+    "Purchasing #{verbose_names} #{"in an exclusive bundle" if goods.size > 1} makes you value the bundle #{self.lambda >= 0 ? "+ #{self.lambda}" : "#{self.lambda}"} as much as if you summed the individual utilities." #changed statement original is here '#{self.lambda == 1 ? "time" : "times"}'
   end
 end

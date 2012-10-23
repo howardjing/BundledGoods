@@ -117,20 +117,20 @@
 <br>
 <br>
 		<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-		makes you value the bundle '&lambda;<sub>i,j</sub>' as much as if you summed the individual
+		makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
 		utilities."</i>
 <br>
 <br>
 	<li>For a concrete example, the statement for bundle with goods one and two
 	would be as follows:</li>
 <br>
-		<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle .75 
+		<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0
 		times as much as if you summed the individual utilities."</i> <br>
 </ul>
 <P>
 	Given these instructions, answer the following question. The important details are italicized.
 <P>
-	<b>"Purchasing goods one and two in an exclusive bundle makes you <i>value the bundle .75 
+	<b>"Purchasing goods one and two in an exclusive bundle makes you <i>value the bundle + 1.0 
 		times as much</i> as if you <i>summed the individual utilities</i>.</b>
 <P>
 	<I>Take note that answers can be decimal numbers or whole numbers. If the answer is not a whole number,
@@ -139,23 +139,6 @@
 </div>
 	
 <div class="well" id="problem1">
-	<span style="display:inline-block" class="question">
-    	<label>Multiple Effect</label>
-    	<input type="text" class="san2 response" placeholder="Lambda Value">
-    	<input type="hidden" value=".75" />
-    </span> 
-    
-    <span style="display:inline-block" class="question">
-    <label style="display:block">Operator</label>
-		<select class="input-small response">
-		  <option> </option>
-  	  <option>+</option>
-  	  <option>-</option>
-  	  <option>/</option>
-  	  <option>*</option>
-    </select>
-    <input type="hidden" value="*" />
-  </span>
 	(
 	
 	<span style="display:inline-block" class="question">
@@ -182,11 +165,28 @@
     <input type="hidden" value="4" />
   </span>
   	)
+  	<span style="display:inline-block" class="question">
+    <label style="display:block">Operator</label>
+		<select class="input-small response">
+		  <option> </option>
+  	  <option>+</option>
+  	  <option>-</option>
+  	  <option>/</option>
+  	  <option>*</option>
+    </select>
+    <input type="hidden" value="+" />
+  </span>
+  
+  <span style="display:inline-block" class="question">
+    	<label>Multiple Effect</label>
+    	<input type="text" class="san2 response" placeholder="Lambda Value">
+    	<input type="hidden" value="1" />
+    </span> 
   	=
 	<span style="display:inline-block" class="question">
     <label>Goods 1 and 2's Value</label>
     <input type="text" class="span2 response" placeholder="What is it's value?…" />
-    <input type="hidden" value="4.5" />
+    <input type="hidden" value="7" />
  	 </span>
   <span class="help-block feedback"></span>
   <button class="btn btn-primary">Check</button>

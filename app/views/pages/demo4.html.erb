@@ -126,8 +126,8 @@
 <P>
 	You value Goods 1 and 2 in the following way.
 <P>
-	<b>"Purchasing goods one and two in an exclusive bundle makes you <i>value the bundle three quarter 
-		times as much</i> as if you <i>summed the individual utilities</i>.</b>
+	<b>"Purchasing goods one and two in an exclusive bundle makes you <i>value the bundle +1
+	 as much</i> as if you <i>summed the individual utilities</i>.</b>
 <P>
 	<b>How much money would you receive if you purchased Goods 1 and 2 together in an exclusive bundle, 
 	given that Good 1 costs 2 dollars and Good 2 costs 1 dollar?</b>
@@ -136,23 +136,7 @@
 	write the answer in as a decimal number.</i>
 <P>
 <div class="well" id="problem1">
-	<span style="display:inline-block" class="question">
-    	<label>Substitute/Complement Effect</label>
-    	<input type="text" class="san2 response" placeholder="Lambda Value">
-    	<input type="hidden" value=".75" />
-    </span> 
-    
-    <span style="display:inline-block" class="question">
-    <label style="display:block">Operator</label>
-		<select class="input-small response">
-		  <option> </option>
-  	  <option>+</option>
-  	  <option>-</option>
-  	  <option>/</option>
-  	  <option>*</option>
-    </select>
-    <input type="hidden" value="*" />
-  </span>
+    [
 	(
 	
 	<span style="display:inline-block" class="question">
@@ -179,6 +163,23 @@
     <input type="hidden" value="4" />
   </span>
   	)
+  	 <span style="display:inline-block" class="question">
+    <label style="display:block">Operator</label>
+		<select class="input-small response">
+		  <option> </option>
+  	  <option>+</option>
+  	  <option>-</option>
+  	  <option>/</option>
+  	  <option>*</option>
+    </select>
+    <input type="hidden" value="+" />
+  </span>
+  <span style="display:inline-block" class="question">
+    	<label>Multiple Effect</label>
+    	<input type="text" class="san2 response" placeholder="Lambda Value">
+    	<input type="hidden" value="1" />
+    </span> 
+  ]
   	-
   	(
 	<span style="display:inline-block" class="question">
@@ -209,7 +210,7 @@
 	<span style="display:inline-block" class="question">
     <label>Goods 1 and 2's Utility</label>
     <input type="text" class="span2 response" placeholder="What is it's value?…" />
-    <input type="hidden" value="1.5" />
+    <input type="hidden" value="4" />
  	 </span>
   <span class="help-block feedback"></span>
   <button class="btn btn-primary">Check</button>

@@ -12,212 +12,212 @@ question0 = Question.create number: 0, number_of_goods: 3, number_of_bundles: 4,
 
 # update the attributes of the 3 goods owned by question0
 # arrays are 0 indexed, so question0.goods[0] and question0.goods[1]
-question0.goods[0].update_attributes number: 1, price: 0.5, value: 2
+question0.goods[0].update_attributes number: 1, price: 1.0, value: 2
 question0.goods[1].update_attributes number: 2, price: 1.0, value: 4
-question0.goods[2].update_attributes number: 3, price: 1.5,   value: 6
+question0.goods[2].update_attributes number: 3, price: 4.0,   value: 6
 
 # update the 3 bundles owned by question 0
 # goods_list is a comma separated list of goods identified by number, ie '0,1', or '2'
 # value and utility are calculated and updated automatically
-question0.bundles[0].update_attributes number: 1, lambda: 2.0, goods_list: '1,2'
-question0.bundles[1].update_attributes number: 2, lambda: 1.75, goods_list: '1,3'
-question0.bundles[2].update_attributes number: 3, lambda: 1.25, goods_list: '2,3'
-question0.bundles[3].update_attributes number: 4, lambda: 1.0, goods_list: '1,2,3'
+question0.bundles[0].update_attributes number: 1, lambda: 0.0, goods_list: '1,2'
+question0.bundles[1].update_attributes number: 2, lambda: 1.0, goods_list: '1,3'
+question0.bundles[2].update_attributes number: 3, lambda: 2.0, goods_list: '2,3'
+question0.bundles[3].update_attributes number: 4, lambda: 0.0, goods_list: '1,2,3'
 
 
 # update the attributes of the combo (value and utility are calculated and updated automatically)
-question0.combo.update_attributes price: 2.75, lambda: 1 
+question0.combo.update_attributes price: 5.5, lambda: 0.0
 
 # repeat the above for all your questions
 puts "q1"
 question1 = Question.create number: 1, number_of_goods: 4, number_of_bundles: 11, duration: 900
 
-question1.goods[0].update_attributes number: 1, price: 2, value: 2
-question1.goods[1].update_attributes number: 2, price: 3.5, value: 4
+question1.goods[0].update_attributes number: 1, price: 1, value: 2
+question1.goods[1].update_attributes number: 2, price: 4, value: 4
 question1.goods[2].update_attributes number: 3, price: 3,   value: 6
-question1.goods[3].update_attributes number: 4, price: 4,   value: 8
+question1.goods[3].update_attributes number: 4, price: 6,   value: 8
 
-question1.bundles[0].update_attributes number: 1, lambda: 2, goods_list: '1,2'
-question1.bundles[1].update_attributes number: 2, lambda: 1.5, goods_list: '1,3'
-question1.bundles[2].update_attributes number: 3, lambda: 1.25, goods_list: '1,4'
-question1.bundles[3].update_attributes number: 4, lambda: 1.25, goods_list: '2,3'
-question1.bundles[4].update_attributes number: 5, lambda: 1.25, goods_list: '2,4'
-question1.bundles[5].update_attributes number: 6, lambda: 1.0, goods_list: '3,4'
-question1.bundles[6].update_attributes number: 7, lambda: 1.25, goods_list: '1,2,3'
-question1.bundles[7].update_attributes number: 8, lambda: 1.25, goods_list: '1,2,4'
-question1.bundles[8].update_attributes number: 9, lambda: 0.75, goods_list: '1,3,4'
-question1.bundles[9].update_attributes number: 10, lambda: 0.75, goods_list: '2,3,4'
-question1.bundles[10].update_attributes number: 11, lambda: 1.0, goods_list: '1,2,3,4'
+question1.bundles[0].update_attributes number: 1, lambda: 3, goods_list: '1,2'
+question1.bundles[1].update_attributes number: 2, lambda: 0, goods_list: '1,3'
+question1.bundles[2].update_attributes number: 3, lambda: 1, goods_list: '1,4'
+question1.bundles[3].update_attributes number: 4, lambda: 2, goods_list: '2,3'
+question1.bundles[4].update_attributes number: 5, lambda: 3, goods_list: '2,4'
+question1.bundles[5].update_attributes number: 6, lambda: -1, goods_list: '3,4'
+question1.bundles[6].update_attributes number: 7, lambda: 0, goods_list: '1,2,3'
+question1.bundles[7].update_attributes number: 8, lambda: 1, goods_list: '1,2,4'
+question1.bundles[8].update_attributes number: 9, lambda: 2, goods_list: '1,3,4'
+question1.bundles[9].update_attributes number: 10, lambda: -1, goods_list: '2,3,4'
+question1.bundles[10].update_attributes number: 11, lambda: 0, goods_list: '1,2,3,4'
 
 
-question1.combo.update_attributes price: 12.25, lambda: 1.0
+question1.combo.update_attributes price: 13, lambda: 0
 puts "q2"
 question2 = Question.create number: 2, number_of_goods: 5, number_of_bundles: 26, duration: 1200
 
-question2.goods[0].update_attributes number: 1, price: 2.5, value: 2
-question2.goods[1].update_attributes number: 2, price: 3.5, value: 4
-question2.goods[2].update_attributes number: 3, price: 5.0,   value: 6
-question2.goods[3].update_attributes number: 4, price: 5.5,   value: 8
-question2.goods[4].update_attributes number: 5, price: 6.0,   value: 10
+question2.goods[0].update_attributes number: 1, price: 1, value: 2
+question2.goods[1].update_attributes number: 2, price: 1, value: 4
+question2.goods[2].update_attributes number: 3, price: 5,   value: 6
+question2.goods[3].update_attributes number: 4, price: 6,   value: 8
+question2.goods[4].update_attributes number: 5, price: 11,   value: 10
 
-question2.bundles[0].update_attributes number: 1, lambda: 1.75, goods_list: '1,2'
-question2.bundles[1].update_attributes number: 2, lambda: 1.75, goods_list: '1,3'
-question2.bundles[2].update_attributes number: 3, lambda: 1.25, goods_list: '1,4'
-question2.bundles[3].update_attributes number: 4, lambda: 1.25, goods_list: '1,5'
-question2.bundles[4].update_attributes number: 5, lambda: 1.25, goods_list: '2,3'
-question2.bundles[5].update_attributes number: 6, lambda: 1.25, goods_list: '2,4'
-question2.bundles[6].update_attributes number: 7, lambda: 1.0, goods_list: '2,5'
-question2.bundles[7].update_attributes number: 8, lambda: 1.25, goods_list: '3,4'
-question2.bundles[8].update_attributes number: 9, lambda: 1.0, goods_list: '3,5'
-question2.bundles[9].update_attributes number: 10, lambda: 1.0, goods_list: '4,5'
-question2.bundles[10].update_attributes number: 11, lambda: 1.5, goods_list: '1,2,3'
-question2.bundles[11].update_attributes number: 12, lambda: 1.25, goods_list: '1,2,4'
-question2.bundles[12].update_attributes number: 13, lambda: 1.0, goods_list: '1,2,5'
-question2.bundles[13].update_attributes number: 14, lambda: 1.25, goods_list: '1,3,4'
-question2.bundles[14].update_attributes number: 15, lambda: 1.0, goods_list: '1,3,5'
-question2.bundles[15].update_attributes number: 16, lambda: 1.0, goods_list: '1,4,5'
-question2.bundles[16].update_attributes number: 17, lambda: 1.25, goods_list: '2,3,4'
-question2.bundles[17].update_attributes number: 18, lambda: 1.0, goods_list: '2,3,5'
-question2.bundles[18].update_attributes number: 19, lambda: 1.0, goods_list: '2,4,5'
-question2.bundles[19].update_attributes number: 20, lambda: 1.0, goods_list: '3,4,5'
-question2.bundles[20].update_attributes number: 21, lambda: 1.0, goods_list: '1,2,3,4'
-question2.bundles[21].update_attributes number: 22, lambda: 0.75, goods_list: '2,3,4,5'
-question2.bundles[22].update_attributes number: 23, lambda: 1.0, goods_list: '1,2,3,5'
-question2.bundles[23].update_attributes number: 24, lambda: 1.0, goods_list: '1,3,4,5'
-question2.bundles[24].update_attributes number: 25, lambda: 0.75, goods_list: '1,2,4,5'
-question2.bundles[25].update_attributes number: 26, lambda: 1.0, goods_list: '1,2,3,4,5'
+question2.bundles[0].update_attributes number: 1, lambda: 3, goods_list: '1,2'
+question2.bundles[1].update_attributes number: 2, lambda: 0, goods_list: '1,3'
+question2.bundles[2].update_attributes number: 3, lambda: 1, goods_list: '1,4'
+question2.bundles[3].update_attributes number: 4, lambda: 2, goods_list: '1,5'
+question2.bundles[4].update_attributes number: 5, lambda: 1, goods_list: '2,3'
+question2.bundles[5].update_attributes number: 6, lambda: 0, goods_list: '2,4'
+question2.bundles[6].update_attributes number: 7, lambda: 3, goods_list: '2,5'
+question2.bundles[7].update_attributes number: 8, lambda: 1, goods_list: '3,4'
+question2.bundles[8].update_attributes number: 9, lambda: 2, goods_list: '3,5'
+question2.bundles[9].update_attributes number: 10, lambda: 2, goods_list: '4,5'
+question2.bundles[10].update_attributes number: 11, lambda: 0, goods_list: '1,2,3'
+question2.bundles[11].update_attributes number: 12, lambda: -1, goods_list: '1,2,4'
+question2.bundles[12].update_attributes number: 13, lambda: 1, goods_list: '1,2,5'
+question2.bundles[13].update_attributes number: 14, lambda: 0, goods_list: '1,3,4'
+question2.bundles[14].update_attributes number: 15, lambda: 3, goods_list: '1,3,5'
+question2.bundles[15].update_attributes number: 16, lambda: 3, goods_list: '1,4,5'
+question2.bundles[16].update_attributes number: 17, lambda: -1, goods_list: '2,3,4'
+question2.bundles[17].update_attributes number: 18, lambda: 2, goods_list: '2,3,5'
+question2.bundles[18].update_attributes number: 19, lambda: 0, goods_list: '2,4,5'
+question2.bundles[19].update_attributes number: 20, lambda: 2, goods_list: '3,4,5'
+question2.bundles[20].update_attributes number: 21, lambda: 1, goods_list: '1,2,3,4'
+question2.bundles[21].update_attributes number: 22, lambda: -1, goods_list: '2,3,4,5'
+question2.bundles[22].update_attributes number: 23, lambda: -1, goods_list: '1,2,3,5'
+question2.bundles[23].update_attributes number: 24, lambda: 3, goods_list: '1,3,4,5'
+question2.bundles[24].update_attributes number: 25, lambda: -1, goods_list: '1,2,4,5'
+question2.bundles[25].update_attributes number: 26, lambda: 0, goods_list: '1,2,3,4,5'
 
 
-question2.combo.update_attributes price: 22, lambda: 1.0
+question2.combo.update_attributes price: 23, lambda: 0
 
 
 #question 3
 puts "q3"
 question3 = Question.create number: 3, number_of_goods: 4, number_of_bundles: 11, display_equation: true, duration: 900
 
-question3.goods[0].update_attributes number: 1, price: 2.5, value: 2
-question3.goods[1].update_attributes number: 2, price: 2.5, value: 4
-question3.goods[2].update_attributes number: 3, price: 3.0,   value: 6
-question3.goods[3].update_attributes number: 4, price: 4.5,   value: 8
+question3.goods[0].update_attributes number: 1, price: 1, value: 2
+question3.goods[1].update_attributes number: 2, price: 2, value: 4
+question3.goods[2].update_attributes number: 3, price: 6,   value: 6
+question3.goods[3].update_attributes number: 4, price: 5,   value: 8
 
-question3.bundles[0].update_attributes number: 1, lambda: 1.5, goods_list: '1,2'
-question3.bundles[1].update_attributes number: 2, lambda: 1.5, goods_list: '1,3'
-question3.bundles[2].update_attributes number: 3, lambda: 1.25, goods_list: '1,4'
-question3.bundles[3].update_attributes number: 4, lambda: 1.25, goods_list: '2,3'
-question3.bundles[4].update_attributes number: 5, lambda: 1.0, goods_list: '2,4'
-question3.bundles[5].update_attributes number: 6, lambda: 1.0, goods_list: '3,4'
-question3.bundles[6].update_attributes number: 7, lambda: 1.25, goods_list: '1,2,3'
-question3.bundles[7].update_attributes number: 8, lambda: 1.25, goods_list: '1,2,4'
-question3.bundles[8].update_attributes number: 9, lambda: 0.75, goods_list: '1,3,4'
-question3.bundles[9].update_attributes number: 10, lambda: 0.75, goods_list: '2,3,4'
-question3.bundles[10].update_attributes number: 11, lambda: 1.0, goods_list: '1,2,3,4'
+question3.bundles[0].update_attributes number: 1, lambda: 0, goods_list: '1,2'
+question3.bundles[1].update_attributes number: 2, lambda: 3, goods_list: '1,3'
+question3.bundles[2].update_attributes number: 3, lambda: -1, goods_list: '1,4'
+question3.bundles[3].update_attributes number: 4, lambda: 2, goods_list: '2,3'
+question3.bundles[4].update_attributes number: 5, lambda: 3, goods_list: '2,4'
+question3.bundles[5].update_attributes number: 6, lambda: 1, goods_list: '3,4'
+question3.bundles[6].update_attributes number: 7, lambda: 2, goods_list: '1,2,3'
+question3.bundles[7].update_attributes number: 8, lambda: 1, goods_list: '1,2,4'
+question3.bundles[8].update_attributes number: 9, lambda: 0, goods_list: '1,3,4'
+question3.bundles[9].update_attributes number: 10, lambda: -1, goods_list: '2,3,4'
+question3.bundles[10].update_attributes number: 11, lambda: 0, goods_list: '1,2,3,4'
 
 
-question3.combo.update_attributes price: 12.25, lambda: 1.0
+question3.combo.update_attributes price: 13, lambda: 0
 
 #question 4
 puts "q4"
 question4 = Question.create number: 4, number_of_goods: 5, number_of_bundles: 26, display_equation: true, duration: 1200
 
-question4.goods[0].update_attributes number: 1, price: 3, value: 2
-question4.goods[1].update_attributes number: 2, price: 4, value: 4
-question4.goods[2].update_attributes number: 3, price: 6,   value: 6
-question4.goods[3].update_attributes number: 4, price: 4.5,   value: 8
-question4.goods[4].update_attributes number: 5, price: 5,   value: 10
+question4.goods[0].update_attributes number: 1, price: 1, value: 2
+question4.goods[1].update_attributes number: 2, price: 5, value: 4
+question4.goods[2].update_attributes number: 3, price: 3,   value: 6
+question4.goods[3].update_attributes number: 4, price: 7,   value: 8
+question4.goods[4].update_attributes number: 5, price: 8,   value: 10
 
-question4.bundles[0].update_attributes number: 1, lambda: 2.0, goods_list: '1,2'
-question4.bundles[1].update_attributes number: 2, lambda: 2.0, goods_list: '1,3'
-question4.bundles[2].update_attributes number: 3, lambda: 1.25, goods_list: '1,4'
-question4.bundles[3].update_attributes number: 4, lambda: 1.0, goods_list: '1,5'
-question4.bundles[4].update_attributes number: 5, lambda: 1.5, goods_list: '2,3'
-question4.bundles[5].update_attributes number: 6, lambda: 1.25, goods_list: '2,4'
-question4.bundles[6].update_attributes number: 7, lambda: 1.0, goods_list: '2,5'
-question4.bundles[7].update_attributes number: 8, lambda: 1.0, goods_list: '3,4'
-question4.bundles[8].update_attributes number: 9, lambda: 1.0, goods_list: '3,5'
-question4.bundles[9].update_attributes number: 10, lambda: 0.75, goods_list: '4,5'
-question4.bundles[10].update_attributes number: 11, lambda: 1.5, goods_list: '1,2,3'
-question4.bundles[11].update_attributes number: 12, lambda: 1.25, goods_list: '1,2,4'
-question4.bundles[12].update_attributes number: 13, lambda: 1.0, goods_list: '1,2,5'
-question4.bundles[13].update_attributes number: 14, lambda: 1.25, goods_list: '1,3,4'
-question4.bundles[14].update_attributes number: 15, lambda: 1.25, goods_list: '1,3,5'
-question4.bundles[15].update_attributes number: 16, lambda: 1.0, goods_list: '1,4,5'
-question4.bundles[16].update_attributes number: 17, lambda: 1.0, goods_list: '2,3,4'
-question4.bundles[17].update_attributes number: 18, lambda: 1.0, goods_list: '2,3,5'
-question4.bundles[18].update_attributes number: 19, lambda: 0.75, goods_list: '2,4,5'
-question4.bundles[19].update_attributes number: 20, lambda: 0.75, goods_list: '3,4,5'
-question4.bundles[20].update_attributes number: 21, lambda: 1.25, goods_list: '1,2,3,4'
-question4.bundles[21].update_attributes number: 22, lambda: 0.75, goods_list: '2,3,4,5'
-question4.bundles[22].update_attributes number: 23, lambda: 1.0, goods_list: '1,2,3,5'
-question4.bundles[23].update_attributes number: 24, lambda: 1.0, goods_list: '1,3,4,5'
-question4.bundles[24].update_attributes number: 25, lambda: 1.0, goods_list: '1,2,4,5'
-question4.bundles[25].update_attributes number: 26, lambda: 1.0, goods_list: '1,2,3,4,5'
+question4.bundles[0].update_attributes number: 1, lambda: 3, goods_list: '1,2'
+question4.bundles[1].update_attributes number: 2, lambda: 1, goods_list: '1,3'
+question4.bundles[2].update_attributes number: 3, lambda: 3, goods_list: '1,4'
+question4.bundles[3].update_attributes number: 4, lambda: 1, goods_list: '1,5'
+question4.bundles[4].update_attributes number: 5, lambda: 2, goods_list: '2,3'
+question4.bundles[5].update_attributes number: 6, lambda: 3, goods_list: '2,4'
+question4.bundles[6].update_attributes number: 7, lambda: 3, goods_list: '2,5'
+question4.bundles[7].update_attributes number: 8, lambda: 0, goods_list: '3,4'
+question4.bundles[8].update_attributes number: 9, lambda: -1, goods_list: '3,5'
+question4.bundles[9].update_attributes number: 10, lambda: 1, goods_list: '4,5'
+question4.bundles[10].update_attributes number: 11, lambda: 2, goods_list: '1,2,3'
+question4.bundles[11].update_attributes number: 12, lambda: 3, goods_list: '1,2,4'
+question4.bundles[12].update_attributes number: 13, lambda: 2, goods_list: '1,2,5'
+question4.bundles[13].update_attributes number: 14, lambda: -1, goods_list: '1,3,4'
+question4.bundles[14].update_attributes number: 15, lambda: -1, goods_list: '1,3,5'
+question4.bundles[15].update_attributes number: 16, lambda: 0, goods_list: '1,4,5'
+question4.bundles[16].update_attributes number: 17, lambda: 1, goods_list: '2,3,4'
+question4.bundles[17].update_attributes number: 18, lambda: 0, goods_list: '2,3,5'
+question4.bundles[18].update_attributes number: 19, lambda: 2, goods_list: '2,4,5'
+question4.bundles[19].update_attributes number: 20, lambda: 2, goods_list: '3,4,5'
+question4.bundles[20].update_attributes number: 21, lambda: 0, goods_list: '1,2,3,4'
+question4.bundles[21].update_attributes number: 22, lambda: -1, goods_list: '2,3,4,5'
+question4.bundles[22].update_attributes number: 23, lambda: 0, goods_list: '1,2,3,5'
+question4.bundles[23].update_attributes number: 24, lambda: -1, goods_list: '1,3,4,5'
+question4.bundles[24].update_attributes number: 25, lambda: 1, goods_list: '1,2,4,5'
+question4.bundles[25].update_attributes number: 26, lambda: 0, goods_list: '1,2,3,4,5'
 
 
-question4.combo.update_attributes price: 22.0, lambda: 1.0
+question4.combo.update_attributes price: 23, lambda: 0
 
 #question 5
 puts "q5"
 question5 = Question.create number: 5, number_of_goods: 4, number_of_bundles: 11, random_duration: true
 
-question5.goods[0].update_attributes number: 1, price: 2.0, value: 2
-question5.goods[1].update_attributes number: 2, price: 2.5, value: 4
-question5.goods[2].update_attributes number: 3, price: 4.5,   value: 6
-question5.goods[3].update_attributes number: 4, price: 3.5,   value: 8
+question5.goods[0].update_attributes number: 1, price: 1, value: 2
+question5.goods[1].update_attributes number: 2, price: 4, value: 4
+question5.goods[2].update_attributes number: 3, price: 3,   value: 6
+question5.goods[3].update_attributes number: 4, price: 6,   value: 8
 
-question5.bundles[0].update_attributes number: 1, lambda: 1.5, goods_list: '1,2'
-question5.bundles[1].update_attributes number: 2, lambda: 1.5, goods_list: '1,3'
-question5.bundles[2].update_attributes number: 3, lambda: 1.25, goods_list: '1,4'
-question5.bundles[3].update_attributes number: 4, lambda: 1.5, goods_list: '2,3'
-question5.bundles[4].update_attributes number: 5, lambda: 1.0, goods_list: '2,4'
-question5.bundles[5].update_attributes number: 6, lambda: 1.0, goods_list: '3,4'
-question5.bundles[6].update_attributes number: 7, lambda: 1.25, goods_list: '1,2,3'
-question5.bundles[7].update_attributes number: 8, lambda: 1.0, goods_list: '1,2,4'
-question5.bundles[8].update_attributes number: 9, lambda: 0.75, goods_list: '1,3,4'
-question5.bundles[9].update_attributes number: 10, lambda: 0.75, goods_list: '2,3,4'
-question5.bundles[10].update_attributes number: 11, lambda: 1.0, goods_list: '1,2,3,4'
+question5.bundles[0].update_attributes number: 1, lambda: 3, goods_list: '1,2'
+question5.bundles[1].update_attributes number: 2, lambda: 0, goods_list: '1,3'
+question5.bundles[2].update_attributes number: 3, lambda: 1, goods_list: '1,4'
+question5.bundles[3].update_attributes number: 4, lambda: 2, goods_list: '2,3'
+question5.bundles[4].update_attributes number: 5, lambda: 3, goods_list: '2,4'
+question5.bundles[5].update_attributes number: 6, lambda: -1, goods_list: '3,4'
+question5.bundles[6].update_attributes number: 7, lambda: 0, goods_list: '1,2,3'
+question5.bundles[7].update_attributes number: 8, lambda: 1, goods_list: '1,2,4'
+question5.bundles[8].update_attributes number: 9, lambda: 2, goods_list: '1,3,4'
+question5.bundles[9].update_attributes number: 10, lambda: -1, goods_list: '2,3,4'
+question5.bundles[10].update_attributes number: 11, lambda: 0, goods_list: '1,2,3,4'
 
 
-question5.combo.update_attributes price: 12.25, lambda: 1.0
+question5.combo.update_attributes price: 13, lambda: 0
 
 #question 6
 
 question6 = Question.create number: 6, number_of_goods: 5, number_of_bundles: 26, random_duration: true
 
-question6.goods[0].update_attributes number: 1, price: 3.5, value: 2
-question6.goods[1].update_attributes number: 2, price: 4.0, value: 4
-question6.goods[2].update_attributes number: 3, price: 4.0,   value: 6
-question6.goods[3].update_attributes number: 4, price: 5.0,   value: 8
-question6.goods[4].update_attributes number: 5, price: 6.0,   value: 10
+question6.goods[0].update_attributes number: 1, price: 3, value: 2
+question6.goods[1].update_attributes number: 2, price: 4, value: 4
+question6.goods[2].update_attributes number: 3, price: 4,   value: 6
+question6.goods[3].update_attributes number: 4, price: 5,   value: 8
+question6.goods[4].update_attributes number: 5, price: 9,   value: 10
 
-question6.bundles[0].update_attributes number: 1, lambda: 2.0, goods_list: '1,2'
-question6.bundles[1].update_attributes number: 2, lambda: 1.5, goods_list: '1,3'
-question6.bundles[2].update_attributes number: 3, lambda: 1.5, goods_list: '1,4'
-question6.bundles[3].update_attributes number: 4, lambda: 1.25, goods_list: '1,5'
-question6.bundles[4].update_attributes number: 5, lambda: 1.25, goods_list: '2,3'
-question6.bundles[5].update_attributes number: 6, lambda: 1.25, goods_list: '2,4'
-question6.bundles[6].update_attributes number: 7, lambda: 1.0, goods_list: '2,5'
-question6.bundles[7].update_attributes number: 8, lambda: 1.0, goods_list: '3,4'
-question6.bundles[8].update_attributes number: 9, lambda: 1.0, goods_list: '3,5'
-question6.bundles[9].update_attributes number: 10, lambda: 0.75, goods_list: '4,5'
-question6.bundles[10].update_attributes number: 11, lambda: 1.5, goods_list: '1,2,3'
-question6.bundles[11].update_attributes number: 12, lambda: 1.5, goods_list: '1,2,4'
-question6.bundles[12].update_attributes number: 13, lambda: 1.25, goods_list: '1,2,5'
-question6.bundles[13].update_attributes number: 14, lambda: 1.25, goods_list: '1,3,4'
-question6.bundles[14].update_attributes number: 15, lambda: 1.0, goods_list: '1,3,5'
-question6.bundles[15].update_attributes number: 16, lambda: 1.0, goods_list: '1,4,5'
-question6.bundles[16].update_attributes number: 17, lambda: 1.0, goods_list: '2,3,4'
-question6.bundles[17].update_attributes number: 18, lambda: 1.0, goods_list: '2,3,5'
-question6.bundles[18].update_attributes number: 19, lambda: 1.0, goods_list: '2,4,5'
-question6.bundles[19].update_attributes number: 20, lambda: 0.75, goods_list: '3,4,5'
-question6.bundles[20].update_attributes number: 21, lambda: 1.0, goods_list: '1,2,3,4'
-question6.bundles[21].update_attributes number: 22, lambda: 0.75, goods_list: '2,3,4,5'
-question6.bundles[22].update_attributes number: 23, lambda: 1.0, goods_list: '1,2,3,5'
-question6.bundles[23].update_attributes number: 24, lambda: 0.75, goods_list: '1,3,4,5'
-question6.bundles[24].update_attributes number: 25, lambda: 1.0, goods_list: '1,2,4,5'
-question6.bundles[25].update_attributes number: 26, lambda: 1.0, goods_list: '1,2,3,4,5'
+question6.bundles[0].update_attributes number: 1, lambda: 3, goods_list: '1,2'
+question6.bundles[1].update_attributes number: 2, lambda: 3, goods_list: '1,3'
+question6.bundles[2].update_attributes number: 3, lambda: 2, goods_list: '1,4'
+question6.bundles[3].update_attributes number: 4, lambda: 3, goods_list: '1,5'
+question6.bundles[4].update_attributes number: 5, lambda: 2, goods_list: '2,3'
+question6.bundles[5].update_attributes number: 6, lambda: 0, goods_list: '2,4'
+question6.bundles[6].update_attributes number: 7, lambda: 3, goods_list: '2,5'
+question6.bundles[7].update_attributes number: 8, lambda: 3, goods_list: '3,4'
+question6.bundles[8].update_attributes number: 9, lambda: 1, goods_list: '3,5'
+question6.bundles[9].update_attributes number: 10, lambda: 0, goods_list: '4,5'
+question6.bundles[10].update_attributes number: 11, lambda: 2, goods_list: '1,2,3'
+question6.bundles[11].update_attributes number: 12, lambda: 1, goods_list: '1,2,4'
+question6.bundles[12].update_attributes number: 13, lambda: 2, goods_list: '1,2,5'
+question6.bundles[13].update_attributes number: 14, lambda: -1, goods_list: '1,3,4'
+question6.bundles[14].update_attributes number: 15, lambda: 2, goods_list: '1,3,5'
+question6.bundles[15].update_attributes number: 16, lambda: 1, goods_list: '1,4,5'
+question6.bundles[16].update_attributes number: 17, lambda: -1, goods_list: '2,3,4'
+question6.bundles[17].update_attributes number: 18, lambda: 1, goods_list: '2,3,5'
+question6.bundles[18].update_attributes number: 19, lambda: 0, goods_list: '2,4,5'
+question6.bundles[19].update_attributes number: 20, lambda: -1, goods_list: '3,4,5'
+question6.bundles[20].update_attributes number: 21, lambda: 0, goods_list: '1,2,3,4'
+question6.bundles[21].update_attributes number: 22, lambda: -1, goods_list: '2,3,4,5'
+question6.bundles[22].update_attributes number: 23, lambda: 1, goods_list: '1,2,3,5'
+question6.bundles[23].update_attributes number: 24, lambda: -1, goods_list: '1,3,4,5'
+question6.bundles[24].update_attributes number: 25, lambda: 0, goods_list: '1,2,4,5'
+question6.bundles[25].update_attributes number: 26, lambda: 0, goods_list: '1,2,3,4,5'
 
 
-question6.combo.update_attributes price: 22.0, lambda: 1.0
+question6.combo.update_attributes price: 24.0, lambda: 0
 
 
 # ====== Insert your pre-question content here ======
@@ -234,20 +234,20 @@ x<sub>1</sub>, x<sub>2</sub> x<sub>3</sub> denoted as Good 1, Good 2, and Good 3
 	</li>
 <br>
 <li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
 utilities."</i>
 <br>
 <br>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
-<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle three quarter 
-times as much as if you summed the individual utilities."</i> <br></li><br>
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
+as much as if you summed the individual utilities."</i> <br></li><br>
 <li>There will be a menu of prices offered for each good. The prices are arranged
 randomly.</li><br>
 <li>The total utility from the transaction is the utility gained from purchasing
@@ -273,20 +273,20 @@ Good 3, and Good 4.</li>
 	</li>
 <br>
 <li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
 utilities."</i>
 <br>
 <br>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
-<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle three quarter 
-times as much as if you summed the individual utilities."</i> <br></li><br>
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
+as much as if you summed the individual utilities."</i> <br></li><br>
 <li>There will be a menu of prices offered for each good. The prices will be arranged
 randomly.</li><br>
 <li>The total utility from the transaction is the utility gained from purchasing
@@ -313,20 +313,20 @@ Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 	</li>
 <br>
 <li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
 utilities."</i>
 <br>
 <br>
 <li>For a concrete example, the statement for bundle with goods two, three, four,
 and five would be as follows:</li>
 <br>
-<i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle three quarter 
-times as much as if you summed the individual utilities."</i> <br></li><br>
+<i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
+as much as if you summed the individual utilities."</i> <br></li><br>
 <li>There will be a menu of prices offered for each good. The prices will be arranged
 randomly.</li><br>
 <li>The total utility from the transaction is the utility gained from purchasing
@@ -353,24 +353,24 @@ Good 3, and Good 4.</li>
 	</li>
 <br>
 <li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
 utilities."</i>
 <br>
 <br>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
-<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle three quarter 
-times as much as if you summed the individual utilities."</i> <br></li><br>
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
+as much as if you summed the individual utilities."</i> <br></li><br>
 <li> In mathematical terms,
 <br>
 <br>
-<i> V(x<sub>1</sub>, x<sub>2</sub>) = .75 [u(x<sub>1</sub>) + u(x<sub>2</sub>)].</i></li>
+<i> V(x<sub>1</sub>, x<sub>2</sub>) = [u(x<sub>1</sub>) + u(x<sub>2</sub>)] + 1.0.</i></li>
 <br>
 <li>There will be a menu of prices offered for each good. The prices will be arranged
 randomly.</li><br>
@@ -405,24 +405,24 @@ Good 3, Good 4, and Good 5.</li>
 	</li>
 <br>
 <li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
 utilities."</i>
 <br>
 <br>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
-<i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle three quarter 
-times as much as if you summed the individual utilities."</i> <br></li><br>
+<i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
+as much as if you summed the individual utilities."</i> <br></li><br>
 <li> In mathematical terms,
 <br>
 <br>
-<i> V(x<sub>1</sub>, x<sub>2</sub>) = .75 [u(x<sub>1</sub>) + u(x<sub>2</sub>)].</i></li>
+<i> V(x<sub>1</sub>, x<sub>2</sub>) = [u(x<sub>1</sub>) + u(x<sub>2</sub>)] - 1.0.</i></li>
 <br>
 <li>There will be a menu of prices offered for each good. The prices will be arranged
 randomly.</li><br>
@@ -457,20 +457,20 @@ Good 3, and Good 4.</li>
 	</li>
 <br>
 <li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
 utilities."</i>
 <br>
 <br>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
-<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle three quarter 
-times as much as if you summed the individual utilities."</i> <br></li><br>
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
+as much as if you summed the individual utilities."</i> <br></li><br>
 <li>There will be a menu of prices offered for each good. The prices will be arranged
 randomly.</li><br>
 <li>The total utility from the transaction is the utility gained from purchasing
@@ -509,20 +509,20 @@ Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 	</li>
 <br>
 <li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with substitute complement
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
 utilities."</i>
 <br>
 <br>
 <li>For a concrete example, the statement for bundle with goods two, three, four,
 and five would be as follows:</li>
 <br>
-<i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle three quarter 
-times as much as if you summed the individual utilities."</i> <br></li><br>
+<i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
+as much as if you summed the individual utilities."</i> <br></li><br>
 <li>There will be a menu of prices offered for each good. The prices will be arranged
 randomly.</li><br>
 <li>The total utility from the transaction is the utility gained from purchasing
