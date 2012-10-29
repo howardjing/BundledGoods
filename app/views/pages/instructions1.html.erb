@@ -9,12 +9,12 @@
 <div class="container">
  <DIV class="mypars">
   <P> In order to calculate total values of given bundles, you will need two elements: 
-  <b>value of single goods</b> <i>and</i> the <b>Multiplier</b> for joint purchases.
-  <P>The value for single goods will be located in the instructions and on top of the 
-  experiment screen as shown below, we will call value as utility interchangeably:
+  <b>value of single goods</b> <i>and</i> the <b>Bundle Effect</b> for joint purchases.
+  <P>The value for single goods will be located in the instructions and in the Value Menu located 
+   on the screen. We will call value as utility interchangeably. Here is an example of a Value Menu.
   <P>
   <%= image_tag("utility.png")%>
-  <P>The "Multiplier Effect" will be located in statement links which you can open and close 
+  <P>The "Bundle Effect" will be located in statement links which you can open and close 
   as shown below:
   <P>Here is an example of a statement link:
   <P><%= image_tag("'show' statement.png")%>
@@ -29,77 +29,7 @@
   <P>
   	The Muliplier Effect will be a number equally distributed between -1 and 3 for each experiment. 
   	The Multiplier Effect of <b>"+0" </b> will be weighted slightly more as the every good statement will
-  	always be "+0". Here is a chart of the distribution of Multiplier Effects for each experiment. 
-  <P>
-  <table class="table table-bordered">
-  	<thead>
-  		<tr>
-  			<th>Experiment Number</th>
-  			<th>Number of Statements</th>
-  			<th>Distribution of "-1"</th>
-  			<th>Distribution of "+0"</th>
-  			<th>Distribution of "+1"</th>
-  			<th>Distribution of "+2"</th>
-  			<th>Distribution of "+3"</th>
-  		</tr>
-  	</thead>
-  	<tbody>
-  		<tr>
-  			<td>1</td>
-  			<td>11</td>
-  			<td>2</td>
-  			<td>3</td>
-  			<td>2</td>
-  			<td>2</td>
-  			<td>2</td>
-  		</tr>
-  		<tr>
-  			<td>2</td>
-  			<td>26</td>
-  			<td>5</td>
-  			<td>6</td>
-  			<td>5</td>
-  			<td>5</td>
-  			<td>5</td>
-  		</tr>
-  		<tr>
-  			<td>3</td>
-  			<td>11</td>
-  			<td>2</td>
-  			<td>3</td>
-  			<td>2</td>
-  			<td>2</td>
-  			<td>2</td>  		
-  		</tr>
-  		<tr>
-  			<td>4</td>
-  			<td>26</td>
-  			<td>5</td>
-  			<td>6</td>
-  			<td>5</td>
-  			<td>5</td>
-  			<td>5</td>
-  		</tr>
-  		<tr>
-  			<td>5</td>
-  			<td>11</td>
-  			<td>2</td>
-  			<td>3</td>
-  			<td>2</td>
-  			<td>2</td>
-  			<td>2</td>  		
-  		</tr>
-   		<tr>
-  			<td>6</td>
-  			<td>26</td>
-  			<td>5</td>
-  			<td>6</td>
-  			<td>5</td>
-  			<td>5</td>
-  			<td>5</td>
-  		</tr>
-  	</tbody>
-  </table>
+  	always be "+0". Before each experiment, the distribution will be stated to you in the instructions.
   <P>You are free to open and close however many statements you would like before making a final choice. 
   There is no penalty for not opening all of the statements. The statements will also be randomly arranged. 
   <P>Statements are independent of all previous viewed statements. For example, a statement containing good 1 and good 2 <b>DOES NOT</b> affect 
@@ -114,4 +44,4 @@
   <P><%= image_tag("statement1_2_4.png")%>
  </div>
  
- <%= link_to 'Next', demo3_path, :class => 'btn btn-primary' %>
+ <%= link_to 'Next', instructions2_path, :class => 'btn btn-primary' %>

@@ -103,8 +103,8 @@ question3.goods[3].update_attributes number: 4, price: 5,   value: 8
 question3.bundles[0].update_attributes number: 1, lambda: 0, goods_list: '1,2'
 question3.bundles[1].update_attributes number: 2, lambda: 3, goods_list: '1,3'
 question3.bundles[2].update_attributes number: 3, lambda: -1, goods_list: '1,4'
-question3.bundles[3].update_attributes number: 4, lambda: 2, goods_list: '2,3'
-question3.bundles[4].update_attributes number: 5, lambda: 3, goods_list: '2,4'
+question3.bundles[3].update_attributes number: 4, lambda: 3, goods_list: '2,3'
+question3.bundles[4].update_attributes number: 5, lambda: 2, goods_list: '2,4'
 question3.bundles[5].update_attributes number: 6, lambda: 1, goods_list: '3,4'
 question3.bundles[6].update_attributes number: 7, lambda: 2, goods_list: '1,2,3'
 question3.bundles[7].update_attributes number: 8, lambda: 1, goods_list: '1,2,4'
@@ -113,7 +113,7 @@ question3.bundles[9].update_attributes number: 10, lambda: -1, goods_list: '2,3,
 question3.bundles[10].update_attributes number: 11, lambda: 0, goods_list: '1,2,3,4'
 
 
-question3.combo.update_attributes price: 13, lambda: 0
+question3.combo.update_attributes price: 12, lambda: 0
 
 #question 4
 puts "q4"
@@ -226,20 +226,16 @@ question0.update_attributes content: <<-END
 <li>You will be faced with a decision to purchase a bundle of arbitrary goods
 x<sub>1</sub>, x<sub>2</sub> x<sub>3</sub> denoted as Good 1, Good 2, and Good 3.</li>
 <br>
-<li>Each good has a utility value associated with each good based on <i>two times</i> the subscript
-	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 2, Good 2 (x<sub>2</sub>) has
-	utility value 4, Good <i>i</i> (x<sub>i</sub> has utility value 2 times i...) 
-	Utility value is just an arbitrary preference scale over the set of 
-	goods. The value will come into play for calculating your final payment.
+<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
 	</li>
 <br>
-<li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
+<li> Purchasing goods together will have a Bundle Effect however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
 utilities."</i>
 <br>
 <br>
@@ -247,11 +243,9 @@ utilities."</i>
 would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
-as much as if you summed the individual utilities."</i> <br></li><br>
-<li>There will be a menu of prices offered for each good. The prices are arranged
-randomly.</li><br>
-<li>The total utility from the transaction is the utility gained from purchasing
-the goods you have chosen minus their posted prices. <B>THE FINAL VALUE YOU CALCULATE 
+more than if you summed the individual utilities."</i> <br></li><br>
+<li>The total utility from the transaction is the Value gained from purchasing
+the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
@@ -265,20 +259,19 @@ question1.update_attributes content: <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub> denoted as Good 1, Good 2, 
 Good 3, and Good 4.</li>
 <br>
-<li>Each good has a utility value associated with each good based on <i>two times</i> the subscript
-	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 2, Good 2 (x<sub>2</sub>) has
-	utility value 4, Good <i>i</i> (x<sub>i</sub> has utility value 2 times i...) 
-	Utility value is just an arbitrary preference scale over the set of 
-	goods. The value will come into play for calculating your final payment.
+<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
 	</li>
 <br>
-<li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
+<li>The goods in this experiment are equally distributed between 0 and 3. This means each good 
+will have a different value associated with it.</li>
+<br>
+<li> Purchasing goods together will have a Bundle Effect however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
 utilities."</i>
 <br>
 <br>
@@ -286,11 +279,9 @@ utilities."</i>
 would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
-as much as if you summed the individual utilities."</i> <br></li><br>
-<li>There will be a menu of prices offered for each good. The prices will be arranged
-randomly.</li><br>
-<li>The total utility from the transaction is the utility gained from purchasing
-the goods you have chosen minus their posted prices. <B>THE FINAL VALUE YOU CALCULATE 
+more than if you summed the individual utilities."</i> <br></li><br>
+<li>The total utility from the transaction is the Value gained from purchasing
+the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
@@ -305,20 +296,19 @@ question2.update_attributes content: <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub>, denoted as 
 Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 <br>
-<li>Each good has a utility value associated with each good based on <i>two times</i> the subscript
-	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 2, Good 2 (x<sub>2</sub>) has
-	utility value 4, Good <i>i</i> (x<sub>i</sub> has utility value 2 times i...) 
-	Utility value is just an arbitrary preference scale over the set of 
-	goods. The value will come into play for calculating your final payment.
+<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
 	</li>
 <br>
-<li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
+<li>The goods in this experiment are equally distributed between -1 and 3. This means each good 
+will have a different value associated with it.</li>
+<br>
+<li> Purchasing goods together will have Bundle effects however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
 utilities."</i>
 <br>
 <br>
@@ -326,11 +316,10 @@ utilities."</i>
 and five would be as follows:</li>
 <br>
 <i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
-as much as if you summed the individual utilities."</i> <br></li><br>
-<li>There will be a menu of prices offered for each good. The prices will be arranged
-randomly.</li><br>
-<li>The total utility from the transaction is the utility gained from purchasing
-the goods you have chosen minus their posted prices. <B>THE FINAL VALUE YOU CALCULATE 
+less than if you summed the individual utilities."</i> <br></li><br>
+<br>
+<li>The total utility from the transaction is the value gained from purchasing
+the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
@@ -345,20 +334,19 @@ question3.update_attributes content: <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub> denoted as Good 1, Good 2, 
 Good 3, and Good 4.</li>
 <br>
-<li>Each good has a utility value associated with each good based on <i>two times</i> the subscript
-	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 2, Good 2 (x<sub>2</sub>) has
-	utility value 4, Good <i>i</i> (x<sub>i</sub> has utility value 2 times i...) 
-	Utility value is just an arbitrary preference scale over the set of 
-	goods. The value will come into play for calculating your final payment.
+<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
 	</li>
 <br>
-<li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
+<li>The goods in this experiment are equally distributed between 0 and 3. This means each good 
+will have a different value associated with it.</li>
+<br>
+<li> Purchasing goods together will have a Bundle Effect however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
 utilities."</i>
 <br>
 <br>
@@ -366,26 +354,20 @@ utilities."</i>
 would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
-as much as if you summed the individual utilities."</i> <br></li><br>
+more than if you summed the individual utilities."</i> <br></li><br>
 <li> In mathematical terms,
 <br>
 <br>
 <i> V(x<sub>1</sub>, x<sub>2</sub>) = [u(x<sub>1</sub>) + u(x<sub>2</sub>)] + 1.0.</i></li>
 <br>
-<li>There will be a menu of prices offered for each good. The prices will be arranged
-randomly.</li><br>
-<li>The total utility from the transaction is the utility gained from purchasing
-the goods you have chosen minus their posted prices. <B>THE FINAL VALUE YOU CALCULATE 
-IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B>
+<li>For a concrete example, the statement for bundle with goods one and two
+would be as follows:</li>
 <br>
-<br>
-For example, if you choose to purchase goods 2 and 4...
-<br>
-<br>
-<i>Total Utility = V(x<sub>2</sub>, x<sub>4</sub>) - [P(x<sub>2</sub>, x<sub>4</sub>)].</i></li>
-<br>
-<li>Your monetary reward is based on the total utility from your final choice.</li>
-<br>
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
+more than if you summed the individual utilities."</i> <br></li><br>
+<li>The total utility from the transaction is the Value gained from purchasing
+the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
+IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>There is a time limit of 15 minutes for this experiment. The final choice you have 
 selected when the given timer runs out will be your final choice for the experiment.</li>
 <br>
@@ -394,47 +376,39 @@ asdf
 question4.update_attributes content: <<-asdf
 <ol>
 <li>You will be faced with a decision to purchase a bundle of arbitrary goods
-x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub> denoted as Good 1, Good 2, 
-Good 3, Good 4, and Good 5.</li>
+x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub>, denoted as 
+Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 <br>
-<li>Each good has a utility value associated with each good based on <i>two times</i> the subscript
-	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 2, Good 2 (x<sub>2</sub>) has
-	utility value 4, Good <i>i</i> (x<sub>i</sub> has utility value 2 times i...) 
-	Utility value is just an arbitrary preference scale over the set of 
-	goods. The value will come into play for calculating your final payment.
+<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
 	</li>
 <br>
-<li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
+<li>The goods in this experiment are equally distributed between -1 and 3. This means each good 
+will have a different value associated with it.</li>
+<br>
+<li> Purchasing goods together will have Bundle effects however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
 utilities."</i>
 <br>
 <br>
-<li>For a concrete example, the statement for bundle with goods one and two
+<li>For a concrete example, the statement for bundle with goods two, three, four, and five 
 would be as follows:</li>
 <br>
 <i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
-as much as if you summed the individual utilities."</i> <br></li><br>
+less than if you summed the individual utilities."</i> <br></li><br>
 <li> In mathematical terms,
 <br>
 <br>
-<i> V(x<sub>1</sub>, x<sub>2</sub>) = [u(x<sub>1</sub>) + u(x<sub>2</sub>)] - 1.0.</i></li>
-<br>
-<li>There will be a menu of prices offered for each good. The prices will be arranged
-randomly.</li><br>
-<li>The total utility from the transaction is the utility gained from purchasing
-the goods you have chosen minus their posted prices. <B>THE FINAL VALUE YOU CALCULATE 
-IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B>
+<i> V(x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub>) = [u(x<sub>2</sub>) + u(x<sub>3</sub>) + u(x<sub>4</sub>) + u(x<sub>5</sub>)] - 1.0.</i></li>
 <br>
 <br>
-For example, if you choose to purchase goods 2 and 4...
-<br>
-<br>
-<i>Total Utility = V(x<sub>2</sub>, x<sub>4</sub>) - [P(x<sub>2</sub>, x<sub>4</sub>)].</i></li>
+<li>The total utility from the transaction is the Value gained from purchasing
+the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
+IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
@@ -449,20 +423,19 @@ question5.update_attributes content: <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub> denoted as Good 1, Good 2, 
 Good 3, and Good 4.</li>
 <br>
-<li>Each good has a utility value associated with each good based on <i>two times</i> the subscript
-	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 2, Good 2 (x<sub>2</sub>) has
-	utility value 4, Good <i>i</i> (x<sub>i</sub> has utility value 2 times i...) 
-	Utility value is just an arbitrary preference scale over the set of 
-	goods. The value will come into play for calculating your final payment.
+<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
 	</li>
 <br>
-<li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
+<li>The goods in this experiment are equally distributed between 0 and 3. This means each good 
+will have a different value associated with it.</li>
+<br>
+<li> Purchasing goods together will have a Bundle Effect however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
 utilities."</i>
 <br>
 <br>
@@ -470,11 +443,9 @@ utilities."</i>
 would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
-as much as if you summed the individual utilities."</i> <br></li><br>
-<li>There will be a menu of prices offered for each good. The prices will be arranged
-randomly.</li><br>
-<li>The total utility from the transaction is the utility gained from purchasing
-the goods you have chosen minus their posted prices. <B>THE FINAL VALUE YOU CALCULATE 
+more than if you summed the individual utilities."</i> <br></li><br>
+<li>The total utility from the transaction is the Value gained from purchasing
+the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
@@ -501,20 +472,19 @@ question6.update_attributes content: <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub>, denoted as 
 Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 <br>
-<li>Each good has a utility value associated with each good based on <i>two times</i> the subscript
-	of the good. (ie. Good 1 (x<sub>1</sub>) has utility value 2, Good 2 (x<sub>2</sub>) has
-	utility value 4, Good <i>i</i> (x<sub>i</sub> has utility value 2 times i...) 
-	Utility value is just an arbitrary preference scale over the set of 
-	goods. The value will come into play for calculating your final payment.
+<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
 	</li>
 <br>
-<li> Purchasing goods together will have substitute and complement effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with multiple
+<li>The goods in this experiment are equally distributed between -1 and 3. This means each good 
+will have a different value associated with it.</li>
+<br>
+<li> Purchasing goods together will have Bundle effects however. 
+It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
 effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
 <i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' as much as if you summed the individual
+makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
 utilities."</i>
 <br>
 <br>
@@ -522,11 +492,10 @@ utilities."</i>
 and five would be as follows:</li>
 <br>
 <i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
-as much as if you summed the individual utilities."</i> <br></li><br>
-<li>There will be a menu of prices offered for each good. The prices will be arranged
-randomly.</li><br>
-<li>The total utility from the transaction is the utility gained from purchasing
-the goods you have chosen minus their posted prices. <B>THE FINAL VALUE YOU CALCULATE 
+less than if you summed the individual utilities."</i> <br></li><br>
+<br>
+<li>The total utility from the transaction is the value gained from purchasing
+the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>

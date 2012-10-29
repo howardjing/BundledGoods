@@ -82,6 +82,6 @@ module GoodsModule
   end
 
   def verbose_statement(verbose_names)
-    "Purchasing #{verbose_names} #{"in an exclusive bundle" if goods.size > 1} makes you value the bundle #{self.lambda >= 0 ? "+ #{self.lambda}" : "#{self.lambda}"} as much as if you summed the individual utilities." #changed statement original is here '#{self.lambda == 1 ? "time" : "times"}'
+    "Purchasing #{verbose_names} #{"in an exclusive bundle" if goods.size > 1} makes you value the bundle #{self.lambda >= 0 ? "+ #{self.lambda}" : "#{self.lambda}"} #{self.lambda >= 0 ? "more" : "less"} than if you summed the individual utilities." #changed statement original is here '#{self.lambda == 1 ? "time" : "times"}'
   end
 end
