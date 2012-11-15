@@ -1,0 +1,36 @@
+<%= form_for current_user do |f| %>
+    <% if current_user.errors.any? %>
+        <div class="alert alert-error">
+          <h3><%= pluralize(current_user.errors.count, "error") %> prohibited this question from being saved:</h3>
+          <ul>
+            <% current_user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :age %>
+      <%= f.text_field :age %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :gender %>
+      <%= f.text_field :gender %>
+    </div>
+
+    <div class="field">
+      <%= f.label :year, 'Graduation Year'%>
+      <%= f.text_field :year %>
+    </div>  
+
+    <div class="field">
+      <%= f.label :major %>
+      <%= f.text_field :major %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+    </div>
+<% end %>
