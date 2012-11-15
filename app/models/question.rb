@@ -35,8 +35,7 @@ class Question < ActiveRecord::Base
     options[:number_of_goods] ||= 4
     options[:value_range] ||= [0,2]
     options[:effect_range] ||= [-3,3]
-    options[:duration] ||= 600
-    
+
     # generate random values
     values = {} # this could be an array but effects is a hash so I'm making this a hash as well
     goods = (1..options[:number_of_goods]).to_a
