@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20121114044020) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
+  add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
+
   create_table "questions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "previous_question_id"
@@ -32,14 +35,17 @@ ActiveRecord::Schema.define(:version => 20121114044020) do
     t.datetime "updated_at",           :null => false
   end
 
+  add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "lab_number"
     t.integer  "age"
+    t.integer  "current_question_id"
     t.string   "year"
     t.string   "major"
     t.string   "gender"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
 end

@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessible :age, :gender, :lab_number, :major, :year
   has_many :questions, order: 'created_at ASC'
-  
+  belongs_to :current_question, class_name: 'Question'
+    
   after_create :generate_questions
   
   def first_unanswered_question
@@ -14,6 +15,9 @@ class User < ActiveRecord::Base
     logger.info 'Generating demo question...'
     demo = build_random_question number_of_goods: 3, duration: 600
     demo.save
+    
+    logger.info 'Assigning demo question to users current_question'
+    update_column(:current_question_id, demo.id)
     
     logger.info 'Generating question 1'
     question1 = build_random_question number_of_goods: 4, duration: 900, previous_question: demo
@@ -45,7 +49,6 @@ class User < ActiveRecord::Base
   # duration: duration in seconds
   # previous_question: the previous question (default is nil)
   def build_random_question(params = {})
-    
     # default values
     params[:previous_question] ||= nil
     params[:duration]          ||= 600

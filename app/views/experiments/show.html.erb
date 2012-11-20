@@ -1,0 +1,33 @@
+<h1>Question <%= @question.number %></h1>
+<ul>Menu
+  <% @question.goods.each do |number, value| %>
+    <li>Good <%= number %> has a value of <%= value %></li>
+  <% end %>
+  <li>An all inclusive bundle of all the goods has a value of <%= @question.combo %></li>
+</ul>
+
+<ul>Effects
+  <% @question.effects.each do |bundle, value| %>
+    <li>
+      Chosen individually, <%= bundle.size == 1 ? 'good' : 'goods' %> <%= bundle %> 
+      have an additive effect of <%= value %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Choose a set of individual goods or the all inclusive bundle </h2>
+<%= form_tag experiment_path, { method: :put } do %>
+  <div>
+    <label>Goods</label><br />
+    <% @question.goods.each do |number, value| %>
+      <%= "Good #{number}" %> <%= check_box_tag 'good_numbers[]', number %> <br />
+    <% end %>
+  </div>
+
+  <div>
+    <label>All Inclusive Bundle</label><br />
+    <%= "All inclusive bundle" %> <%= check_box_tag 'combo' %>
+  </div>
+  
+  <%= button_tag 'next question' %>
+<% end %>

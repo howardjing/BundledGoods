@@ -1,7 +1,7 @@
 Goods::Application.routes.draw do
   
   resources :users, only: [:new, :create, :edit, :update]
-  
+  resource :experiment
   
   match 'instructions', to: 'pages#instructions'
   match 'thanks', to: 'pages#thanks'

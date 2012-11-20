@@ -7,7 +7,8 @@ class Question < ActiveRecord::Base
   belongs_to :previous_question, class_name: 'Question'
   
   has_one :answer
-  
+  alias_attribute :goods, :values
+    
   # the values and bundle_effects of the various goods
   serialize :values, JSON
   serialize :effects, JSON
@@ -18,6 +19,16 @@ class Question < ActiveRecord::Base
   
   def last_question?
     next_question.nil?
+  end
+  
+  def number
+    # too lazy to add number column to questions table, doing it recursively
+    # most likely slow as hell
+    if first_question?
+      0
+    else
+      previous_question.number + 1
+    end
   end
   
   # Use this function to generate a random question
@@ -51,11 +62,16 @@ class Question < ActiveRecord::Base
       effects[combo] = Random.rand(options[:effect_range].first .. options[:effect_range].last)
     end
     
-    question = new()
+    question = new
     question.values = values
     question.effects = effects
     
     question
+  end
+  
+  def combo
+    # unfortunate choice of name (sum of goods + 1)
+    values.values.reduce(1, :+)
   end
   
 end
