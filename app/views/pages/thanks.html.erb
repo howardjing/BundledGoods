@@ -1,1 +1,10 @@
-<h1>Your thanks go here</h1>
+<h1>Thank you</h1>
+<b>Your choices:</b>
+<% current_user.questions.each_with_index do |question, number| %>
+  <div>
+    Question <%= number %>) <%= display_answer(question) %>, for a value of <%= question.answer.try(:value) %>
+  </div>
+<% end %>
+
+<b>Your total score: <%= current_user.score %></b><br />
+<%= link_to 'Again', new_user_path %>

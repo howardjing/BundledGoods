@@ -26,8 +26,18 @@
 
   <div>
     <label>All Inclusive Bundle</label><br />
-    <%= "All inclusive bundle" %> <%= check_box_tag 'combo' %>
+    <%= "Combo" %> <%= check_box_tag 'combo' %>
   </div>
   
   <%= button_tag 'next question' %>
 <% end %>
+
+<h1>Solutions</h1>
+<ul>
+  <% combinations = 1.upto(@question.goods.size)
+                    .flat_map { |n| @question.goods.keys.map(&:to_i).combination(n).to_a } %>
+  <% combinations.each do |combo| %>
+  <li>Goods <%= combo %>, Total Value: <%= @question.bundle combo %></li>
+  <% end %>
+  <li>Combo, Total Value: <%= @question.combo %>
+</ul>

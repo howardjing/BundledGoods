@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
   attr_accessible :age, :gender, :lab_number, :major, :year
   has_many :questions, order: 'created_at ASC'
+  has_many :answers, through: :questions
   belongs_to :current_question, class_name: 'Question'
     
   after_create :generate_questions
   
-  def first_unanswered_question
-    questions.find_by_previous_question_id(nil)
+  def score
+    answers.map(&:value).reduce(0, :+)
   end
   
   private

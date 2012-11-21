@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(:version => 20121114044020) do
 
   create_table "answers", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "question_id"
     t.text     "content"
     t.datetime "created_at",  :null => false
@@ -22,7 +21,6 @@ ActiveRecord::Schema.define(:version => 20121114044020) do
   end
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
-  add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
 
   create_table "questions", :force => true do |t|
     t.integer  "user_id"

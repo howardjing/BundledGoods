@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_filter :require_user, only: [:edit, :update]
   
   def new
+    sign_out
     @user = User.new
   end
   

@@ -70,8 +70,13 @@ class Question < ActiveRecord::Base
   end
   
   def combo
-    # unfortunate choice of name (sum of goods + 1)
-    values.values.reduce(1, :+)
+    # (sum of goods + 1)
+    goods.values.reduce(1, :+)
+  end
+  
+  def bundle(choices)
+    # (sum of effects + sum of goods values)
+    (effects[choices.to_s] || 0) + choices.map{ |i| goods[i.to_s] }.reduce(0, :+)
   end
   
 end
