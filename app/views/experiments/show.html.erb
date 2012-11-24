@@ -9,8 +9,8 @@
 <ul>Effects
   <% @question.effects.each do |bundle, value| %>
     <li>
-      Chosen individually, <%= bundle.size == 1 ? 'good' : 'goods' %> <%= bundle %> 
-      have an additive effect of <%= value %>
+      Purchasing <%= bundle.size == 1 ? 'good' : 'goods' %> <%= bundle %> in an exclusive bundle
+      makes you value the bundle <%= value %> more than if you summed the individual goods.
     </li>
   <% end %>
 </ul>
