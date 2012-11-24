@@ -69,7 +69,11 @@ class Question < ActiveRecord::Base
     question
   end
   
-  def combo
+  def combo_noeffect  #this will go in the menu
+  	goods.values.reduce(1, :+)
+  end
+  
+  def combo_witheffect #this will be the "solution" final value
     # (sum of goods + 1)
     goods.values.reduce(1, :+) + effects[goods.keys.map{ |key| key.to_i}.to_s]
   end

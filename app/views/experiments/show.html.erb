@@ -3,7 +3,7 @@
   <% @question.goods.each do |number, value| %>
     <li>Good <%= number %> has a value of <%= value %></li>
   <% end %>
-  <li>An all inclusive bundle of all the goods has a value of <%= @question.combo %></li>
+  <li>An all inclusive bundle of all the goods has a value of <%= @question.combo_noeffect %></li>
 </ul>
 
 <ul>Effects
@@ -39,5 +39,5 @@
   <% combinations.each do |combo| %>
   <li>Goods <%= combo %>, Total Value: <%= @question.bundle combo %></li>
   <% end %>
-  <li>Combo, Total Value: <%= @question.combo %>
+  <li>Combo, Total Value: <%= @question.combo_witheffect %>
 </ul>
