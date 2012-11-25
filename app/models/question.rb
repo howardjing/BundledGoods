@@ -75,7 +75,7 @@ class Question < ActiveRecord::Base
   
   def combo_witheffect #this will be the "solution" final value
     # (sum of goods + 1)
-    goods.values.reduce(1, :+) + effects[goods.keys.map{ |key| key.to_i}.to_s]
+    combo_noeffect + effects[goods.keys.map{ |key| key.to_i}.to_s]
   end
   
   def bundle(choices)

@@ -11,7 +11,7 @@ class Answer < ActiveRecord::Base
     if content['choice'] == 'goods'
       question.bundle(content['goods'])
     elsif content['choice'] == 'combo'
-      question.combo
+      question.combo_witheffect
     else
       0
     end
