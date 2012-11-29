@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
   validates_presence_of :lab_number
   
   def score
-    valid_answers.map(&:value).reduce(0, :+)
+    scorable_answers.map(&:value).reduce(0, :+)
   end
   
-  def valid_answers
-    answers - [answers.find{ |ans| ans.number == 0 }]
+  def scorable_answers
+    answers.find_all(&:scorable?)
   end
 
   private
