@@ -2,6 +2,7 @@ class Question < ActiveRecord::Base
   
   #validates_presence_of :user
   belongs_to :user
+  belongs_to :instruction
   
   has_one :next_question, class_name: 'Question', foreign_key: 'previous_question_id'
   belongs_to :previous_question, class_name: 'Question'
@@ -9,26 +10,44 @@ class Question < ActiveRecord::Base
   has_one :answer
   alias_attribute :goods, :values
     
+  validates_presence_of :instruction
+  
+  delegate :number, to: :instruction
+  
   # the values and bundle_effects of the various goods
   serialize :values, JSON
   serialize :effects, JSON
   
+  def instructions
+    instruction.content
+  end    
+  
   def first_question?
     previous_question.nil?
   end
-  
+
   def last_question?
     next_question.nil?
   end
   
-  def number
-    # too lazy to add number column to questions table, doing it recursively
-    # most likely slow as hell
-    if first_question?
-      0
-    else
-      previous_question.number + 1
-    end
+  def started?
+    !time_started.nil?
+  end
+  
+  def time_remaining
+    [duration - seconds_since_started, 0].max
+  end
+  
+  def expired?
+    time_remaining == 0
+  end
+  
+  def name
+    "Question #{number}"
+  end
+  
+  def demo?
+    number == 0
   end
   
   # Use this function to generate a random question
@@ -81,6 +100,20 @@ class Question < ActiveRecord::Base
   def bundle(choices)
     # (sum of effects + sum of goods values)
     (effects[choices.to_s] || 0) + choices.map{ |i| goods[i.to_s] }.reduce(0, :+)
+  end
+  
+  def optimal_value
+    999
+  end
+  
+  private
+  
+  def seconds_since_started
+    if started?
+      (Time.zone.now - time_started).to_i
+    else
+      0
+    end
   end
   
 end

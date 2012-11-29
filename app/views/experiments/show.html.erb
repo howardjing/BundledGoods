@@ -1,37 +1,67 @@
+<%= render 'instructions' %>
+
 <h1>Question <%= @question.number %></h1>
-<ul>Menu
-  <% @question.goods.each do |number, value| %>
-    <li>Good <%= number %> has a value of <%= value %></li>
-  <% end %>
-  <li>An all inclusive bundle of all the goods has a value of <%= @question.combo_noeffect %></li>
-</ul>
 
-<ul>Effects
-  <% @question.effects.each do |bundle, value| %>
-    <li>
-      Purchasing <%= bundle.size == 1 ? 'good' : 'goods' %> <%= bundle %> in an exclusive bundle
-      makes you value the bundle <%= value %> more than if you summed the individual goods.
-    </li>
-  <% end %>
-</ul>
-
-<h2>Choose a set of individual goods or the all inclusive bundle </h2>
-<%= form_tag experiment_path, { method: :put } do %>
-  <div>
-    <label>Goods</label><br />
-    <% @question.goods.each do |number, value| %>
-      <%= "Good #{number}" %> <%= check_box_tag 'good_numbers[]', number %> <br />
-    <% end %>
-  </div>
-
-  <div>
-    <label>All Inclusive Bundle</label><br />
-    <%= "Combo" %> <%= check_box_tag 'combo' %>
+<div class="row">
+  <div class="span6">
+    <table class="table table-bordered">
+      <thead><tr><th>Goods and Values</th></tr></thead>
+      <% @question.goods.each do |number, value| %>
+        <tr><td>Good <%= number %> has a value of <%= value %></td></tr>
+      <% end %>
+      <tr>
+        <td>
+          An all inclusive combo of all the goods has a value of <%= @question.combo_noeffect %>
+        </td>
+      </tr>
+    </table>
   </div>
   
-  <%= button_tag 'next question' %>
-<% end %>
+  <div class="span8">
+    <table class="table table-bordered">
+      <thead><tr><th>Complementary Effects</th></tr></thead>
+      <% @question.effects.each do |bundle, value| %>
+        <tr>
+          <td class="show-statement">
+            Click to show effects of <%= bundle.size == 1 ? 'good' : 'goods' %> <%= bundle %>
+          </td>
+          <td class="explanation">
+            Purchasing <%= bundle.size == 1 ? 'good' : 'goods' %> <%= bundle %> in an exclusive bundle
+            makes you value the bundle <%= value %> more than if you summed the individual goods.
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 
+  
+<div class="choices span4">
+  <div>
+    </div>
+  <h2>Your choice</h2> (<span id="timer" data-seconds="<%= @question.time_remaining %>"></span>)
+  <%= form_tag experiment_path, { method: :put } do %>
+    <div class="row">
+      <div class="span2">
+        <label><b>Choose goods</b></label>
+        <% @question.goods.each do |number, value| %>
+          <%= check_box_tag 'good_numbers[]', number %> <%= "Good #{number}" %> <br />
+        <% end %>
+      </div>
+
+      <div class="span2">
+        <label><b>Choose combo</b></label>
+        <%= check_box_tag 'combo' %> <%= "Combo Package" %> 
+      </div>
+      
+      <%= hidden_field_tag 'expired', @question.expired? %>
+
+      <%= button_tag 'choose', class: "btn btn-primary offset2" %>
+    </div>
+  <% end %>
+</div>
+
+<% unless Rails.env.production? %>
 <h1>Solutions</h1>
 <ul>
   <% combinations = 1.upto(@question.goods.size)
@@ -41,3 +71,4 @@
   <% end %>
   <li>Combo, Total Value: <%= @question.combo_witheffect %>
 </ul>
+<% end %>

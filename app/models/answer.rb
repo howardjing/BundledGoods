@@ -1,7 +1,10 @@
 class Answer < ActiveRecord::Base
   
   belongs_to :question
+  
   validates_presence_of :question
+  validate :demo_answer_must_be_optimal
+  
   delegate :user, to: :question
   
   attr_accessible :content
@@ -15,5 +18,19 @@ class Answer < ActiveRecord::Base
     else
       0
     end
+  end
+  
+  private
+  
+  def demo_answer_must_be_optimal
+    if should_validate?
+      if question.optimal_value > value
+        errors[:base] << "This is not an optimal answer"
+      end
+    end
+  end
+  
+  def should_validate?
+    question.demo? && content[:expired] == false
   end
 end

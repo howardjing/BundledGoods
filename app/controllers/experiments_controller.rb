@@ -14,29 +14,52 @@ class ExperimentsController < ApplicationController
     answer = @question.build_answer
     if params[:good_numbers]
       goods = params[:good_numbers].map(&:to_i)
-      answer.content = { choice: :goods, goods: goods }
+      content = { choice: :goods, goods: goods }
     elsif params[:combo]
-      answer.content = { choice: :combo }
+      content = { choice: :combo }
     else
-      answer.content = { choice: :unanswered }
+      content = { choice: :unanswered }
     end
-    answer.save
     
-    # move to next question
-    current_user.current_question = @question.next_question
-    current_user.save
+    answer.content = content.merge( expired: params[:expired] == 'true' )
+    
+    if answer.save
+      # move to next question
+      current_user.current_question = @question.next_question
+      current_user.save
+      alert = ""
+    else
+      alert = "You have answered this question incorrectly, please try again."
+    end
     
     # go to next step
-    if current_user.current_question
-      redirect_to experiment_path
+    redirect_to next_path, alert: alert
+  end
+  
+  # called by the javascript timer
+  def start_question
+    logger.debug "Received start question with time: #{params[:start_time]}"
+    if @question.started?
+      logger.error 'Question #{@question.id} has already been started at #{@question.time_started}'
     else
-      redirect_to thanks_path
+      start_time = Time.zone.parse(params[:start_time]) # rescue DateTime.now 
+      @question.time_started = start_time
+      @question.save
     end
+    head :ok
   end
   
   private
   
   def load_current_question
     @question = current_user.current_question
+  end
+  
+  def next_path
+    if current_user.current_question
+      experiment_path
+    else
+      thanks_path
+    end
   end
 end

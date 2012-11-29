@@ -1,0 +1,14 @@
+<div class="modal hide fade in out" id="instructions_modal" data-started="<%= @question.started? %>">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3><%= @question.name %> Instructions</h3>
+  </div>
+  
+  <div class="modal-body">
+		<%= @question.instructions.html_safe if @question.instructions.present? %>
+  </div>
+  
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>
