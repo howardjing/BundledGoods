@@ -103,7 +103,30 @@ class Question < ActiveRecord::Base
   end
   
   def optimal_value
-    999
+    max = -99999 # really small number
+    
+    # brute force hacky solution
+    each_bundle do |b|
+      if max < bundle(b)
+        max = bundle(b)
+      end
+    end
+    
+    if max < combo_witheffect
+      max = combo_witheffect
+    end
+    
+    max
+  end
+  
+  def each_bundle
+    combinations = 1.upto(goods.size).flat_map { |n| 
+      goods.keys.map(&:to_i).combination(n).to_a
+    }
+    
+    combinations.each do |combination|
+      yield(combination)
+    end
   end
   
   private

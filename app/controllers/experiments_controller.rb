@@ -14,20 +14,20 @@ class ExperimentsController < ApplicationController
     answer = @question.build_answer
     if params[:good_numbers]
       goods = params[:good_numbers].map(&:to_i)
-      content = { choice: :goods, goods: goods }
+      content = { 'choice' => 'goods', 'goods' => goods }
     elsif params[:combo]
-      content = { choice: :combo }
+      content = { 'choice' => 'combo' }
     else
-      content = { choice: :unanswered }
+      content = { 'choice' => 'unanswered' }
     end
     
-    answer.content = content.merge( expired: params[:expired] == 'true' )
+    answer.content = content.merge( 'expired' => params[:expired] == 'true' )
     
     if answer.save
       # move to next question
       current_user.current_question = @question.next_question
       current_user.save
-      alert = ""
+      alert = nil
     else
       alert = "You have answered this question incorrectly, please try again."
     end

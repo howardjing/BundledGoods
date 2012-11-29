@@ -25,12 +25,15 @@ class Answer < ActiveRecord::Base
   def demo_answer_must_be_optimal
     if should_validate?
       if question.optimal_value > value
+        logger.debug "CONTENT: #{content}"
+        logger.debug "THE OPTIMAL VALUE: #{question.optimal_value}"
+        logger.debug "THE GIVEN VALUE: #{value}"
         errors[:base] << "This is not an optimal answer"
       end
     end
   end
   
   def should_validate?
-    question.demo? && content[:expired] == false
+    question.demo? && content['expired'] == false
   end
 end
