@@ -5,7 +5,7 @@ class Answer < ActiveRecord::Base
   validates_presence_of :question
   validate :demo_answer_must_be_optimal
   
-  delegate :user, to: :question
+  delegate :user, :number, to: :question
   
   attr_accessible :content
   serialize :content, JSON

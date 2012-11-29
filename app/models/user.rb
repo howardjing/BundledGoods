@@ -5,11 +5,16 @@ class User < ActiveRecord::Base
   belongs_to :current_question, class_name: 'Question'
     
   after_create :generate_questions
+  validates_presence_of :lab_number
   
   def score
-    answers.map(&:value).reduce(0, :+)
+    valid_answers.map(&:value).reduce(0, :+)
   end
   
+  def valid_answers
+    answers - [answers.find{ |ans| ans.number == 0 }]
+  end
+
   private
   
   def generate_questions

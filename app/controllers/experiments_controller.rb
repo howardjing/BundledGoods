@@ -59,7 +59,7 @@ class ExperimentsController < ApplicationController
     if current_user.current_question
       experiment_path
     else
-      thanks_path
+      edit_user_path(current_user)
     end
   end
 end
