@@ -5,6 +5,18 @@ class PagesController < ApplicationController
   def instructions
   end
   
+  def instructions1
+  end
+  
+  def instructions2
+  end
+  
+  def instructions3
+  end
+  
+  def demo4
+  end
+  
   def thanks
   end
   

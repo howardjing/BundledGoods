@@ -11,7 +11,7 @@ demo_instructions = <<-END
 <li>You will be faced with a decision to purchase a bundle of arbitrary goods
 x<sub>1</sub>, x<sub>2</sub> x<sub>3</sub> denoted as Good 1, Good 2, and Good 3.</li>
 <br>
-<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
+<li>There is a menu of values for goods that are given to you. 
 	</li>
 <br>
 <li> Purchasing goods together will have a Bundle Effect however. 
@@ -27,7 +27,7 @@ utilities."</i>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
-<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1 
 more than if you summed the individual utilities."</i> <br></li><br>
 <li>The total utility from the transaction is the Value gained from purchasing
 the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
@@ -45,11 +45,10 @@ instructions1 = <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub> denoted as Good 1, Good 2, 
 Good 3, and Good 4.</li>
 <br>
-<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
-	</li>
+<li>There is a menu of values for goods that are given to you.</li>
 <br>
-<li>The goods in this experiment are equally distributed between 0 and 3. This means each good 
-will have a different value associated with it.</li>
+<li>The value of the goods in this experiment are equally distributed between 0 and 2. This means each good 
+will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have a Bundle Effect however. 
 It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
@@ -64,8 +63,11 @@ utilities."</i>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
-<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1 
 more than if you summed the individual utilities."</i> <br></li><br>
+<li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
+This means each bundle will have an equal chance of being assigned a value between the given range.
+<br>
 <li>The total utility from the transaction is the Value gained from purchasing
 the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
@@ -84,11 +86,11 @@ instructions2 = <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub>, denoted as 
 Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 <br>
-<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
+<li>There is a menu of values for goods that are given to you.
 	</li>
 <br>
-<li>The goods in this experiment are equally distributed between -1 and 3. This means each good 
-will have a different value associated with it.</li>
+<li>The value of the goods in this experiment are equally distributed between 0 and 2. This means each good 
+will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have Bundle effects however. 
 It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
@@ -109,6 +111,9 @@ less than if you summed the individual utilities."</i> <br></li><br>
 <li>The total utility from the transaction is the value gained from purchasing
 the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
+<li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
+This means each bundle will have an equal chance of being assigned a value between the given range.
+<br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
 <li>There is a time limit of 20 minutes for this experiment. The final choice you have 
@@ -123,11 +128,11 @@ instructions3 = <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub> denoted as Good 1, Good 2, 
 Good 3, and Good 4.</li>
 <br>
-<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
+<li>There is a menu of values for goods that are given to you.
 	</li>
 <br>
-<li>The goods in this experiment are equally distributed between 0 and 3. This means each good 
-will have a different value associated with it.</li>
+<li>The value of the goods in this experiment are equally distributed between 0 and 2. This means each good 
+will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have a Bundle Effect however. 
 It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
@@ -142,18 +147,21 @@ utilities."</i>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
-<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1 
 more than if you summed the individual utilities."</i> <br></li><br>
 <li> In mathematical terms,
 <br>
 <br>
-<i> V(x<sub>1</sub>, x<sub>2</sub>) = [u(x<sub>1</sub>) + u(x<sub>2</sub>)] + 1.0.</i></li>
+<i> V(x<sub>1</sub>, x<sub>2</sub>) = [u(x<sub>1</sub>) + u(x<sub>2</sub>)] 1.</i></li>
 <br>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
-<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1 
 more than if you summed the individual utilities."</i> <br></li><br>
+<li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
+This means each bundle will have an equal chance of being assigned a value between the given range.
+<br>
 <li>The total utility from the transaction is the Value gained from purchasing
 the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
@@ -169,11 +177,11 @@ instructions4 = <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub>, denoted as 
 Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 <br>
-<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
+<li>There is a menu of values for goods that are given to you.
 	</li>
 <br>
-<li>The goods in this experiment are equally distributed between -1 and 3. This means each good 
-will have a different value associated with it.</li>
+<li>The value of the goods in this experiment are equally distributed between 0 and 2. This means each good 
+will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have Bundle effects however. 
 It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
@@ -199,6 +207,9 @@ less than if you summed the individual utilities."</i> <br></li><br>
 <li>The total utility from the transaction is the Value gained from purchasing
 the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
+<li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
+This means each bundle will have an equal chance of being assigned a value between the given range.
+<br>
 <br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
@@ -214,11 +225,11 @@ instructions5 = <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub> denoted as Good 1, Good 2, 
 Good 3, and Good 4.</li>
 <br>
-<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
+<li>There is a menu of values for goods that are given to you.
 	</li>
 <br>
-<li>The goods in this experiment are equally distributed between 0 and 3. This means each good 
-will have a different value associated with it.</li>
+<li>The value of the goods in this experiment are equally distributed between 0 and 2. This means each good 
+will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have a Bundle Effect however. 
 It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
@@ -233,8 +244,11 @@ utilities."</i>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
-<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle + 1.0 
+<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1 
 more than if you summed the individual utilities."</i> <br></li><br>
+<li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
+This means each bundle will have an equal chance of being assigned a value between the given range.
+<br>
 <li>The total utility from the transaction is the Value gained from purchasing
 the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
@@ -264,11 +278,11 @@ instructions6 = <<-asdf
 x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub>, denoted as 
 Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 <br>
-<li>There is a menu of values for goods that are given to you. The location of the values are arranged in a random order.
+<li>There is a menu of values for goods that are given to you.
 	</li>
 <br>
-<li>The goods in this experiment are equally distributed between -1 and 3. This means each good 
-will have a different value associated with it.</li>
+<li>The value of the goods in this experiment are equally distributed between 0 and 2. This means each good 
+will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have Bundle effects however. 
 It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
@@ -285,6 +299,9 @@ and five would be as follows:</li>
 <br>
 <i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
 less than if you summed the individual utilities."</i> <br></li><br>
+<br>
+<li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
+This means each bundle will have an equal chance of being assigned a value between the given range.
 <br>
 <li>The total utility from the transaction is the value gained from purchasing
 the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 

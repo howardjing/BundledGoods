@@ -11,7 +11,7 @@
       <% end %>
       <tr>
         <td>
-          An all inclusive combo of all the goods has a value of <%= @question.combo_noeffect %>
+          An all inclusive Combo Package of all the goods has a value of <%= @question.combo_noeffect %>
         </td>
       </tr>
     </table>
@@ -19,11 +19,12 @@
   
   <div class="span8">
     <table class="table table-bordered">
-      <thead><tr><th>Complementary Effects</th></tr></thead>
+      <thead><tr><th>You value the bundles in the following ways:</th></tr></thead>
       <% @question.effects.each do |bundle, value| %>
         <tr>
           <td class="show-statement">
-            Click to show effects of <%= bundle.size == 1 ? 'good' : 'goods' %> <%= bundle %>
+            [Click to show statement] 
+            <%= bundle %>
           </td>
           <td class="explanation">
             Purchasing <%= bundle.size == 1 ? 'good' : 'goods' %> <%= bundle %> in an exclusive bundle
@@ -43,7 +44,7 @@
   <%= form_tag experiment_path, { method: :put } do %>
     <div class="row">
       <div class="span2">
-        <label><b>Choose goods</b></label>
+        <label><b>Choice Menu</b></label>
         <% @question.goods.each do |number, value| %>
           <%= check_box_tag 'good_numbers[]', number %> <%= "Good #{number}" %> <br />
         <% end %>

@@ -1,0 +1,212 @@
+<h1>Tutorial</h1>
+
+<script>
+
+
+  $(function() {
+    validator($("#problem1"));
+    
+    $("#next").click(function(event) {
+      if (!isEverythingValid()) {
+        event.preventDefault();
+      }
+    });
+  });
+
+  var validator = function(elem) {
+  
+    elem.children("button").click(function() {
+        
+      var success = 'control-group success';
+      var error = 'control-group error';
+      var everythingCorrect = true;
+
+      elem.children(".question").each(function() {
+
+        if (isValid($(this))) {
+          if ($(this).attr('class').search(success) === -1) {
+            $(this).removeClass(error);
+            $(this).addClass(success);
+          }
+        } else {
+          if ($(this).attr('class').search(error) === -1) {
+            $(this).removeClass(success);
+            $(this).addClass(error);
+          }
+          everythingCorrect = false;
+        }
+      });
+
+      if (everythingCorrect) {
+        elem.removeClass(error);
+        elem.addClass(success);
+        elem.children(".feedback").text("You've got it!");
+      } else {
+        elem.removeClass(success);
+        elem.addClass(error);
+        elem.children(".feedback").text("You are incorrect, please try again.");
+      }
+
+    });
+  
+  }
+
+  var isValid = function(elem) {
+    var input = elem.children(".response").val();
+    var correct = elem.children(":hidden").val();
+    if (input === correct) {
+      return true;
+    // if answer is numeric, then compare numbers
+    } else {
+      if (!isNaN(correct - 0)) {
+        return (correct - 0 === input - 0);
+      }
+    }
+    return false;
+  }
+
+  var isEverythingValid = function() {
+    var problems = $("div").filter(function() { return this.id.match("problem"); });
+    
+    var areQuestionsForEveryProblemCorrect = problems.map(function() {
+      
+      var areQuestionsForProblemCorrect = $(this).children(".question").map(function() {
+        return isValid($(this));  
+      });
+
+      var booleanArray = $.makeArray(areQuestionsForProblemCorrect);
+      return booleanArray.reduce(function(x,y) { return x && y; });
+       
+    });
+
+    var booleanArray = $.makeArray(areQuestionsForEveryProblemCorrect);
+    return booleanArray.reduce(function(x,y) { return x && y; });
+
+  }
+
+</script>
+
+<STYLE type="text/css">
+  DIV.mypars {text-align: left}
+ </STYLE>
+<BODY>
+
+<div class="container">
+ <DIV class="mypars">
+
+<P>
+	This tutorial will show you how to calculate your final value of purchasing goods 
+	in a bundle. You can check your answers by clicking the "Check" button next to the problem. 
+	If the answer is correct, the text field will appear green and you will be greeted with a 
+	message that reads "You've got it!". If it is incorrect, the text field will appear red 
+	and a message will appear saying "You are incorrect, please try again."
+<P>
+	Here are the instructions that will be given.
+<P>
+	<ul>
+	<li>You will be faced with a decision to purchase a bundle of arbitrary goods
+	x<sub>1</sub>, x<sub>2</sub> x<sub>3</sub> denoted as Good 1, Good 2, and Good 3.
+	</li>
+<br>
+	<li> There is a menu of values for goods that are given to you.
+	</li>
+<br>
+	<li> Purchasing goods together will have a bundle effect however. 
+	It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
+	effect &lambda;<sub>i,j</sub> (which we will call the "lambda" value),
+<br>
+<br>
+		<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
+		makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
+		utilities."</i>
+<br>
+<br>
+	<li>For a concrete example, the statement for bundle with goods one and two
+	would be as follows:</li>
+<br>
+		<i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1
+		more than if you summed the individual utilities."</i> <br>
+<br>
+		<li>
+			The total utility from the transaction is the sum of the values gained from purchasing
+			the goods you have chosen added with the Bundle Effect stated. <B>THE FINAL VALUE YOU CALCULATE 
+			IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B>
+		</li>
+<br>
+		<li>
+			Your monetary reward is based on the total utility from your final choice.
+		</li>
+</ul>
+
+<P>
+	Based on these instructions, calculate the monetary reward you would receive for the following
+	bundle.
+<P>
+	<b>You value Goods 1 and 2 in the following way.</b>
+<P>Good 1's Value: 2
+<P>Good 2's Value: 1 
+<P><b>You value the bundle in the following way:</b>
+<P>
+	"Purchasing goods one and two in an exclusive bundle makes you <i>value the bundle 1
+	 more than </i> if you <i>summed the individual utilities</i>."
+<P>
+	<b>How much money would you receive if you purchased Goods 1 and 2 together in an exclusive bundle? 
+	</b>
+<P>
+
+<div class="well" id="problem1">
+    [
+	(
+	
+	<span style="display:inline-block" class="question">
+    <label>Good 1's Value</label>
+    <input type="text" class="span2 response" placeholder="What is it's value?…" />
+    <input type="hidden" value="2" />
+  	</span>
+  
+    <span style="display:inline-block" class="question">
+    <label style="display:block">Operator</label>
+		<select class="input-small response">
+		  <option> </option>
+  	  <option>+</option>
+  	  <option>-</option>
+  	  <option>/</option>
+  	  <option>*</option>
+    </select>
+    <input type="hidden" value="+" />
+  	</span>
+  
+	<span style="display:inline-block" class="question">
+    <label>Good 2's Utility</label>
+    <input type="text" class="span2 response" placeholder="What is it's value?…" />
+    <input type="hidden" value="1" />
+  </span>
+  	)
+  	 <span style="display:inline-block" class="question">
+    <label style="display:block">Operator</label>
+		<select class="input-small response">
+		  <option> </option>
+  	  <option>+</option>
+  	  <option>-</option>
+  	  <option>/</option>
+  	  <option>*</option>
+    </select>
+    <input type="hidden" value="+" />
+  </span>
+  <span style="display:inline-block" class="question">
+    	<label>Bundle Effect</label>
+    	<input type="text" class="san2 response" placeholder="Lambda Value">
+    	<input type="hidden" value="1" />
+    </span> 
+  ]
+  	=
+	<span style="display:inline-block" class="question">
+    <label>Goods 1 and 2's Utility</label>
+    <input type="text" class="span2 response" placeholder="What is it's value?…" />
+    <input type="hidden" value="4" />
+ 	 </span>
+  <span class="help-block feedback"></span>
+  <button class="btn btn-primary">Check</button>
+</div>	
+
+<%= button_to 'Next', instructions3_path, :class => 'btn btn-primary', :id => 'next', :method => 'get' %>
