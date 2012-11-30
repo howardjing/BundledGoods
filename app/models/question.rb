@@ -88,6 +88,14 @@ class Question < ActiveRecord::Base
     question
   end
   
+  def statement_values
+  	if value >=0
+  	  + value
+  	else
+  	  value
+  	end
+  end
+  
   def combo_noeffect  #this will go in the menu
   	goods.values.reduce(1, :+)
   end
