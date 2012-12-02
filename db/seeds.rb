@@ -15,16 +15,9 @@ x<sub>1</sub>, x<sub>2</sub> x<sub>3</sub> denoted as Good 1, Good 2, and Good 3
 	</li>
 <br>
 <li> Purchasing goods together will have a Bundle Effect however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
-effect &lambda;<sub>i,j</sub>,
 <br>
 <br>
-<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
-utilities."</i>
-<br>
-<br>
-<li>For a concrete example, the statement for bundle with goods one and two
+<li>For a concrete example, a bundle effect for a statement containing goods one and two
 would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1 
@@ -51,16 +44,7 @@ Good 3, and Good 4.</li>
 will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have a Bundle Effect however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
-effect &lambda;<sub>i,j</sub>,
-<br>
-<br>
-<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
-utilities."</i>
-<br>
-<br>
-<li>For a concrete example, the statement for bundle with goods one and two
+For a concrete example, the bundle effect for a statement containing goods one and two
 would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1 
@@ -93,16 +77,7 @@ Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have Bundle effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
-effect &lambda;<sub>i,j</sub>,
-<br>
-<br>
-<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
-utilities."</i>
-<br>
-<br>
-<li>For a concrete example, the statement for bundle with goods two, three, four,
+For a concrete example, the bundle effect for a statement containing goods two, three, four,
 and five would be as follows:</li>
 <br>
 <i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
@@ -135,16 +110,7 @@ Good 3, and Good 4.</li>
 will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have a Bundle Effect however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
-effect &lambda;<sub>i,j</sub>,
-<br>
-<br>
-<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
-utilities."</i>
-<br>
-<br>
-<li>For a concrete example, the statement for bundle with goods one and two
+For a concrete example, the bundle effect for a statement containing goods one and two
 would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1 
@@ -184,16 +150,7 @@ Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have Bundle effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
-effect &lambda;<sub>i,j</sub>,
-<br>
-<br>
-<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
-utilities."</i>
-<br>
-<br>
-<li>For a concrete example, the statement for bundle with goods two, three, four, and five 
+For a concrete example, the bundle effect for a statement containing goods two, three, four, and five 
 would be as follows:</li>
 <br>
 <i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
@@ -232,16 +189,7 @@ Good 3, and Good 4.</li>
 will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have a Bundle Effect however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
-effect &lambda;<sub>i,j</sub>,
-<br>
-<br>
-<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
-utilities."</i>
-<br>
-<br>
-<li>For a concrete example, the statement for bundle with goods one and two
+For a concrete example, the bundle effect for a statement containing goods one and two
 would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1 
@@ -285,16 +233,7 @@ Good 1, Good 2, Good 3, Good 4, and Good 5.</li>
 will have a equal chance of being assigned a value between the given range.</li>
 <br>
 <li> Purchasing goods together will have Bundle effects however. 
-It will be stated as follows for goods x<sub>i</sub>, x<sub>j</sub> ; i &ne; j with bundle
-effect &lambda;<sub>i,j</sub>,
-<br>
-<br>
-<i>"Purchasing goods x<sub>i</sub> and x<sub>j</sub> in an exclusive bundle
-makes you value the bundle '&plusmn; &lambda;<sub>i,j</sub>' more than if you summed the individual
-utilities."</i>
-<br>
-<br>
-<li>For a concrete example, the statement for bundle with goods two, three, four,
+For a concrete example, the bundle effect for a statement containing goods two, three, four,
 and five would be as follows:</li>
 <br>
 <i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
