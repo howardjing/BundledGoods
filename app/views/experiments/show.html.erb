@@ -27,8 +27,7 @@
             <%= bundle %>
           </td>
           <td class="explanation">
-            Purchasing <%= bundle.size == 1 ? 'good' : 'goods' %> <%= bundle %> in an exclusive bundle
-            makes you value the bundle <%= value  %> more than if you summed the individual goods.
+            <%= question_explanation(bundle, value, @question.display_formula) %>
           </td>
         </tr>
       <% end %>
@@ -40,7 +39,10 @@
 <div class="choices span4">
   <div>
     </div>
-  <h2>Your choice</h2> (<span id="timer" data-seconds="<%= @question.time_remaining %>"></span>)
+  <h2>Your choice</h2> 
+  <span id="timer_block" data-visible="<%= @question.display_timer %>">
+    (<span id="timer" data-seconds="<%= @question.time_remaining %>"></span>)
+  </span>
   <%= form_tag experiment_path, { method: :put } do %>
     <div class="row">
       <div class="span2">
@@ -61,6 +63,8 @@
     </div>
   <% end %>
 </div>
+
+<%= render 'demo_form' %>
 
 <% unless Rails.env.production? %>
 <h1>Solutions</h1>

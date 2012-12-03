@@ -9,7 +9,7 @@ init = (instructionsModal) ->
   questionStarted = instructions.data('started')
   
   $(BundledGoods.timer).on 'expired', ->
-    sendQuestionEnded()
+    sendQuestionEnded() unless isDemoQuestion() # only submit if not the demo
     
   if questionStarted    
     resumeQuestion()
@@ -38,3 +38,6 @@ sendQuestionStarted = (timeStart) ->
 sendQuestionEnded = ->
   $('#expired').val('true')
   $('button[type=submit]').click()
+
+isDemoQuestion = ->
+  instructions.data('demo') == true

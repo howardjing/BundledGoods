@@ -11,6 +11,9 @@ jQuery ->
     $(@).prev().toggle()
     $(@).toggle()
     
+  # hide timer if it should be hidden
+  $('#timer_block').hide() if $('#timer_block').data('visible') == false
+  
   # timer needs to be initialized before instructions
   # since instructions depends on timer
   BundledGoods.timer.init($('#timer'))
@@ -18,3 +21,6 @@ jQuery ->
   
   # toggle between goods and combo
   BundledGoods.choice_toggler($('[name=good_numbers\\[\\]]'), $('[name=combo]'))
+  
+  # demo question
+  BundledGoods.demo_question.init($('#demo_form'))

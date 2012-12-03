@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129014358) do
+ActiveRecord::Schema.define(:version => 20121203001929) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -38,9 +38,11 @@ ActiveRecord::Schema.define(:version => 20121129014358) do
     t.datetime "time_started"
     t.text     "values"
     t.text     "effects"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.integer  "instruction_id",       :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.integer  "instruction_id",                          :null => false
+    t.boolean  "display_timer",        :default => true
+    t.boolean  "display_formula",      :default => false
   end
 
   add_index "questions", ["instruction_id"], :name => "index_questions_on_instruction_id"
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20121129014358) do
     t.string   "gender"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "chosen_question_id"
   end
 
 end

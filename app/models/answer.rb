@@ -20,11 +20,6 @@ class Answer < ActiveRecord::Base
     end
   end
   
-  # whether or not this answer should be counted when finding the user's score
-  def scorable?
-    !question.demo?
-  end
-  
   private
   
   def demo_answer_must_be_optimal

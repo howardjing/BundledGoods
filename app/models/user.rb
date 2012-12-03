@@ -2,21 +2,23 @@ class User < ActiveRecord::Base
   attr_accessible :age, :gender, :lab_number, :major, :year
   has_many :questions, order: 'created_at ASC'
   has_many :answers, through: :questions
+  has_one :chosen_question, class_name: 'Question'
   belongs_to :current_question, class_name: 'Question'
     
   after_create :generate_questions
   validates_presence_of :lab_number
   
   def score
-    scorable_answers.map(&:value).reduce(0, :+)
-  end
-  
-  def scorable_answers
-    answers.find_all(&:scorable?)
+    if chosen_question.answer
+      chosen_question.answer.value
+    else
+      0
+    end
   end
 
   private
   
+  # there are many things wrong with this method
   def generate_questions
     logger.info 'Generating demo question...'
     demo = build_random_question number_of_goods: 3, duration: 600
@@ -39,22 +41,33 @@ class User < ActiveRecord::Base
     logger.info 'Generating question 3'
     question3 = build_random_question number_of_goods: 4, duration: 900, previous_question: question2
     question3.instruction = Instruction.find_by_number(3)
+    question3.display_formula = true
     question3.save
     
     logger.info 'Generating question 4'
     question4 = build_random_question number_of_goods: 5, duration: 1200, previous_question: question3
     question4.instruction = Instruction.find_by_number(4)
+    question4.display_formula = true
     question4.save
     
     logger.info 'Generating question 5'
     question5 = build_random_question number_of_goods: 4, duration: BetaRandom.get_seconds, previous_question: question4
     question5.instruction = Instruction.find_by_number(5)
+    question5.display_timer = false
     question5.save
     
     logger.info 'Generating question 6'
     question6 = build_random_question number_of_goods: 5, duration: BetaRandom.get_seconds, previous_question: question5
     question6.instruction = Instruction.find_by_number(6)
+    question6.display_timer = false
     question6.save
+    
+    logger.info 'Choosing random question as the question that is judged'
+    valid_questions = [question1, question2, question3, question4, question5, question6]
+    logger.info "shuffling question ids: #{valid_questions.map(&:id)}"
+    random_question_id = valid_questions.shuffle.first.id
+    logger.info "Choosing question with id #{random_question_id}"
+    update_column :chosen_question_id, random_question_id 
   end
  
   # params

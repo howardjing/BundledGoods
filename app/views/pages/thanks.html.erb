@@ -6,5 +6,6 @@
   </div>
 <% end %>
 
+<p>The chosen question: <%= current_user.chosen_question.number %></p>
 <b>Your total score: <%= current_user.score %></b><br />
 <%= link_to 'Again', new_user_path %>
