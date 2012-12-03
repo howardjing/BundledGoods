@@ -18,7 +18,7 @@ initializeDemoForm = (demoFormElement) ->
   submit.on 'enable', ->
     enableSubmit()
   
-  submit.trigger('disable')
+  submit.trigger('disable') if demoForm.size() > 0
 
 
 validateAnswerListener = ->
