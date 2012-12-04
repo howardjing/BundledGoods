@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
       0
     end
   end
+  
+  def scorable_questions
+    questions.find_all { |question| !question.demo? }
+  end
 
   private
   
@@ -29,45 +33,55 @@ class User < ActiveRecord::Base
     update_column(:current_question_id, demo.id)
     
     logger.info 'Generating question 1'
-    question1 = build_random_question number_of_goods: 4, duration: 900, previous_question: demo
+    question1 = build_random_question number_of_goods: 4, duration: 900
     question1.instruction = Instruction.find_by_number(1)
     question1.save
 
     logger.info 'Generating question 2'
-    question2 = build_random_question number_of_goods: 5, duration: 1200, previous_question: question1
+    question2 = build_random_question number_of_goods: 5, duration: 1200
     question2.instruction = Instruction.find_by_number(2)
     question2.save
     
     logger.info 'Generating question 3'
-    question3 = build_random_question number_of_goods: 4, duration: 900, previous_question: question2
+    question3 = build_random_question number_of_goods: 4, duration: 900
     question3.instruction = Instruction.find_by_number(3)
     question3.display_formula = true
     question3.save
     
     logger.info 'Generating question 4'
-    question4 = build_random_question number_of_goods: 5, duration: 1200, previous_question: question3
+    question4 = build_random_question number_of_goods: 5, duration: 1200
     question4.instruction = Instruction.find_by_number(4)
     question4.display_formula = true
     question4.save
     
     logger.info 'Generating question 5'
-    question5 = build_random_question number_of_goods: 4, duration: BetaRandom.get_seconds, previous_question: question4
+    question5 = build_random_question number_of_goods: 4, duration: BetaRandom.get_seconds
     question5.instruction = Instruction.find_by_number(5)
     question5.display_timer = false
     question5.save
     
     logger.info 'Generating question 6'
-    question6 = build_random_question number_of_goods: 5, duration: BetaRandom.get_seconds, previous_question: question5
+    question6 = build_random_question number_of_goods: 5, duration: BetaRandom.get_seconds
     question6.instruction = Instruction.find_by_number(6)
     question6.display_timer = false
     question6.save
     
     logger.info 'Choosing random question as the question that is judged'
-    valid_questions = [question1, question2, question3, question4, question5, question6]
-    logger.info "shuffling question ids: #{valid_questions.map(&:id)}"
-    random_question_id = valid_questions.shuffle.first.id
-    logger.info "Choosing question with id #{random_question_id}"
+    random_question_id = scorable_questions.sample.id
     update_column :chosen_question_id, random_question_id 
+    
+    shuffle_scorable_questions
+  end
+  
+  def shuffle_scorable_questions
+    shuffled = scorable_questions.shuffle
+    
+    parent = current_question
+    shuffled.each do |question|
+      question.previous_question = parent
+      question.save!
+      parent = question
+    end
   end
  
   # params
@@ -82,7 +96,6 @@ class User < ActiveRecord::Base
     # build and return the question
     question = Question.generate_random(params.slice(:number_of_goods))
     question.user = self
-    question.previous_question = params[:previous_question]
     question.duration = params[:duration]
     question
   end
