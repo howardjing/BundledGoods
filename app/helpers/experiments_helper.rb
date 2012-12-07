@@ -2,7 +2,7 @@ module ExperimentsHelper
   
   def question_explanation(bundle, value, display_formula)
     if display_formula
-      formula_explanation(bundle, value)
+      formula_explanation(bundle, value) + verbose_explanation(bundle, value)
     else
       verbose_explanation(bundle, value)
     end
@@ -16,7 +16,7 @@ module ExperimentsHelper
   end
   
   def verbose_explanation(bundle, value)
-    "Purchasing goods #{bundle} in an exclusive bundle makes you value the bundle + #{value.abs} #{value < 0 ? "less" : "more"} than if you summed the individual utilities."
+    "Purchasing goods #{bundle} in an exclusive bundle makes you value the bundle #{value < 0 ? "-" : "+"} #{value.abs} more than if you summed the individual utilities."
   end
   
 end

@@ -27,8 +27,8 @@ the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALU
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
-<li>This experiment does not count towards your payment, and until you make the utility 
-maximizing choice, you will not be able to continue.</li><br>
+<li>This experiment does not count towards your payment, and until you plug in the correct values 
+and choose the optimal bundle, you will not be able to move forward.</li><br>
 END
 Instruction.create!(number: 0, content: demo_instructions)
 
@@ -52,8 +52,7 @@ more than if you summed the individual utilities."</i> <br></li><br>
 <li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
 This means each bundle will have an equal chance of being assigned a value between the given range.
 <br>
-<li>The total utility from the transaction is the Value gained from purchasing
-the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
+<li><B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
@@ -83,8 +82,7 @@ and five would be as follows:</li>
 <i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
 less than if you summed the individual utilities."</i> <br></li><br>
 <br>
-<li>The total utility from the transaction is the value gained from purchasing
-the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
+<li><B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
 This means each bundle will have an equal chance of being assigned a value between the given range.
@@ -128,8 +126,7 @@ more than if you summed the individual utilities."</i> <br></li><br>
 <li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
 This means each bundle will have an equal chance of being assigned a value between the given range.
 <br>
-<li>The total utility from the transaction is the Value gained from purchasing
-the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
+<li><B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>There is a time limit of 15 minutes for this experiment. The final choice you have 
 selected when the given timer runs out will be your final choice for the experiment.</li>
@@ -197,8 +194,7 @@ more than if you summed the individual utilities."</i> <br></li><br>
 <li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
 This means each bundle will have an equal chance of being assigned a value between the given range.
 <br>
-<li>The total utility from the transaction is the Value gained from purchasing
-the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
+<li><B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
@@ -242,8 +238,7 @@ less than if you summed the individual utilities."</i> <br></li><br>
 <li>Bundle Effects for each combination of goods will be equally distributed between -3 and 3. 
 This means each bundle will have an equal chance of being assigned a value between the given range.
 <br>
-<li>The total utility from the transaction is the value gained from purchasing
-the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
+<li><B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>
 <li>Your monetary reward is based on the total utility from your final choice.</li>
 <br>
