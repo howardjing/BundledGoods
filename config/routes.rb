@@ -4,6 +4,7 @@ Goods::Application.routes.draw do
   resource :experiment do
     post :start_question
   end
+  resources :stats, only: [:create]
   
   match 'instructions', to: 'pages#instructions'
   match 'instructions1', :to => 'pages#instructions1'

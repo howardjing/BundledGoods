@@ -22,11 +22,11 @@
       <thead><tr><th>You value the bundles in the following ways:</th></tr></thead>
       <% @question.effects.each do |bundle, value| %>
         <tr>
-          <td class="show-statement">
+          <td class="show-statement"  data-bundle="<%=bundle%>">
             [Click to show statement] 
             <%= bundle %>
           </td>
-          <td class="explanation">
+          <td class="explanation" data-bundle="<%=bundle%>">
             <%= question_explanation(bundle, value, @question.display_formula) %>
           </td>
         </tr>
@@ -48,7 +48,7 @@
       <div class="span2">
         <label><b>Choice Menu</b></label>
         <% @question.goods.each do |number, value| %>
-          <%= check_box_tag 'good_numbers[]', number %> <%= "Good #{number}" %> <br />
+          <%= check_box_tag 'good_numbers[]', number, false, data: { number: number } %> <%= "Good #{number}" %> <br />
         <% end %>
       </div>
 
@@ -66,6 +66,7 @@
 
 <%= render 'demo_form' %>
 
+<%= content_tag :div, nil, data: { question_id: @question.id }, id: 'question_id' %>
 <% unless Rails.env.production? %>
 <h1>Solutions</h1>
 <ul>

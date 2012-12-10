@@ -7,6 +7,8 @@ class Question < ActiveRecord::Base
   has_one :next_question, class_name: 'Question', foreign_key: 'previous_question_id'
   belongs_to :previous_question, class_name: 'Question'
   
+  has_many :question_stats
+  
   has_one :answer
   alias_attribute :goods, :values
     

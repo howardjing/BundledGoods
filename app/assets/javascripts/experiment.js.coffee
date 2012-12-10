@@ -24,3 +24,9 @@ jQuery ->
   
   # demo question
   BundledGoods.demo_question.init($('#demo_form'))
+  
+  # monitor menu clicks
+  BundledGoods.menu_monitor.init($('.show-statement'), $('.explanation'))
+  
+  # monitor choice clicks
+  BundledGoods.choice_monitor.init($('[name=good_numbers\\[\\]]'), $('[name=combo]'))
