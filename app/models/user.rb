@@ -33,25 +33,26 @@ class User < ActiveRecord::Base
     update_column(:current_question_id, demo.id)
     
     logger.info 'Generating question 1'
-    question1 = build_random_question number_of_goods: 4, duration: 900
+    question1 = build_random_question number_of_goods: 3, duration: 600
     question1.instruction = Instruction.find_by_number(1)
     question1.save
 
     logger.info 'Generating question 2'
-    question2 = build_random_question number_of_goods: 5, duration: 1200
+    question2 = build_random_question number_of_goods: 4, duration: 900
     question2.instruction = Instruction.find_by_number(2)
     question2.save
     
     logger.info 'Generating question 3'
-    question3 = build_random_question number_of_goods: 4, duration: 900
+    question3 = build_random_question number_of_goods: 5, duration: 1200
     question3.instruction = Instruction.find_by_number(3)
-    question3.display_formula = true
+    #question3.display_formula = true (taking out the formulas)
     question3.save
     
     logger.info 'Generating question 4'
-    question4 = build_random_question number_of_goods: 5, duration: 1200
+    question4 = build_random_question number_of_goods: 3, duration: BetaRandom.get_seconds
     question4.instruction = Instruction.find_by_number(4)
-    question4.display_formula = true
+    question5.display_timer = false
+    #question4.display_formula = true
     question4.save
     
     logger.info 'Generating question 5'

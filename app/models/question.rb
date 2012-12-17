@@ -66,7 +66,7 @@ class Question < ActiveRecord::Base
   def self.generate_random(options = {})
     options[:number_of_goods] ||= 4
     options[:value_range] ||= [0,2]
-    options[:effect_range] ||= [-3,3]
+    options[:effect_range] ||= [-4,4]
 
     # generate random values
     values = {} # this could be an array but effects is a hash so I'm making this a hash as well
