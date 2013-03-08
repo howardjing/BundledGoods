@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
     logger.info 'Generating question 4'
     question4 = build_random_question number_of_goods: 3, duration: BetaRandom.get_seconds
     question4.instruction = Instruction.find_by_number(4)
-    question5.display_timer = false
+    question4.display_timer = false
     #question4.display_formula = true
     question4.save
     
