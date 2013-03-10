@@ -18,7 +18,7 @@ initializeDemoForm = (demoFormElement) ->
   submit.on 'enable', ->
     enableSubmit()
   
-  submit.trigger('disable') if demoForm.size() > 0
+#   submit.trigger('disable') if demoForm.size() > 0
 
 
 validateAnswerListener = ->
@@ -35,7 +35,7 @@ validateAnswerListener = ->
       $(@).siblings('.help-inline').text('try again')
       controlGroup.removeClass('success')
       controlGroup.addClass('error')
-      submit.trigger('disable')
+#       submit.trigger('disable')
 
 answerIsCorrect = (answer, input) ->
   parseInt(answer) == parseInt(input)

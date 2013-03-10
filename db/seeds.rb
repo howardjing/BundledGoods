@@ -113,11 +113,6 @@ would be as follows:</li>
 <br>
 <i>"Purchasing goods one and two in an exclusive bundle makes you value the bundle 1 
 more than if you summed the individual utilities."</i> <br></li><br>
-<li> In mathematical terms,
-<br>
-<br>
-<i> V(x<sub>1</sub>, x<sub>2</sub>) = [u(x<sub>1</sub>) + u(x<sub>2</sub>)] 1.</i></li>
-<br>
 <li>For a concrete example, the statement for bundle with goods one and two
 would be as follows:</li>
 <br>
@@ -152,12 +147,6 @@ would be as follows:</li>
 <br>
 <i>"Purchasing goods two, three, four, and five in an exclusive bundle makes you value the bundle - 1.0 
 less than if you summed the individual utilities."</i> <br></li><br>
-<li> In mathematical terms,
-<br>
-<br>
-<i> V(x<sub>2</sub>, x<sub>3</sub>, x<sub>4</sub>, x<sub>5</sub>) = [u(x<sub>2</sub>) + u(x<sub>3</sub>) + u(x<sub>4</sub>) + u(x<sub>5</sub>)] - 1.0.</i></li>
-<br>
-<br>
 <li>The total utility from the transaction is the Value gained from purchasing
 the goods you have chosen adding the respective Bundle Effect. <B>THE FINAL VALUE YOU CALCULATE 
 IS THE MONETARY REWARD YOU RECEIVE FOR THIS ROUND.</B></li><br>

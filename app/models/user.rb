@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   # there are many things wrong with this method
   def generate_questions
     logger.info 'Generating demo question...'
-    demo = build_random_question number_of_goods: 3, duration: 600
+    demo = build_random_question number_of_goods: 3, duration: 300
     demo.instruction = Instruction.find_by_number(0)
     demo.save
     
@@ -33,39 +33,74 @@ class User < ActiveRecord::Base
     update_column(:current_question_id, demo.id)
     
     logger.info 'Generating question 1'
-    question1 = build_random_question number_of_goods: 3, duration: 600
+    question1 = build_random_question number_of_goods: 3, duration: 300
     question1.instruction = Instruction.find_by_number(1)
     question1.save
-
+    
     logger.info 'Generating question 2'
-    question2 = build_random_question number_of_goods: 4, duration: 900
-    question2.instruction = Instruction.find_by_number(2)
+    question2 = build_random_question number_of_goods: 3, duration: 300
+    question2.instruction = Instruction.find_by_number(1)
     question2.save
-    
+
     logger.info 'Generating question 3'
-    question3 = build_random_question number_of_goods: 5, duration: 1200
-    question3.instruction = Instruction.find_by_number(3)
-    #question3.display_formula = true (taking out the formulas)
+    question3 = build_random_question number_of_goods: 4, duration: 300
+    question3.instruction = Instruction.find_by_number(2)
     question3.save
-    
+
     logger.info 'Generating question 4'
-    question4 = build_random_question number_of_goods: 3, duration: BetaRandom.get_seconds
-    question4.instruction = Instruction.find_by_number(4)
-    question4.display_timer = false
-    #question4.display_formula = true
+    question4 = build_random_question number_of_goods: 4, duration: 300
+    question4.instruction = Instruction.find_by_number(2)
     question4.save
     
     logger.info 'Generating question 5'
-    question5 = build_random_question number_of_goods: 4, duration: BetaRandom.get_seconds
-    question5.instruction = Instruction.find_by_number(5)
-    question5.display_timer = false
+    question5 = build_random_question number_of_goods: 5, duration: 300
+    question5.instruction = Instruction.find_by_number(3)
+    #question3.display_formula = true (taking out the formulas)
     question5.save
-    
+
     logger.info 'Generating question 6'
-    question6 = build_random_question number_of_goods: 5, duration: BetaRandom.get_seconds
-    question6.instruction = Instruction.find_by_number(6)
-    question6.display_timer = false
+    question6 = build_random_question number_of_goods: 5, duration: 300
+    question6.instruction = Instruction.find_by_number(3)
+    #question3.display_formula = true (taking out the formulas)
     question6.save
+    
+    logger.info 'Generating question 7'
+    question7 = build_random_question number_of_goods: 3, duration: BetaRandom.get_seconds
+    question7.instruction = Instruction.find_by_number(4)
+    question7.display_timer = false
+    #question4.display_formula = true
+    question7.save
+    
+    logger.info 'Generating question 8'
+    question8 = build_random_question number_of_goods: 3, duration: BetaRandom.get_seconds
+    question8.instruction = Instruction.find_by_number(4)
+    question8.display_timer = false
+    #question4.display_formula = true
+    question8.save
+    
+    logger.info 'Generating question 9'
+    question9 = build_random_question number_of_goods: 4, duration: BetaRandom.get_seconds
+    question9.instruction = Instruction.find_by_number(5)
+    question9.display_timer = false
+    question9.save
+    
+    logger.info 'Generating question 10'
+    question10 = build_random_question number_of_goods: 4, duration: BetaRandom.get_seconds
+    question10.instruction = Instruction.find_by_number(5)
+    question10.display_timer = false
+    question10.save
+    
+    logger.info 'Generating question 11'
+    question11 = build_random_question number_of_goods: 5, duration: BetaRandom.get_seconds
+    question11.instruction = Instruction.find_by_number(6)
+    question11.display_timer = false
+    question11.save
+    
+    logger.info 'Generating question 12'
+    question12 = build_random_question number_of_goods: 5, duration: BetaRandom.get_seconds
+    question12.instruction = Instruction.find_by_number(6)
+    question12.display_timer = false
+    question12.save
     
     logger.info 'Choosing random question as the question that is judged'
     random_question_id = scorable_questions.sample.id

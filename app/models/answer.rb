@@ -22,7 +22,7 @@ class Answer < ActiveRecord::Base
   
   private
   
-  def demo_answer_must_be_optimal
+def demo_answer_must_be_optimal
     if should_validate?
       if question.optimal_value > value
         logger.debug "CONTENT: #{content}"
