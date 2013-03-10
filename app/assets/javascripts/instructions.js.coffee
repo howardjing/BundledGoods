@@ -8,8 +8,8 @@ init = (instructionsModal) ->
   instructions = instructionsModal 
   questionStarted = instructions.data('started')
   
-  $(BundledGoods.timer).on 'expired', ->
-    sendQuestionEnded() unless isDemoQuestion() # only submit if not the demo
+  # $(BundledGoods.timer).on 'expired', ->
+  #   sendQuestionEnded() unless isDemoQuestion() # only submit if not the demo
     
   if questionStarted    
     resumeQuestion()

@@ -57,7 +57,7 @@ class ExperimentsController < ApplicationController
   
   def next_path
     if current_user.current_question
-      experiment_path
+      experiment_path(chrome: 'bug')
     else
       edit_user_path(current_user)
     end
