@@ -8,40 +8,36 @@
 
 <div class="container">
  <DIV class="mypars">
-
-  <P>The "Bundle Effect" will be located in statement links which you can open and close 
-  as shown below:
-  <P>Here is an example of a statement link:
-  <P><%= image_tag("'show' statement.png")%>
-  <P>Here is an example of an open statement:
-  <P><%= image_tag("open 'show' statement.png")%>
-  <P>Each statement will contain it's own bundle effect ranging from -4 to 4. In the example above, the bundle effect for
-  a bundle with goods 1 and 4 is <b>"+3."</b> A negative bundle effect will have a negative sign preceding it. For example,
-  if the statement says you value the bundle negative 1 the bundle effect would look like <b>"-1."</b> Every combination of goods will be 
-   given. The Bundle Effect will be randomly generated and uniformly distributed between the range for each experiment.
-  <P>Next to the statement links are the goods associated with that certain bundle. In the image above,
-  that statement contains goods 1 and 4. If the statement contained goods 1, 3, and 4, the corresponding 
-  group next to the statement would be "[1,3,4]".
-  <P>You are free to open and close however many statements you would like before making a final choice. 
-  There is no penalty for not opening all of the statements.  
-  <P>Bundle Effects contained in the statements are independent of all previous viewed Bundle Effects. 
-  For example, a Bundle Effect for a statement containing good 1 and good 2 <b>DOES NOT</b> affect 
-  the Bundle Effect containing good 1, good 2, and good 3. Interpret each statement independent of 
-  any other statement you have viewed before or that you view in the future.
+  <P>Alongside the single component menu, you will be offered a "Combo Package" containing 
+  all the goods that you will value higher. Here is a an example of the Value Menu you will be offered.
+  <P> <%= image_tag("utility.png")%>
+  <P>As shown above, the Combo Package will be valued +1 more than if you summed the individual values.
+  <P>In order to purchase goods you will be offered a choice menu of options.
+  <P>You are free to click in the box for a given option at any point in time. Clicking once will select the good, and clicking on it again will deselect the good. 
+  <P>Here is an example of a good that has been selected with the button checked:
+  <P><%= image_tag("checked.png")%>
+  <P>Here is an example of a good that has either been de-selected or not chosen at all with the button blank:
+  <P> <%= image_tag("unchecked.png")%>
   <P>
-  	For example, if you opened a statement containing Goods 1 and 2 as follows.
+  	In the menus you will be offered, single items will be located on the left hand side, and a 
+  	"Combo Package" will be offered on the right hand side as shown below.
+  <P><%= image_tag("choicemenu.png")%>
   <P>
-  	<%= image_tag("statement1_2.png")%>
+  	If you decide to purchase the Combo Package 
+  	containing all the goods on the right hand side, it would look as follows:
   <P>
-  	It would <B>NOT</b> affect the statement displayed below containing Goods 1, 2, and 4.
-  <P><%= image_tag("statement1_2_4.png")%>
+    <%= image_tag("combochoice.png")%>
   <P>
-  	It is important to understand how to calculate these bundle values correctly, as the final valuation 
-  	of the bundle of your choosing will be the monetary reward you receive for the round.
+	You can select individual goods from the 
+  	single component menu on the left to create a "bundle" of your choice. A bundle will be defined as any number of goods, 
+  	greater than one, taken from the single component menu and purchased together. Here is an example 
+  	of choosing a bundle containing goods 2 and 3. You may however select single goods or no goods for the 
+  	experiment.
   <P>
-  	The following tutorial will test if you fully understand how to calculate valuations given 
-  	the statements and values of a given bundle. You will not be able to move forward unless 
-  	you plug in the correct values.  
+  	<%= image_tag("choice2_4.png")%>
+  <P>As shown above, you may only purchase one item of each good, but you may purchase multiple goods 
+  together in a bundle.
+  
 </div>
 
-<%= link_to 'Next', demo4_path, :class => 'btn btn-primary' %>
+<%= link_to 'Next', instructions3_path, :class => 'btn btn-primary' %>

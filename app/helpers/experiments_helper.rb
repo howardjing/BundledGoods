@@ -16,7 +16,7 @@ module ExperimentsHelper
   end
   
   def verbose_explanation(bundle, value)
-    "Purchasing goods #{bundle} in an exclusive bundle makes you value the bundle #{value < 0 ? "-" : "+"} #{value.abs} more than if you summed the individual utilities."
+    "Purchasing goods #{bundle} gives a bundle effect of #{value < 0 ? "-" : "+"} #{value.abs}."
   end
   
 end

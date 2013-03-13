@@ -3,7 +3,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question
   
   validates_presence_of :question
-  validate :demo_answer_must_be_optimal
+#   validate :demo_answer_must_be_optimal
   
   delegate :user, :number, to: :question
   
