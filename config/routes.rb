@@ -3,6 +3,8 @@ Goods::Application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update]
   resource :experiment do
     post :start_question
+    get :instructions
+    get :wait
   end
   resources :stats, only: [:create]
   

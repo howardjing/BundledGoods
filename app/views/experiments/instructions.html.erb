@@ -1,0 +1,8 @@
+<div class="container header">
+  <h1><%= @question.name %> Instructions</h1>
+</div>
+
+<div class="container content">
+  <%= @question.instructions.html_safe if @question.instructions.present? %>
+  <%= link_to 'Start experiment', experiment_path, class: 'btn btn-info pull-right' %>
+</div>

@@ -2,6 +2,10 @@ class ExperimentsController < ApplicationController
   before_filter :require_user
   before_filter :load_current_question
   
+  
+  def instructions
+  end
+  
   def show
     redirect_to thanks_path unless @question
   end
@@ -57,7 +61,7 @@ class ExperimentsController < ApplicationController
   
   def next_path
     if current_user.current_question
-      experiment_path(chrome: 'bug')
+      wait_experiment_path
     else
       edit_user_path(current_user)
     end

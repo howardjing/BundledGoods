@@ -1,6 +1,9 @@
 BundledGoods.timer = {
   init: (timerElement) -> initializeTimer(timerElement)
   start: -> tick()
+  initAndStart: (timerElement) ->
+    initializeTimer(timerElement)
+    tick()
 }
 
 timer = null
@@ -17,10 +20,10 @@ updateSeconds = ->
     seconds = secondsRemaining % 60
     timer.text(doubleDigits(minutes) + ":" + doubleDigits(seconds))
 
-tick = ->
+tick = ->  
+  updateSeconds()
   if secondsRemaining > 0
     secondsRemaining -= 1
-    updateSeconds()
     setTimeout (-> tick()), 1000
   else
     $(BundledGoods.timer).trigger('expired')

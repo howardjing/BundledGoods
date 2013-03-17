@@ -15,6 +15,7 @@ $goods-choice-cols: ($gridColumns - $goods-information-cols);
 
 .goods-information {
   @include make-column($goods-information-cols);
+  margin-left: 0;
 }
 
 .goods-choice {

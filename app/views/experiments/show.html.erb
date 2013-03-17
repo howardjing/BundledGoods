@@ -1,7 +1,5 @@
-<%= render 'instructions' %>
-
 <div class="container header">
-  <h1>Type <%= @question.number %></h1> 
+  <h1>Type <%= @question.number %> Experiment</h1> 
 </div>
 
 <div class="container content">
@@ -74,3 +72,8 @@
 
 
 <%= content_tag :div, nil, data: { question_id: @question.id }, id: 'question_id' %>
+<script>
+  $(function() {
+    BundledGoods.experiment.init({started: <%= @question.started? %>}); 
+  })
+</script>
