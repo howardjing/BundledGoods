@@ -1,10 +1,9 @@
 <% if @question.demo? %>
-Answer the following:<br />
-How much total value will you get from the following choices?
-<form id="demo_form">
+<h2 class="heading">Please answer the following: </h2>
+<p>How much total value will you get from the following choices?</p>
+<form id="demo_form" class="form form-horizontal">
 
   <% @question.each_bundle do |bundle| %>
-  
   <div class="control-group">
     <label class="control-label"><%= bundle.size == 1 ? "Good" : "Goods" %> <%= bundle %></label>
     <div class="controls">
@@ -12,9 +11,8 @@ How much total value will you get from the following choices?
       <span class="help-inline"></span>
     </div>
   </div>
-    
-    
   <% end %>
+  
   <div class="control-group">
     <label class="control-label">All Inclusive Combo Package</label>
     <div class="controls">
@@ -22,7 +20,6 @@ How much total value will you get from the following choices?
       <span class="help-inline"></span>
     </div>
   </div>
-  
 
 </form>
 <% end %>

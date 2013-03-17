@@ -1,0 +1,42 @@
+@import "twitter/bootstrap/variables";
+@import "twitter/bootstrap/mixins";
+
+.goods-wrapper {
+  @include make-row;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+$goods-information-cols: 7;
+$goods-choice-cols: ($gridColumns - $goods-information-cols);
+
+.goods-information {
+  @include make-column($goods-information-cols);
+}
+
+.goods-choice {
+  @include make-column($goods-choice-cols);
+  position: fixed;
+  margin-left: ($gridColumnWidth * $goods-information-cols) + ($gridGutterWidth * ($goods-information-cols - 1)) + ($gridGutterWidth * 2);
+  .well h2 {
+    text-align: center;
+  }
+  form,
+  form label {
+    font-size: 18px;
+    font-weight: normal;
+  }
+}
+
+.menu-or-combo {
+  @include make-row;
+  margin: 0 auto;
+}
+
+#timer_block {
+  font-size: 18px;
+  font-weight: normal;
+}

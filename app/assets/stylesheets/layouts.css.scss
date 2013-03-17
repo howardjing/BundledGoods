@@ -1,0 +1,27 @@
+html, body {
+  height: 100%;
+  background: #f8f8f8;
+}
+
+
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+  -webkit-box-shadow:$top $left $blur $color #{$inset};
+  -moz-box-shadow:$top $left $blur $color #{$inset};
+  box-shadow:$top $left $blur $color #{$inset};
+}
+
+.container.header,
+.container.content {
+  background: white;
+  padding: 10px 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #e3e3e3;
+  @include box-shadow(1px, 1px, 1px, #e3e3e3);
+} 
+
+.container.content {
+  padding-bottom: 30px;
+}
+

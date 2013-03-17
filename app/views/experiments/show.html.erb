@@ -1,25 +1,24 @@
 <%= render 'instructions' %>
 
-<h1>Type <%= @question.number %></h1>
+<div class="container header">
+  <h1>Type <%= @question.number %></h1> 
+</div>
 
-<div class="row">
-  <div class="span6">
-    <table class="table table-bordered">
-      <thead><tr><th>Goods and Values</th></tr></thead>
+<div class="container content">
+  
+  <div class="goods-information">
+    <table class="table">
+      <thead><th class="heading">Goods and values:</th></thead>
       <% @question.goods.each do |number, value| %>
         <tr><td>Good <%= number %> has a value of <%= value %></td></tr>
       <% end %>
-      <tr>
-        <td>
-          An all inclusive Combo Package of all the goods has a value of <%= @question.combo_noeffect %>
-        </td>
-      </tr>
+      <tr><td>An all inclusive combo package of all the goods has a value of 
+        <%= @question.combo_noeffect %>
+      </td></tr>
     </table>
-  </div>
   
-  <div class="span8">
-    <table class="table table-bordered">
-      <thead><tr><th>You value the bundles in the following ways:</th></tr></thead>
+    <table class="table">
+      <thead><th class="heading">You value the bundles in the following ways:</th></thead>
       <% @question.effects.each do |bundle, value| %>
         <tr>
           <td class="show-statement"  data-bundle="<%=bundle%>">
@@ -32,50 +31,46 @@
         </tr>
       <% end %>
     </table>
-  </div>
-</div>
-
+    
+    <%= render 'demo_form' %>
+    <%= render 'solutions' %>
+    
+  </div> 
   
-<div class="choices span4">
-  <div>
-    </div>
-  <h2>Your choice</h2> 
-  <span id="timer_block" data-visible="<%= @question.display_timer %>">
-    (<span id="timer" data-seconds="<%= @question.time_remaining %>"></span>)
-  </span>
-  <%= form_tag experiment_path, { method: :put } do %>
-    <div class="row">
-      <div class="span2">
-        <label><b>Choice Menu</b></label>
-        <% @question.goods.each do |number, value| %>
-          <%= check_box_tag 'good_numbers[]', number, false, data: { number: number } %> <%= "Good #{number}" %> <br />
-        <% end %>
-      </div>
-
-      <div class="span2">
-        <label><b>Choose combo</b></label>
-        <%= check_box_tag 'combo' %> <%= "Combo Package" %> 
-      </div>
+  <div class="goods-choice">
+    <%= form_tag experiment_path, method: :put, class: "well" do %>
+      <h2>Your Choice
+        <span id="timer_block" data-visible="<%= @question.display_timer %>">
+          (<span id="timer" data-seconds="<%= @question.time_remaining %>"></span>)
+        </span>
+      </h2>
       
-      <%= hidden_field_tag 'expired', @question.expired? %>
+      <div class="menu-or-combo">
+        <div class="pull-left">
+          <label><strong>Choice Menu</strong></label>
+          <% @question.goods.each do |number, value| %>
+          <div>
+            <%= check_box_tag 'good_numbers[]', number, false, data: { number: number } %>
+            <%= "Good #{number}" %>
+          </div>
+          <% end %>
+        </div>
+        
+        <div class="pull-right">
+          <label><strong>Choose combo</strong></label>
+          <%= check_box_tag 'combo' %> <%= "Combo Package" %> 
+        </div>
+        
+        <%= hidden_field_tag 'expired', @question.expired? %>
+        <div class="clearfix"></div>
+        <%= button_tag 'choose', class: "btn btn-info pull-right" %>
+      </div>
+    <% end %>
+  
+  </div> 
+  
 
-      <%= button_tag 'choose', class: "btn btn-primary offset2" %>
-    </div>
-  <% end %>
 </div>
 
-<%= render 'demo_form' %>
 
 <%= content_tag :div, nil, data: { question_id: @question.id }, id: 'question_id' %>
-<% unless Rails.env.production? %>
-<h1>Solutions</h1>
-<ul>
-  <% combinations = 1.upto(@question.goods.size)
-                    .flat_map { |n| @question.goods.keys.map(&:to_i).combination(n).to_a } %>
-  <% combinations.each do |combo| %>
-  <li>Goods <%= combo %>, Total Value: <%= @question.bundle combo %></li>
-  <% end %>
-  <li>Combo, Total Value: <%= @question.combo_witheffect %>
-</ul>
-The best answer: <%= @question.optimal_value %>
-<% end %>
