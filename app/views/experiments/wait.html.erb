@@ -1,14 +1,15 @@
-<div class="container header">
+<% content_for :header do %>
   <h1>Waiting for next experiment</h1>
-</div>
+<% end %>
 
-<div class="container content">
+<% content_for :content do %>
   <h3>Time left: <%= timer seconds: @question.previous_question.time_remaining %></h3>
   <%= link_to 'continue', instructions_experiment_path, class: 'continue btn btn-info pull-right' %>
-</div>
 
-<script>
-$(function() {
-  BundledGoods.wait.init({ expired: <%= @question.expired? %> });
-});
-</script>
+
+  <script>
+  $(function() {
+    BundledGoods.wait.init({ expired: <%= @question.expired? %> });
+  });
+  </script>
+<% end %>

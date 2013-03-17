@@ -1,2 +1,7 @@
-<h1> Please fill in the following information before receiving your score</h1>
-<%= render 'extended_form' %>
+<% content_for :header do %>
+  <h1> Please fill in the following information before receiving your score</h1>
+<% end %>
+
+<% content_for :content do %>
+  <%= render 'extended_form' %>
+<% end %>

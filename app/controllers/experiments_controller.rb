@@ -10,6 +10,9 @@ class ExperimentsController < ApplicationController
     redirect_to thanks_path unless @question
   end
   
+  def wait
+  end
+  
   def update
     logger.debug "The chosen goods: #{params[:good_numbers]}"
     logger.debug "The chosen combo: #{params[:combo]}"

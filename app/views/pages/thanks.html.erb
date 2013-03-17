@@ -1,11 +1,20 @@
-<h1>Thank you</h1>
-<b>Your choices:</b>
-<% current_user.questions.each_with_index do |question, number| %>
-  <div>
-    Question <%= number %>) <%= display_answer(question) %>, for a value of <%= question.answer.try(:value) %>
-  </div>
+<% content_for :header do %>
+  <h1>Thank you</h1>
 <% end %>
+<% content_for :content do %>
+  <b>Your choices:</b>
+  <% current_user.questions.each_with_index do |question, number| %>
+    <div>
+      Question <%= number %>) <%= display_answer(question) %>, for a value of <%= question.answer.try(:value) %>
+    </div>
+  <% end %>
 
-<p>The chosen question: <%= current_user.chosen_question.number %></p>
-<b>Your total score: <%= current_user.score %></b><br />
-<%= link_to 'Again', new_user_path %>
+  <div>
+    <p>The chosen question: <%= current_user.chosen_question.number %></p>
+    <b>Your total score: <%= current_user.score %></b>
+  </div>
+  
+  <% unless Rails.env.production? %>
+    <%= link_to 'Again', new_user_path %>
+  <% end %>
+<% end %>

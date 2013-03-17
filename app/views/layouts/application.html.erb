@@ -21,8 +21,13 @@
   <% end %>
 </div>
 
-<%= yield %>
+<div class="container header">
+  <%= yield :header %>
+</div>
 
+<div class="container content">
+  <%= yield :content %>
+</div>
 <div style="height:20px"></div>
 </body>
 </html>

@@ -1,9 +1,8 @@
-<div class="container header">
+<% content_for :header do %>
   <h1>Type <%= @question.number %> Experiment</h1> 
-</div>
+<% end %>
 
-<div class="container content">
-  
+<% content_for :content do %>
   <div class="goods-information">
     <table class="table">
       <thead><th class="heading">Goods and values:</th></thead>
@@ -39,7 +38,7 @@
     <%= form_tag experiment_path, method: :put, class: "well" do %>
       <h2>Your Choice
         <span id="timer_block" data-visible="<%= @question.display_timer %>">
-          (<span id="timer" data-seconds="<%= @question.time_remaining %>"></span>)
+          (<%= timer seconds: @question.time_remaining %>)
         </span>
       </h2>
       
@@ -64,16 +63,14 @@
         <%= button_tag 'choose', class: "btn btn-info pull-right" %>
       </div>
     <% end %>
-  
-  </div> 
-  
-
-</div>
+  </div>
 
 
-<%= content_tag :div, nil, data: { question_id: @question.id }, id: 'question_id' %>
-<script>
-  $(function() {
-    BundledGoods.experiment.init({started: <%= @question.started? %>}); 
-  })
-</script>
+
+  <%= content_tag :div, nil, data: { question_id: @question.id }, id: 'question_id' %>
+  <script>
+    $(function() {
+      BundledGoods.experiment.init({started: <%= @question.started? %>}); 
+    })
+  </script>
+<% end %>

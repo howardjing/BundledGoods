@@ -1,2 +1,7 @@
-<h1> Please fill in the following information </h1>
-<%= render 'form'  %>
+<% content_for :header do %>
+  <h1> Please fill in the following information </h1>
+<% end %>
+
+<% content_for :content do %>
+  <%= render 'form'  %>
+<% end %>
