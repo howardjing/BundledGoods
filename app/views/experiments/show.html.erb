@@ -73,6 +73,7 @@
       BundledGoods.experiment.init({
         started: <%= @question.started? %>,
         ignoreChoicesAfter: <%= @question.time_remaining(private: true) %>, 
+        isDemo: <%= @question.demo? %>
       }); 
     })
   </script>

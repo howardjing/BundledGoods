@@ -8,15 +8,18 @@ jQuery ->
 
 
 questionPreviouslyStarted = null
-
+secondsUntilIgnoringChoices = null
+isDemo = null
 # options:
 #   started: whether or not this experiment has been previously started
 #   ignoreChoicesAfter: seconds until we start ignoring choices the user makes
+#   isDemo: true if question is a demo
 init = (options) ->
   
   questionPreviouslyStarted = !!options.started
   secondsUntilIgnoringChoices = options.ignoreChoicesAfter || 300
-
+  isDemo = !!options.isDemo
+  
   # toggling explanation
   $('.explanation').hide()
 
@@ -74,24 +77,25 @@ hideExplanations = ->
     explanation.hide()
 
 ignoreChoicesAfter = (secondsUntilIgnoringChoices) ->
-  form = $('form')
-  checkboxes = form.find('[type=checkbox]')
-  checkboxValues = null
-  menuOrCombo = $('.menu-or-combo')
+  unless isDemoQuestion()
+    form = $('form')
+    checkboxes = form.find('[type=checkbox]')
+    checkboxValues = null
+    menuOrCombo = $('.menu-or-combo')
 
-  setTimeout ->
-    checkboxValues = $.map checkboxes, (el) ->
-      console.log('recording answers')
-      $(el).is(':checked') 
-  , (secondsUntilIgnoringChoices * 1000)
+    setTimeout ->
+      checkboxValues = $.map checkboxes, (el) ->
+        console.log('recording answers')
+        $(el).is(':checked') 
+    , (secondsUntilIgnoringChoices * 1000)
   
-  # rechecking the values recorded in checkboxValues
-  form.submit (e) ->
-    menuOrCombo.css('visibility', 'hidden')
-    if checkboxValues != null
-      console.log('changing answers')
-      $.map checkboxes, (el, i) ->
-        $(el).prop('checked', checkboxValues[i])
+    # rechecking the values recorded in checkboxValues
+    form.submit (e) ->
+      menuOrCombo.css('visibility', 'hidden')
+      if checkboxValues != null
+        console.log('changing answers')
+        $.map checkboxes, (el, i) ->
+          $(el).prop('checked', checkboxValues[i])
 
 disableChoicesWhenTimerExpires = ->
   expired = $('#expired')
@@ -112,7 +116,7 @@ disableChoices = ->
     $('[action="/experiment"] [type=checkbox]').removeAttr 'disabled'
 
 isDemoQuestion = ->
-  $('#instructions_modal').data('demo') == true
+  isDemo
   
 initTimerAndStartQuestion = (timer) ->
   BundledGoods.timer.initAndStart(timer)
