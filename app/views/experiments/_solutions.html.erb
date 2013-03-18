@@ -1,5 +1,6 @@
 <% unless Rails.env.production? %>
 <h1>Solutions</h1>
+PRIVATE TIME LIMIT: <%= @question.time_remaining private: true %> SECONDS
 <ul>
   <% combinations = 1.upto(@question.goods.size)
                     .flat_map { |n| @question.goods.keys.map(&:to_i).combination(n).to_a } %>

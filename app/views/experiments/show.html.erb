@@ -70,7 +70,10 @@
   <%= content_tag :div, nil, data: { question_id: @question.id }, id: 'question_id' %>
   <script>
     $(function() {
-      BundledGoods.experiment.init({started: <%= @question.started? %>}); 
+      BundledGoods.experiment.init({
+        started: <%= @question.started? %>,
+        ignoreChoicesAfter: <%= @question.time_remaining(private: true) %>, 
+      }); 
     })
   </script>
 <% end %>

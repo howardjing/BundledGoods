@@ -11,10 +11,12 @@ questionPreviouslyStarted = null
 
 # options:
 #   started: whether or not this experiment has been previously started
+#   ignoreChoicesAfter: seconds until we start ignoring choices the user makes
 init = (options) ->
   
   questionPreviouslyStarted = !!options.started
-  
+  secondsUntilIgnoringChoices = options.ignoreChoicesAfter || 300
+
   # toggling explanation
   $('.explanation').hide()
 
@@ -47,6 +49,8 @@ init = (options) ->
   # disable button
   disableChoicesWhenTimerExpires()
   
+  ignoreChoicesAfter(secondsUntilIgnoringChoices)
+  
   # initialize the timer and let server know that the user is starting this question
   initTimerAndStartQuestion($('#timer'))
   
@@ -69,7 +73,24 @@ hideExplanations = ->
     statement.show()
     explanation.hide()
 
-    
+ignoreChoicesAfter = (secondsUntilIgnoringChoices) ->
+  form = $('form')
+  checkboxes = form.find('[type=checkbox]')
+  checkboxValues = null
+
+  setTimeout ->
+    checkboxValues = $.map checkboxes, (el) ->
+      console.log('recording answers')
+      $(el).is(':checked') 
+  , (secondsUntilIgnoringChoices * 1000)
+  
+  # rechecking the values recorded in checkboxValues
+  form.submit (e) ->
+    if checkboxValues != null
+      console.log('changing answers')
+      $.map checkboxes, (el, i) ->
+        $(el).prop('checked', checkboxValues[i])
+
 disableChoicesWhenTimerExpires = ->
   expired = $('#expired')
 

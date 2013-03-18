@@ -41,12 +41,12 @@ class User < ActiveRecord::Base
     question2 = build_random_question number_of_goods: 3, duration: Question::PUBLIC_TIME_LIMIT
     question2.instruction = Instruction.find_by_number(1)
     question2.save
-
+    
     logger.info 'Generating question 3'
     question3 = build_random_question number_of_goods: 4, duration: Question::PUBLIC_TIME_LIMIT
     question3.instruction = Instruction.find_by_number(2)
     question3.save
-
+    
     logger.info 'Generating question 4'
     question4 = build_random_question number_of_goods: 4, duration: Question::PUBLIC_TIME_LIMIT
     question4.instruction = Instruction.find_by_number(2)
@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
     question5.instruction = Instruction.find_by_number(3)
     #question3.display_formula = true (taking out the formulas)
     question5.save
-
+    
     logger.info 'Generating question 6'
     question6 = build_random_question number_of_goods: 5, duration: Question::PUBLIC_TIME_LIMIT
     question6.instruction = Instruction.find_by_number(3)
