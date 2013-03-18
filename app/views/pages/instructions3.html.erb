@@ -1,74 +1,34 @@
-<h1>Instructions</h1>
+<% content_for :header do %>
+	<h1>Instructions</h1>
+<% end %>
 
-<br />
-<STYLE type="text/css">
-  DIV.mypars {text-align: left}
- </STYLE>
-<BODY>
+<% content_for :content do %>
 
-<DIV style="position: absolute; top:125px; left:110px; width:550px; height:50px">
- <DIV class="mypars">
+ <p>In order to purchase goods you will be offered a choice menu of options.</p>
+  <p>You are free to click in the box for a given option at any point in time. Clicking once will select the good, and clicking on it again will deselect the good. </p>
+  <p>Here is an example of a good that has been selected with the button checked:</p>
+  <div><%= image_tag("checked.png")%></div>
+  <p>Here is an example of a good that has either been de-selected or not chosen at all with the button blank:</p>
+  <div> <%= image_tag("unchecked.png")%></div>
+  <p>
+  	In the menus you will be offered, single items will be located on the left hand side, and a 
+  	"Combo Package" will be offered on the right hand side as shown below.</p>
+  <div><%= image_tag("choicemenu.png")%></div>
+  <p>
+  	If you decide to purchase the Combo Package 
+  	containing all the goods on the right hand side, it would look as follows:</p>
+  <div> <%= image_tag("combochoice.png")%> </div>
+  <p>
+	You can select individual goods from the 
+  	single component menu on the left to create a "bundle" of your choice. A bundle will be defined as any number of goods, 
+  	greater than one, taken from the single component menu and purchased together. Here is an example 
+  	of choosing a bundle containing goods 2 and 3. You may however select single goods or no goods for the 
+  	experiment.</p>
+  <div>
+  	<%= image_tag("choice2_4.png")%></p>
+  <p>As shown above, you may only purchase one item of each good, but you may purchase multiple goods 
+  together in a bundle.</p>
+  
+<%= link_to 'Next', instructions4_path, :class => 'btn btn-primary' %>
 
-  <P>The Experiment is divided into seven sections, with each experiment presenting a different menu and statements. 
-  You will attempt two trials of each.
-  There will be a three good practice round to see if you fully understand the problem that is facing you. 
-  The problem will let you know if you have plugged in the correct values, and you are free to attempt it
-  until the time is over. 
-  <P>Below is a table of characteristics of each experiment type.
-  <table class="table table-bordered">
-  	<thead>
-  		<tr>
-  			<th>Type Number</th>
-  			<th>Number of Goods</th>
-  			<th>Time Limit</th>
-  		</tr>
-  	</thead>
-  	<tbody>
-  		<tr>
-  			<td>Type 1</td>
-  			<td>3</td>
-  			<td>5 minutes</td>
-  		</tr>
-  		<tr>
-  			<td>Type 2</td>
-  			<td>4</td>
-  			<td>5 minutes</td>
-  		</tr>
-  		<tr>
-  			<td>Type 3</td>
-  			<td>5</td>
-  			<td>5 minutes</td>
-  		</tr>
-  		<tr>
-  			<td>Type 4</td>
-  			<td>3</td>
-  			<td>Special Beta Timer</td>
-  		</tr>
-  		<tr>
-  			<td>Type 5</td>
-  			<td>4</td>
-  			<td>Special Beta Timer</td>
-  		</tr>
-  		<tr>
-  			<td>Type 6</td>
-  			<td>5</td>
-  			<td>Special Beta Timer</td>
-  		</tr>
-  	</tbody>
-  </table>
-  <P>The Experiment Types will be arranged in a random order. 
-  <P>The choice you have selected when the timer runs out will be your final choice. 
-  You are free to use the whole alloted time, but you must wait the full five minutes before moving 
-  onto the next experiment.
-  <P>Before each experiment, there will be instructions similar to the instructions given 
-  in the tutorials. 
-  <P><b>Experiment Types 4, 5, and 6 have special instructions before the experiment. READ THE INSTRUCTIONS BEFORE 
-  ATTEMPTING.</b>
-  <P>Your monetary reward depends directly on the choices you make. In addition to the flat show up fee, 
-  you have the ability to either lose 4 dollars or make up to 18 dollars during each experiment. 
-  Choices you make in the three good practice round will not be counted towards your final payment. A reward you have chosen from 
-  Experiments 1 through 6 will be chosen at random to be your payment. It is in your best interest to perform each experiment to the best 
-  of your ability as each experiment has a one in six chance of being picked as your monetary reward. 
-</div>
-
-<%= link_to 'Take the Demo', experiment_path, :class => 'btn btn-primary' %>
+<% end %>

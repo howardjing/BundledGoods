@@ -1,43 +1,14 @@
-<h1>Instructions</h1>
+<% content_for :header do %>
+	<h1>Instructions</h1>
+<% end %>
 
-<br />
-<STYLE type="text/css">
-  DIV.mypars {text-align: left}
- </STYLE>
-<BODY>
+<% content_for :content do %>
 
-<div class="container">
- <DIV class="mypars">
-  <P>Alongside the single component menu, you will be offered a "Combo Package" containing 
-  all the goods that you will value higher. Here is a an example of the Value Menu you will be offered.
-  <P> <%= image_tag("utility.png")%>
-  <P>As shown above, the Combo Package will be valued +1 more than if you summed the individual values.
-  <P>In order to purchase goods you will be offered a choice menu of options.
-  <P>You are free to click in the box for a given option at any point in time. Clicking once will select the good, and clicking on it again will deselect the good. 
-  <P>Here is an example of a good that has been selected with the button checked:
-  <P><%= image_tag("checked.png")%>
-  <P>Here is an example of a good that has either been de-selected or not chosen at all with the button blank:
-  <P> <%= image_tag("unchecked.png")%>
-  <P>
-  	In the menus you will be offered, single items will be located on the left hand side, and a 
-  	"Combo Package" will be offered on the right hand side as shown below.
-  <P><%= image_tag("choicemenu.png")%>
-  <P>
-  	If you decide to purchase the Combo Package 
-  	containing all the goods on the right hand side, it would look as follows:
-  <P>
-    <%= image_tag("combochoice.png")%>
-  <P>
-	You can select individual goods from the 
-  	single component menu on the left to create a "bundle" of your choice. A bundle will be defined as any number of goods, 
-  	greater than one, taken from the single component menu and purchased together. Here is an example 
-  	of choosing a bundle containing goods 2 and 3. You may however select single goods or no goods for the 
-  	experiment.
-  <P>
-  	<%= image_tag("choice2_4.png")%>
-  <P>As shown above, you may only purchase one item of each good, but you may purchase multiple goods 
-  together in a bundle.
-  
-</div>
-
+  <p>Alongside the single component menu, you will be offered a "Combo Package" containing 
+  all the goods that you will value higher. Here is a an example of the Value Menu you will be offered.</p>
+  <div><%= image_tag("utility.png")%></div>
+  <p>As shown above, the Combo Package will be valued +1 more than if you summed the individual values.</p>
+ 
 <%= link_to 'Next', instructions3_path, :class => 'btn btn-primary' %>
+
+<% end %>

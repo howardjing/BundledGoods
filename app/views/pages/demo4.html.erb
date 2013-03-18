@@ -1,4 +1,7 @@
+<% content_for :header do %>
 <h1>Tutorial</h1>
+<% end %>
+<% content_for :content do %>
 
 <script>
 
@@ -86,33 +89,25 @@
 
 </script>
 
-<STYLE type="text/css">
-  DIV.mypars {text-align: left}
- </STYLE>
-<BODY>
-
-<div class="container">
- <DIV class="mypars">
-
-<P>
+<p>
 	This tutorial will show you how to calculate your final value of purchasing goods 
 	in a bundle. You can check your answers by clicking the "Check" button next to the problem. 
 	If the answer is correct, the text field will appear green and you will be greeted with a 
 	message that reads "You've got it!". If it is incorrect, the text field will appear red 
-	and a message will appear saying "You are incorrect, please try again."
-<P> Calculate the monetary reward you would receive for the following
-	bundle.
-<P>
-	<b>You value Goods 1 and 2 in the following way.</b>
-<P>Good 1's Value: 2
-<P>Good 2's Value: 1 
-<P><b>You value the bundle in the following way:</b>
-<P>
-	"Purchasing goods [1,2] in an exclusive bundle <i>gives you a bundle effect of +1</i>."
-<P>
-	<b>How much money would you receive if you purchased Goods 1 and 2 together in an exclusive bundle? 
-	</b>
-<P>
+	and a message will appear saying "You are incorrect, please try again." </p>
+<p> Calculate the monetary reward you would receive for the following
+	bundle.</p>
+<p>
+	<b>You value Goods 1 and 2 in the following way.</b></p>
+<p>Good 1's Value: 2</p>
+<p>Good 2's Value: 1 </p>
+<p><b>You value the bundle in the following way:</b></p>
+<p>
+	"Purchasing goods [1,2] <i>gives you a bundle effect of +1</i>."</p>
+<p>
+	<b>How much money would you receive if you purchased Goods 1 and 2 together? 
+	</b></p>
+<p>
 
 <div class="well" id="problem1">
     [
@@ -155,18 +150,19 @@
   </span>
   <span style="display:inline-block" class="question">
     	<label>Bundle Effect</label>
-    	<input type="text" class="san2 response" placeholder="Lambda Value">
+    	<input type="text" class="san2 response" placeholder="Bundle Effect">
     	<input type="hidden" value="1" />
     </span> 
   ]
   	=
 	<span style="display:inline-block" class="question">
-    <label>Goods 1 and 2's Utility</label>
+    <label>Goods 1 and 2's Value</label>
     <input type="text" class="span2 response" placeholder="What is it's value?…" />
     <input type="hidden" value="4" />
  	 </span>
   <span class="help-block feedback"></span>
   <button class="btn btn-primary">Check</button>
-</div>	
+</div>	</p>
 
 <%= button_to 'Next', instructions2_path, :class => 'btn btn-primary', :id => 'next', :method => 'get' %>
+<% end %>
