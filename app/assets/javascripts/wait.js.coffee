@@ -8,14 +8,12 @@ jQuery ->
   }
   
 init = (options) ->
-  
   timerExpired = !!options.expired 
   continueLink = $('.continue')
   
   continueLink.on 'click', (e) ->
     e.preventDefault() unless timerExpired 
   
-
   BundledGoods.timer.initAndStart($('#timer'))
   $(BundledGoods.timer).on 'expired', ->
     timerExpired = true

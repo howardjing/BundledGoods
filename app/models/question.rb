@@ -1,5 +1,10 @@
 class Question < ActiveRecord::Base
   
+  # Publicly, all questions have a time limit of 300 seconds
+  # all questions also have an internal time limit which can be accessed with
+  # Question#duration. The duration is set in User#generate_questions
+  PUBLIC_TIME_LIMIT = 300
+  
   #validates_presence_of :user
   belongs_to :user
   belongs_to :instruction
@@ -36,8 +41,17 @@ class Question < ActiveRecord::Base
     !time_started.nil?
   end
   
-  def time_remaining
-    [duration - seconds_since_started, 0].max
+  # options[:private] defaults to false
+  # if private is true, then the time remaining for the internal time limit is returned
+  # otherwise the time remaining for the public time limit is returned
+  def time_remaining(options = {})
+    options[:private] ||= false
+    
+    if options[:private]
+      [duration - seconds_since_started, 0].max
+    else
+      [PUBLIC_TIME_LIMIT - seconds_since_started, 0].max
+    end
   end
   
   def expired?

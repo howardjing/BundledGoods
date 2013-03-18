@@ -9,7 +9,7 @@
 
   <script>
   $(function() {
-    BundledGoods.wait.init({ expired: <%= @question.expired? %> });
+    BundledGoods.wait.init({ expired: <%= @question.previous_question.expired? %> });
   });
   </script>
 <% end %>
