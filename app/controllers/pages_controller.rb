@@ -14,6 +14,9 @@ class PagesController < ApplicationController
   def instructions3
   end
   
+  def instructions4
+  end
+  
   def demo4
   end
   
