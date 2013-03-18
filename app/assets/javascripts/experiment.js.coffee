@@ -77,6 +77,7 @@ ignoreChoicesAfter = (secondsUntilIgnoringChoices) ->
   form = $('form')
   checkboxes = form.find('[type=checkbox]')
   checkboxValues = null
+  menuOrCombo = $('.menu-or-combo')
 
   setTimeout ->
     checkboxValues = $.map checkboxes, (el) ->
@@ -86,6 +87,7 @@ ignoreChoicesAfter = (secondsUntilIgnoringChoices) ->
   
   # rechecking the values recorded in checkboxValues
   form.submit (e) ->
+    menuOrCombo.css('visibility', 'hidden')
     if checkboxValues != null
       console.log('changing answers')
       $.map checkboxes, (el, i) ->
