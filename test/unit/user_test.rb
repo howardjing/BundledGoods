@@ -12,13 +12,14 @@ class UserTest < ActiveSupport::TestCase
     assert_equal question.duration, 100
   end
   
-  # make sure that the chosen_question was not the demo question
+  # make sure that the chosen_question was not the demo question but the current_question is the demo question
   test "#generate_questions" do
     100.times do |i|
       user = User.new
       user.lab_number = i
       user.save
       assert_equal false, user.chosen_question.demo? 
+      assert_equal true, user.current_question.demo?
     end
   end
 end
