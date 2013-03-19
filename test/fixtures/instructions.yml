@@ -4,8 +4,30 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+zero:
+  number: 0
+  content: 'Demo instructions'
+
+one: 
+  number: 1
+  content: 'Type 1 instructions'
+
+two:
+  number: 2
+  content: 'Type 2 instructions'
+
+three: 
+  number: 3
+  content: 'Type 3 instructions'
+
+four: 
+  number: 4
+  content: 'Type 4 instructions'
+  
+five: 
+  number: 5
+  content: 'Type 5 instructions'
+  
+six:
+  number: 6
+  content: 'Type 6 instructions'
