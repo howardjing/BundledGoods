@@ -6,6 +6,7 @@ gem 'rails', '3.2.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'thin'
 gem 'rubystats'
 gem 'mathjax-rails'
 
