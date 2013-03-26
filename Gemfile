@@ -1,14 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.7'
+gem 'rails', '3.2.13'
 ruby "1.9.3"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'thin'
-#gem 'thin'
 gem 'rubystats'
 gem 'mathjax-rails'
 
@@ -22,16 +20,12 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'therubyracer'
-  gem 'less-rails'
   gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
 end
 
 gem 'jquery-rails'
+gem 'thin'
 
-group :development do
-	gem 'thin'
-end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

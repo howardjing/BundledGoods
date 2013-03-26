@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :content do %>
-  <h3>Time left: <%= timer seconds: @question.previous_question.time_remaining %></h3>
+  <h3>Time left: <%= timer seconds: @seconds_remaining %></h3>
   <%= link_to 'continue', instructions_experiment_path, class: 'continue btn btn-info pull-right' %>
 
 
