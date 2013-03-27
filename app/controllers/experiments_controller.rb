@@ -12,10 +12,6 @@ class ExperimentsController < ApplicationController
   
   def wait
     @seconds_remaining = @question.previous_question.time_remaining
-    respond_to do |format|
-      format.html
-      format.json { render json: { id: @question.previous_question.id, secondsRemaining: @seconds_remaining } }
-    end
   end
   
   def update
