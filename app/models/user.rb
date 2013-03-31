@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
     logger.info 'Generating demo question...'
     demo = build_random_question number_of_goods: 3, duration: Question::PUBLIC_TIME_LIMIT
     demo.instruction = Instruction.find_by_number(0)
+    logger.info "Demo valid: #{demo.valid?}"
+    logger.info "Demo errors: #{demo.errors.full_messages}"
     demo.save
     
     logger.info 'Assigning demo question to users current_question'
