@@ -148,8 +148,6 @@ class Question < ActiveRecord::Base
   private
   
   def seconds_since_started
-    logger.info "[Waiting Bug] Time.zone.now: #{Time.zone.now}"
-    logger.info "[Waiting Bug] time_started: #{time_started}"
     if started?
       (Time.zone.now - time_started).to_i
     else

@@ -121,7 +121,7 @@ isDemoQuestion = ->
 initTimerAndStartQuestion = (timer) ->
   BundledGoods.timer.initAndStart(timer)
   unless questionPreviouslyStarted
-    sendQuestionStarted (new Date()).toString()
+    sendQuestionStarted (new Date()).toISOString()
 
 sendQuestionStarted = (timeStart) ->
   $.ajax {

@@ -46,10 +46,6 @@ class ExperimentsController < ApplicationController
   
   # called by the javascript timer
   def start_question
-    logger.info "[Waiting Bug] Received start question with time: #{params[:start_time]}"
-    logger.info "[Waiting Bug] The time zone on the server is: #{Time.zone}"
-    logger.info "[Waiting Bug] Parsing the given start time yields: #{Time.zone.parse(params[:start_time])}"
-    logger.info "[Waiting Bug] Currently, the time on server is: #{Time.zone.now}"
     if @question.started?
       logger.error 'Question #{@question.id} has already been started at #{@question.time_started}'
     else
