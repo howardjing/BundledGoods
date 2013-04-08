@@ -4,8 +4,9 @@
 
 <% content_for :content do %>
   <p>
-    In order to calculate total values of given bundles, you will need two elements: 
-    <b>value of single goods</b> <i>and</i> the <b>Bundle Effect</b> for joint purchases.
+    If you purchase more than one good from a menu, we will call this a “bundle” of
+goods. The total value of a given bundle is determined by adding up the values of the
+purchased goods and then adding or subtracting any “bundle effects."
   </p>
   <p>
     The "Bundle Effect" will be located in statement links which you can open and close 
@@ -20,24 +21,28 @@
     <div><%= image_tag("open 'show' statement.png")%></div>
   </p>
   <p>
-    Each statement will contain it's own bundle effect equally ranging from -4 to 4. In the example above, the 
-    bundle effect for a bundle with goods 1 and 4 is <b>"-2."</b> A positive bundle effect will have a 
-    positive sign preceding it. For example, if the statement says you value the bundle positive 1 the 
-    bundle effect would look like <b>"+1."</b> Every combination of goods will be given.
+    In the example above, the 
+    bundle effect for a bundle with goods 1 and 4 is <b>"-2."</b> This means that if you purchased goods 1 and 4, then the value of that bundle
+would be the value of the good 1 plus the value of good 4 minus 2.
   </p>
+  <p>The bundle effect for each bundle is equally likely to be any dollar value between -4
+and 4. A positive bundle effect will have a positive sign preceding it. For example, if
+the statement says that the bundle effect is “+1” then the bundle effect adds 1.</p>
   <p>
     Next to the statement links are the goods associated with that certain bundle. In the image above,
     that statement contains goods 1 and 4. If the statement contained goods 1, 3, and 4, the corresponding 
     group next to the statement would be "[1,3,4]".
   </p>
   <p>
-    You are free to open and close however many statements you would like before making a final choice. 
-    There is no penalty for not opening all of the statements. Bundle Effects are applied however 
-    even if you do not open a statement. You may only open one statement at a time.
+   You may only open one statement at a time, but you are free to open and close as
+many statements as you would like before making a final choice. There is no penalty
+for not opening all of the statements. However, bundle effects are applied even if the
+statement corresponding to your choice is not opened.
   </p>
   <p>
-  	It is important to understand how to calculate these bundle values correctly, as the final valuation 
-  	of the bundle of your choosing will be the monetary reward you receive for the round.
+  	It is important to understand how to calculate the values of bundles, as your
+monetary payment at the end of the experiment depends on the value of your
+choices.
   </p>
   <p>
   	The following tutorial will test if you fully understand how to calculate valuations given 

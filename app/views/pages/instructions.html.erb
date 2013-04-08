@@ -3,15 +3,13 @@
 <% end %>
 
 <% content_for :content do %>
-  <p>You are participating in an experiment that involves making choices from a "menu" of options.</p>
-  <p>Your task is to select goods either singularly or in combination in a "bundle." 
-   A bundle will be defined as any number of goods, greater than one, taken from the single component 
-   menu and purchased together.There is a value associated to each good that will be presented to you 
-   in a menu as shown below:<p>
+  <p>You are participating in an experiment that involves making choices from different "menus" of options.</p>
+  <p>Your task is to choose any number of options, including zero options, from each menu. We will call each 
+  option a "good," and if you choose the option, we will say you have "purchased" the good. </p>
+  <p>Each good in the menu will be randomly assigned a dollar value that is equally likely to be either 0, 1, or 2.
+  Here is an example of a menu of goods.</p>  
   <div>
     <%= image_tag("utilitynocombo.png")%>
   </div>
-  <p>The value of single goods will be equally likely to be either 0, 1, or 2.</p>  
-  <p>You will learn how to calculate valuations for bundles in the next screen.</p> 
   <%=  link_to "Next", instructions1_path, :class => "btn btn-info pull-right" %>
 <% end %>

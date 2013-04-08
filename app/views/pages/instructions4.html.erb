@@ -4,12 +4,11 @@
 
 <% content_for :content do %>
 
-  <p>The Experiment is divided into seven sections, with each experiment presenting a different menu and statements. 
-  You will attempt two trials of each.
-  There will be a three good practice round to see if you fully understand the problem that is facing you. 
-  The problem will let you know if you have plugged in the correct values, and you are free to attempt it
-  until the time is over. </p>
-  <p>Below is a table of characteristics of each experiment type.</p>
+  <p>The experiment will start with a practice choice in which the Choice Menu contains
+3 goods. The choice you make in this round will not affect your final payment. </p>
+  <p>You will then make 12 choices from different menus, each with different individual
+values and bundle effects. These 12 choices will be of 6 “types” (two choices of each
+type). Below is a table of characteristics of each experiment type.</p>
   <table class="table table-bordered">
   	<thead>
   		<tr>
@@ -51,18 +50,22 @@
   		</tr>
   	</tbody>
   </table>
-  <p>The Experiment Types will be arranged in a random order. </p>
-  <p>The choice you have selected when the timer runs out will be your final choice. </p>
-  <p>You are free to use the whole alloted time, but you must wait the full five minutes before moving 
-  onto the next experiment.</p>
-  <p>Before each experiment, there will be instructions similar to the instructions given 
-  in the tutorials. </p>
-  <p><b>Experiment Types 4, 5, and 6 have special instructions before the experiment. READ THE INSTRUCTIONS BEFORE 
-  ATTEMPTING.</b></p>
-  <p>Your monetary reward depends directly on the choices you make. In addition to the flat show up fee, 
-  you have the ability to either lose 4 dollars or make up to 18 dollars during each experiment. 
-  Choices you make in the three good practice round will not be counted towards your final payment. A reward you have chosen from 
-  Experiments 1 through 6 will be chosen at random to be your payment. It is in your best interest to perform each experiment to the best 
-  of your ability as each experiment has a one in six chance of being picked as your monetary reward. </p>
+  <p>You will face the experiment types in random order.</p>
+
+<p>What you have selected when the timer runs out will be recorded as your choice.
+In experiments 1, 2, and 3, the timer runs out after 5 minutes. In experiments 4, 5,
+and 6, the timer runs out a random time, which will be described to you before those
+experiments.</p>
+
+<p>You are free to stop working at any point, but you must wait the full five minutes
+before moving to the next choice. Before each choice, you will be presented with the
+instructions again.</p>
+
+<p>At the end of the experiment, one choice will be selected at random, and the value of
+your choice in that round will be added or deducted from your final payment. It is in your best interest to perform each experiment to the best 
+  of your ability as each experiment has a one in twelve chance of being picked as your monetary reward. </p>
+  
+  <p>In addition to the show up fee, you have the opportunity to potentially make up to twenty dollars by making 
+  good choices or lose up to four dollars. You will however make a minimum of ten dollars for completing the experiment. </p> 
 <%= link_to 'Take the Demo', experiment_path, :class => 'btn btn-primary' %>
 <% end %>

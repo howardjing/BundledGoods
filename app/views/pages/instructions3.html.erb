@@ -4,29 +4,20 @@
 
 <% content_for :content do %>
 
- <p>In order to purchase goods you will be offered a choice menu of options.</p>
-  <p>You are free to click in the box for a given option at any point in time. Clicking once will select the good, and clicking on it again will deselect the good. </p>
-  <p>Here is an example of a good that has been selected with the button checked:</p>
+  <p>To select an option, click on the box next to it. Clicking once will select the option,
+and clicking on it again will deselect the option. Here is an example of a good that
+has been selected with the button checked: </p>
   <div><%= image_tag("checked.png")%></div>
-  <p>Here is an example of a good that has either been de-selected or not chosen at all with the button blank:</p>
+  <p>Here is an example of a good that has either been de-selected or never selected:</p>
   <div> <%= image_tag("unchecked.png")%></div>
   <p>
-  	In the menus you will be offered, single items will be located on the left hand side, and a 
-  	"Combo Package" will be offered on the right hand side as shown below.</p>
+  	In the menus you will be offered, single goods will be located on the left hand side in a "Choice Menu," and the
+  	"Combo Package" will be offered on the right hand side, as shown below.</p>
   <div><%= image_tag("choicemenu.png")%></div>
   <p>
-  	If you decide to purchase the Combo Package 
-  	containing all the goods on the right hand side, it would look as follows:</p>
-  <div> <%= image_tag("combochoice.png")%> </div>
-  <p>
-	You can select individual goods from the 
-  	single component menu on the left to create a bundle of your choice. Here is an example 
-  	of choosing a bundle containing goods 2 and 3. You may however select single goods or no goods for the 
-  	experiment.</p>
-  <div>
-  	<%= image_tag("choice2_4.png")%></p>
-  <p>As shown above, you may only purchase one item of each good, but you may purchase multiple goods 
-  together in a bundle.</p>
+	Recall that you can purchase any number of goods (including zero goods) from the
+Choice Menu. Also, if you choose the Combo Package, it will be as if you purchased
+all of the goods in the Choice Menu – with a bonus of +1.</p>
   
 <%= link_to 'Next', instructions4_path, :class => 'btn btn-primary' %>
 
