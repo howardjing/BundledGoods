@@ -2,15 +2,19 @@
   <h1>Thank you</h1>
 <% end %>
 <% content_for :content do %>
-  <b>Your choices:</b>
+
+<b>Your choices:</b>
+  <% chosen_number = nil %>
   <% current_user.questions.each_with_index do |question, number| %>
-    <div>
+    <% chosen_number = number if question.id == current_user.chosen_question.id %>
+         <div>
       Question <%= number %>) <%= display_answer(question) %>, for a value of <%= question.answer.try(:value) %>
     </div>
   <% end %>
 
   <div>
-    <p>The chosen question: <%= current_user.chosen_question.number %></p>
+    <p>The chosen question: <%= chosen_number %></p>
+
     <b>Your total score: <%= current_user.score %></b>
   </div>
   
