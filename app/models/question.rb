@@ -104,6 +104,22 @@ class Question < ActiveRecord::Base
     question
   end
   
+  def has_answer?
+  	!answer.nil?
+  end
+
+  def answer_value
+  	answer.value if has_answer?
+  end
+  
+  def optimal_answer?
+  	has_answer? && answer_value == optimal_value
+  end
+  
+  def answer_deviation_from_optimum
+  	optimal_value - answer_value if has_answer?
+  end
+  
   def combo_noeffect  #this will go in the menu
   	goods.values.reduce(1, :+)
   end
@@ -116,6 +132,34 @@ class Question < ActiveRecord::Base
   def bundle(choices)
     # (sum of effects + sum of goods values)
     (effects[choices.to_s] || 0) + choices.map{ |i| goods[i.to_s] }.reduce(0, :+)
+  end
+  
+  def seconds_between_clicks(stats)
+    first_actions = stats.slice(0, stats.length-1)
+  	second_actions = stats.slice(1, stats.length)
+  	second_actions.zip(first_actions).map { |second, first| second.created_at - first.created_at }
+  end
+
+  def print_question_stats(ordered_question_stats)
+  	puts "time between every click: #{seconds_between_clicks(ordered_question_stats).join(" seconds, ")}"
+  	puts "time between every show click: #{seconds_between_clicks(ordered_question_stats.find_all { |s| s.content.include?("shown") }).join(" seconds, ")}"
+  	puts "time between every good click: #{seconds_between_clicks(ordered_question_stats.find_all { |s| s.content.include?("clicked") }).join(" seconds, ")}"
+  end
+  
+  def print_question_stats(stats)
+	everything = seconds_between_clicks(ordered_question_stats)
+	puts "time between every click: #{everything.join(" seconds, ")}"
+	puts "average time between click: #{average_between_clicks(everything)}"
+	shown_goods = seconds_between_clicks(ordered_question_stats.find_all { |s| s.content.include?("shown") })
+	puts "time between every show click: #{shown_goods.join(" seconds, ")}"
+	puts "average time between click: #{average_between_clicks(shown_goods)}"
+	answered_goods = seconds_between_clicks(ordered_question_stats.find_all { |s| s.content.include?("clicked") })
+	puts "time between every good click: #{answered_goods.join(" seconds, ")}"
+	puts "average time between click: #{average_between_clicks(answered_goods)}"
+  end
+  
+  def average_between_clicks(seconds)
+  	seconds.sum / seconds.length
   end
   
   def optimal_value
@@ -154,5 +198,6 @@ class Question < ActiveRecord::Base
       0
     end
   end
+  
   
 end
