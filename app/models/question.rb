@@ -140,13 +140,7 @@ class Question < ActiveRecord::Base
   	second_actions.zip(first_actions).map { |second, first| second.created_at - first.created_at }
   end
 
-  def print_question_stats(ordered_question_stats)
-  	puts "time between every click: #{seconds_between_clicks(ordered_question_stats).join(" seconds, ")}"
-  	puts "time between every show click: #{seconds_between_clicks(ordered_question_stats.find_all { |s| s.content.include?("shown") }).join(" seconds, ")}"
-  	puts "time between every good click: #{seconds_between_clicks(ordered_question_stats.find_all { |s| s.content.include?("clicked") }).join(" seconds, ")}"
-  end
-  
-  def print_question_stats(stats)
+  def print_question_stats(ordered_question_stats = question_stats.order("created_at ASC")
 	everything = seconds_between_clicks(ordered_question_stats)
 	puts "time between every click: #{everything.join(" seconds, ")}"
 	puts "average time between click: #{average_between_clicks(everything)}"
