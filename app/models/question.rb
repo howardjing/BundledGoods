@@ -152,6 +152,12 @@ class Question < ActiveRecord::Base
 	puts "average time between click: #{average_between_clicks(answered_goods)}"
   end
   
+  def optimal(ordered_question_stats = question_stats.order("created_at ASC"))
+  	puts "Was the question answered? #{question.has_answer?}"
+    puts "Was the question answered optimally? #{question.optimal_answer?}"
+    puts "The deviation from the optimal answer: #{question.answer_deviation_from_optimum}"
+  end
+  
   def average_between_clicks(seconds)
   	seconds.sum / seconds.length
   end
