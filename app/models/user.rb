@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     questions.find_all { |question| !question.demo? }
   end
 
+  def optimal_answers
+    questions.find_all { |q| q.optimal_answer? }
+  end
+
   private
   
   # there are many things wrong with this method

@@ -7,7 +7,12 @@ Goods::Application.routes.draw do
     get :wait
   end
   resources :stats, only: [:create]
-  
+
+  namespace :statistics do
+    root to: 'users#index'
+    resources :users, only: [:index, :show]
+  end  
+
   match 'instructions', to: 'pages#instructions'
   match 'instructions1', :to => 'pages#instructions1'
   match 'instructions2', :to => 'pages#instructions2'
