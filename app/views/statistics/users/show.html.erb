@@ -1,0 +1,33 @@
+<% content_for :header do %>
+  <% link_to "Statistics", statistics_root_path %>
+<% end %>
+
+<% content_for :content do %>
+  <%= render @user %>
+
+  <ul>
+  <% @user.questions.each do |question| %>
+    <li>
+      <div>
+        <strong>Question <%= question.number %></strong>: <%= question.question_stats.size %> clicks.
+        <% if question.optimal_answer? %>
+          <span class="label label-success">Correct</span>
+        <% end %>
+        <ul>
+        <% prev = nil %>
+        <% question.question_stats.order(:created_at).each do |stat| %>
+          <li><%= stat.content %> <%= prev %>
+            <div class="pull-right">
+              (<%= stat.created_at %> <%= ",  +#{(stat.created_at - prev).round(2)} seconds"  if prev %>)
+            </div>
+          </li>
+          <% prev = stat.created_at %>
+        <% end %>
+        </ul>
+
+
+      </div>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,26 @@
+@mixin column-count($count) {
+  -webkit-column-count: $count;
+  -moz-column-count: $count;
+  -o-column-count: $count;
+  column-count: $count;
+}
+
+ul.list-table {
+  @include column-count(25);
+}
+
+.user-summary {
+  padding: 10px 0;
+
+  ul.misc-details {
+    li {
+      display: inline;
+    }
+    li:after { 
+      content: ","; 
+    } 
+    li:last-child:after { 
+      content: ""; 
+    }
+  }
+}

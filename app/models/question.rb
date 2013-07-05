@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
-  
+  include Everything
+
   # Publicly, all questions have a time limit of 300 seconds
   # all questions also have an internal time limit which can be accessed with
   # Question#duration. The duration is set in User#generate_questions
