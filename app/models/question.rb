@@ -159,7 +159,8 @@ class Question < ActiveRecord::Base
   end
   
   def average_between_clicks(seconds)
-  	seconds.sum / seconds.length
+    return "Error: zero clicks" if seconds.empty?
+    seconds.sum / seconds.length
   end
   
   def optimal_value
