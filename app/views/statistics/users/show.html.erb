@@ -3,6 +3,7 @@
 <% end %>
 
 <% content_for :content do %>
+  <% cache do %>
   <%= render @user %>
 
   <ul>
@@ -36,4 +37,5 @@
     </li>
   <% end %>
   </ul>
+  <% end %>
 <% end %>

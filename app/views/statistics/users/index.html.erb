@@ -3,6 +3,7 @@
 <% end %>
 
 <% content_for :content do %>
+  <% cache do %> 
   <div>
     <ul>
     <% @users.each do |user| %>
@@ -21,4 +22,5 @@
     <%= render 'list_table', items: Stats.questions.order(:id).map { |q| q.question_stats.size } %>
     <p>Average seconds between clicks per question: <%= Stats.average_time_between_all_clicks_per_question %></p>
   </div>
+  <% end %>
 <% end %>

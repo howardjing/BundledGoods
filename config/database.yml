@@ -8,7 +8,11 @@ development:
   username: good
   password: bundled
   database: goods_development
-
+stats:
+  adapter: postgresql
+  username: good
+  password: bundled
+  database: goods_development
 test:
   adapter: postgresql
   username: good

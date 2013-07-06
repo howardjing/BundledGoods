@@ -41,6 +41,7 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     daemons (1.1.9)
+    dalli (2.6.4)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -118,6 +119,7 @@ PLATFORMS
 DEPENDENCIES
   anjlab-bootstrap-rails (>= 2.3)
   coffee-rails (~> 3.2.1)
+  dalli
   jquery-rails
   mathjax-rails
   pg
