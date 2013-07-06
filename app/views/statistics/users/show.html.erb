@@ -13,17 +13,25 @@
         <% if question.optimal_answer? %>
           <span class="label label-success">Optimal</span>
         <% end %>
-        <ul>
-        <% prev = nil %>
-        <% question.question_stats.order(:created_at).each do |stat| %>
-          <li><%= stat.content %> <%= prev %>
-            <div class="pull-right">
-              (<%= stat.created_at %> <%= ",  +#{(stat.created_at - prev).round(2)} seconds"  if prev %>)
-            </div>
-          </li>
-          <% prev = stat.created_at %>
-        <% end %>
-        </ul>
+        <div>Misc
+          <ul>
+            <li>Selected first: <%= question.initial_selection %></li>
+          </ul>
+        </div>
+
+        <div><strong>Details</strong>
+          <ul>
+          <% prev = nil %>
+          <% question.question_stats.order(:created_at).each do |stat| %>
+            <li><%= stat.content %> <%= prev %>
+              <div class="pull-right">
+                (<%= stat.created_at %> <%= ",  +#{(stat.created_at - prev).round(2)} seconds"  if prev %>)
+              </div>
+            </li>
+            <% prev = stat.created_at %>
+          <% end %>
+          </ul>
+        </div>
       </div>
     </li>
   <% end %>

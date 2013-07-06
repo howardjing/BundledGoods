@@ -190,6 +190,20 @@ class Question < ActiveRecord::Base
       yield(combination)
     end
   end
+
+  # ======= Methods for stats =========
+
+  # either good or combo (or blank)
+  def initial_selection
+    first_good = question_stats.ascending.good_selected.first
+    first_combo = question_stats.ascending.combo_selected.first
+
+    if first_good || first_combo
+      [first_good, first_combo].find_all{ |selection| !selection.nil? }
+        .sort_by(&:created_at).first
+        .stat_type
+    end
+  end
   
   private
   
