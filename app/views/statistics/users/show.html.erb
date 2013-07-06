@@ -11,7 +11,7 @@
       <div>
         <strong>Question <%= question.number %></strong>: <%= question.question_stats.size %> clicks.
         <% if question.optimal_answer? %>
-          <span class="label label-success">Correct</span>
+          <span class="label label-success">Optimal</span>
         <% end %>
         <ul>
         <% prev = nil %>
