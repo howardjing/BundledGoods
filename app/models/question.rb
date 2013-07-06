@@ -7,7 +7,7 @@ class Question < ActiveRecord::Base
   PUBLIC_TIME_LIMIT = 300
   
   #validates_presence_of :user
-  belongs_to :user
+  belongs_to :user, touch: true
   belongs_to :instruction
   
   has_one :next_question, class_name: 'Question', foreign_key: 'previous_question_id'

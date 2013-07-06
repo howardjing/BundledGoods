@@ -1,6 +1,6 @@
 class Answer < ActiveRecord::Base
   
-  belongs_to :question
+  belongs_to :question, touch: true
   
   validates_presence_of :question
 #   validate :demo_answer_must_be_optimal

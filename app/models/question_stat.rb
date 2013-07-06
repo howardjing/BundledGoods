@@ -1,6 +1,6 @@
 class QuestionStat < ActiveRecord::Base
 
-  belongs_to :question
+  belongs_to :question, touch: true
   validates_presence_of :question
 
   scope :ascending, lambda { order("question_stats.created_at ASC") }
