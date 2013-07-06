@@ -1,5 +1,5 @@
 <div class="user-summary">
-<%= link_to "User #{user.lab_number}" , [:statistics, user] %> had 
+<%= link_to "User #{user.id}, lab #{user.lab_number}" , [:statistics, user] %> had 
 <strong><%= user.question_stats.size %></strong> total clicks and 
 <strong><%= user.optimal_answers.size %></strong> optimal answers out of
 <strong><%= user.questions.size %></strong> total.

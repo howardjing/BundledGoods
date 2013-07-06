@@ -7,6 +7,7 @@
 
 ul.list-table {
   @include column-count(25);
+  list-style-type: none;
 }
 
 .user-summary {
