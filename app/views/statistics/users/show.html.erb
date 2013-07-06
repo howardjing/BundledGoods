@@ -3,9 +3,8 @@
 <% end %>
 
 <% content_for :content do %>
-  <% cache @user do %>
+  <% cache ["v1-show", @user] do %>
   <%= render @user %>
-
   <ul>
   <% @user.questions.each do |question| %>
     <li>
@@ -14,9 +13,21 @@
         <% if question.optimal_answer? %>
           <span class="label label-success">Optimal</span>
         <% end %>
-        <div>Misc
+        <div><strong>Misc</strong>
           <ul>
-            <li>Selected first: <%= question.initial_selection %></li>
+            <li>Overall Time: <%= question.overall_time || "N/A" %> seconds</li>
+            <li>
+              Final answer: <%= question.answer_choice || "N/A" %>, 
+              deviation from optimum: <%= question.answer_deviation_from_optimum || "N/A"%>
+            </li>
+            <li>Selected first: <%= question.initial_selection || "N/A" %></li>
+            <li>Average time between clicks: <%= question.average_time_between_clicks || "N/A" %> seconds</li>
+            <li>
+              Average time between statement clicks: <%= question.average_time_between_statement_clicks || "N/A" %> seconds,
+              Proportion of statements clicked: <%= question.proportion_statements_clicked || "N/A" %>
+              (<%= question.distinct_statements_clicked_count %> out of <%= question.total_statements_count %>)
+            </li>
+            <li>Average time between selection clicks: <%= question.average_time_between_selection_clicks || "N/A" %> seconds</li>
           </ul>
         </div>
 

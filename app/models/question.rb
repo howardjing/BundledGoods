@@ -204,7 +204,49 @@ class Question < ActiveRecord::Base
         .stat_type
     end
   end
+
+  def answer_choice
+    answer.try(:choice)
+  end
+
+  def overall_time
+    first = question_stats.ascending.first
+    last = question_stats.descending.first
+
+    if first && last
+      (last.created_at - first.created_at).round(2)
+    end
+  end
+
+  def average_time_between_clicks
+    _average_time_between_clicks question_stats.ascending
+  end
+
+  def average_time_between_statement_clicks
+    _average_time_between_clicks question_stats.ascending.statements
+  end
+
+  def average_time_between_selection_clicks
+    _average_time_between_clicks question_stats.ascending.selections
+  end
+
+  DATE_PATTERN = /\d{4}-\d{2}-\d{2}/
+  def distinct_statements_clicked_count
+    question_stats.statements.map(&:content).find_all { |c|
+      c.start_with?("Menu item was shown")
+    }.map { |c| 
+      c.split(DATE_PATTERN)[0]
+    }.uniq.count
+  end
   
+  def total_statements_count
+    effects.count
+  end
+
+  def proportion_statements_clicked
+    (distinct_statements_clicked_count.to_f / total_statements_count).round(3) if total_statements_count > 0
+  end
+
   private
   
   def seconds_since_started
@@ -214,6 +256,11 @@ class Question < ActiveRecord::Base
       0
     end
   end
-  
-  
+
+  def _average_time_between_clicks(stats)
+    if stats.count > 1
+      average_between_clicks(seconds_between_clicks stats).round(2)
+    end
+  end
+
 end

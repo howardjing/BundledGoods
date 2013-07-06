@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :content do %>
-  <% cache "stat-count-#{QuestionStat.count}" do %> 
+  <% cache "v1-stat-count-#{QuestionStat.count}" do %> 
   <div>
     <ul>
     <% @users.each do |user| %>
