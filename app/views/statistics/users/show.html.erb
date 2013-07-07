@@ -3,29 +3,50 @@
 <% end %>
 
 <% content_for :content do %>
+  <% cache ["v1-show", @user] do %>
   <%= render @user %>
-
   <ul>
   <% @user.questions.each do |question| %>
     <li>
       <div>
         <strong>Question <%= question.number %></strong>: <%= question.question_stats.size %> clicks.
         <% if question.optimal_answer? %>
-          <span class="label label-success">Correct</span>
+          <span class="label label-success">Optimal</span>
         <% end %>
-        <ul>
-        <% prev = nil %>
-        <% question.question_stats.order(:created_at).each do |stat| %>
-          <li><%= stat.content %> <%= prev %>
-            <div class="pull-right">
-              (<%= stat.created_at %> <%= ",  +#{(stat.created_at - prev).round(2)} seconds"  if prev %>)
-            </div>
-          </li>
-          <% prev = stat.created_at %>
-        <% end %>
-        </ul>
+        <div><strong>Misc</strong>
+          <ul>
+            <li>Overall Time: <%= question.overall_time || "N/A" %> seconds</li>
+            <li>
+              Final answer: <%= question.answer_choice || "N/A" %>, 
+              deviation from optimum: <%= question.answer_deviation_from_optimum || "N/A"%>
+            </li>
+            <li>Selected first: <%= question.initial_selection || "N/A" %></li>
+            <li>Average time between clicks: <%= question.average_time_between_clicks || "N/A" %> seconds</li>
+            <li>
+              Average time between statement clicks: <%= question.average_time_between_statement_clicks || "N/A" %> seconds,
+              Proportion of statements clicked: <%= question.proportion_statements_clicked || "N/A" %>
+              (<%= question.distinct_statements_clicked_count %> out of <%= question.total_statements_count %>)
+            </li>
+            <li>Average time between selection clicks: <%= question.average_time_between_selection_clicks || "N/A" %> seconds</li>
+          </ul>
+        </div>
+
+        <div><strong>Details</strong>
+          <ul>
+          <% prev = nil %>
+          <% question.question_stats.order(:created_at).each do |stat| %>
+            <li><%= stat.content %> <%= prev %>
+              <div class="pull-right">
+                (<%= stat.created_at %> <%= ",  +#{(stat.created_at - prev).round(2)} seconds"  if prev %>)
+              </div>
+            </li>
+            <% prev = stat.created_at %>
+          <% end %>
+          </ul>
+        </div>
       </div>
     </li>
   <% end %>
   </ul>
+  <% end %>
 <% end %>

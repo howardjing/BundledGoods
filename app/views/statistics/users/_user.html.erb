@@ -1,12 +1,13 @@
+<% cache ["v1", user] do %>
 <div class="user-summary">
-<%= link_to "User #{user.id}, lab #{user.lab_number}" , [:statistics, user] %> had 
-<strong><%= user.question_stats.size %></strong> total clicks and 
-<strong><%= user.optimal_answers.size %></strong> optimal answers out of
-<strong><%= user.questions.size %></strong> total.
-<ul class="misc-details"> 
-  <% %w(age year major gender).each do |attr| %>
-  <li><%= attr %>: <%= user.send(attr).blank? ? "N/A" : user.send(attr) %></li>
-  <% end %>
-</ul>
-
+  <%= link_to "User #{user.id}, lab #{user.lab_number}" , [:statistics, user] %> had 
+  <strong><%= user.question_stats.size %></strong> total clicks and 
+  <strong><%= user.optimal_answers.size %></strong> optimal answers out of
+  <strong><%= user.questions.size %></strong> total.
+  <ul class="misc-details"> 
+    <% %w(age year major gender).each do |attr| %>
+    <li><%= attr %>: <%= user.send(attr).blank? ? "N/A" : user.send(attr) %></li>
+    <% end %>
+  </ul>
 </div>
+<% end %>

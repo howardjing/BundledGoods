@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :questions, order: 'created_at ASC'
   has_many :answers, through: :questions
   has_many :question_stats, through: :questions
-  has_one :chosen_question, class_name: 'Question'
+  belongs_to :chosen_question, class_name: 'Question'
   belongs_to :current_question, class_name: 'Question'
     
   after_create :generate_questions

@@ -3,7 +3,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question
   
   validates_presence_of :question
-#   validate :demo_answer_must_be_optimal
+  # validate :demo_answer_must_be_optimal
   
   delegate :user, :number, to: :question
   
@@ -19,10 +19,17 @@ class Answer < ActiveRecord::Base
       0
     end
   end
+
+  def choice
+    choice_type = content['choice'].capitalize
+    return choice_type if content['choice'] != 'goods'
+
+    "#{choice_type} #{content['goods']}"
+  end
   
   private
   
-def demo_answer_must_be_optimal
+  def demo_answer_must_be_optimal
     if should_validate?
       if question.optimal_value > value
         logger.debug "CONTENT: #{content}"
