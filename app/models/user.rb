@@ -38,35 +38,16 @@ class User < ActiveRecord::Base
     real_questions.find_all { |q| q.answer_choice == 'Combo' }.count
   end
 
-  # Tried using define_method for the following methods, didn't work for some reason
-  def overall_time
-    questions = real_questions.find_all { |q| q.overall_time != nil }
-    if questions.count > 0
-      (questions.map { |q| q.overall_time(precision: :default) }.sum / questions.count).round(2)
+  [:overall_time, :average_time_between_clicks,
+    :average_time_between_statement_clicks,
+    :average_time_between_selection_clicks].each do |statement|
+    define_method statement do 
+      questions = real_questions.find_all { |q| q.send(statement) != nil }
+      if questions.count > 0
+        (questions.map { |q| q.send(statement, precision: :default) }.sum / questions.count).round(2)
+      end
     end
   end
-
-  def average_time_between_clicks
-    questions = real_questions.find_all { |q| q.average_time_between_clicks != nil }
-    if questions.count > 0
-      (questions.map { |q| q.average_time_between_clicks(precision: :default) }.sum / questions.count).round(2)
-    end
-  end
-
-  def average_time_between_statement_clicks
-    questions = real_questions.find_all { |q| q.average_time_between_statement_clicks != nil }
-    if questions.count > 0
-      (questions.map { |q| q.average_time_between_statement_clicks(precision: :default) }.sum / questions.count).round(2)
-    end
-  end
-
-  def average_time_between_selection_clicks
-    questions = real_questions.find_all { |q| q.average_time_between_selection_clicks != nil }
-    if questions.count > 0
-      (questions.map { |q| q.average_time_between_selection_clicks(precision: :default) }.sum / questions.count).round(2)
-    end
-  end
-
 
   private
   
