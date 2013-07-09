@@ -9,5 +9,21 @@
     <li><%= attr %>: <%= user.send(attr).blank? ? "N/A" : user.send(attr) %></li>
     <% end %>
   </ul>
+
+  <div>
+    <ul>
+      <li>
+        Times finally answered combo: <%= user.finally_chose_combo_count %> out of <%= user.real_questions.count %>
+      </li>
+      <li>
+        Times initially chose combo: <%= user.initially_chose_combo_count %> out of <%= user.real_questions.count %>
+      </li>
+      <li>Average time spent per question: <%= user.overall_time || "N/A" %> seconds</li>
+      <li>Average time between clicks: <%= user.average_time_between_clicks || "N/A" %> seconds</li>
+      <li>Average time between statement clicks: <%= user.average_time_between_statement_clicks || "N/A" %></li>
+      <li>Average time between selection clicks: <%= user.average_time_between_selection_clicks || "N/A" %></li>
+      
+    </ul>
+  </div>
 </div>
 <% end %>

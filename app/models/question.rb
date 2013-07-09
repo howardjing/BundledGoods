@@ -205,29 +205,40 @@ class Question < ActiveRecord::Base
     end
   end
 
+  # Good [1,2,3] or Combo
   def answer_choice
     answer.try(:choice)
   end
 
-  def overall_time
+  # options: 
+  #   precision: :default to not round the overall time
+  def overall_time(options = {})
+    options[:precision] ||= 2
     first = question_stats.ascending.first
     last = question_stats.descending.first
 
     if first && last
-      (last.created_at - first.created_at).round(2)
+      if options[:precision] != :default
+        (last.created_at - first.created_at).round(options[:precision])
+      else
+        (last.created_at - first.created_at)
+      end
     end
   end
 
-  def average_time_between_clicks
-    _average_time_between_clicks question_stats.ascending
+  def average_time_between_clicks(options = {})
+    options[:precision] ||= 2
+    _average_time_between_clicks question_stats.ascending, options[:precision]
   end
 
-  def average_time_between_statement_clicks
-    _average_time_between_clicks question_stats.ascending.statements
+  def average_time_between_statement_clicks(options = {})
+    options[:precision] ||= 2
+    _average_time_between_clicks question_stats.ascending.statements, options[:precision]
   end
 
-  def average_time_between_selection_clicks
-    _average_time_between_clicks question_stats.ascending.selections
+  def average_time_between_selection_clicks(options = {})
+    options[:precision] ||= 2
+    _average_time_between_clicks question_stats.ascending.selections, options[:precision]
   end
 
   DATE_PATTERN = /\d{4}-\d{2}-\d{2}/
@@ -257,9 +268,13 @@ class Question < ActiveRecord::Base
     end
   end
 
-  def _average_time_between_clicks(stats)
+  def _average_time_between_clicks(stats, precision)
     if stats.count > 1
-      average_between_clicks(seconds_between_clicks stats).round(2)
+      if precision != :default
+        average_between_clicks(seconds_between_clicks stats).round(2)
+      else
+        average_between_clicks(seconds_between_clicks stats)
+      end
     end
   end
 
