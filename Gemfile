@@ -25,6 +25,7 @@ end
 
 gem 'jquery-rails'
 gem 'thin'
+gem 'memcachier'
 gem 'dalli'
 
 # To use ActiveModel has_secure_password

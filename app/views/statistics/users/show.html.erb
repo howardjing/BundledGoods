@@ -3,13 +3,13 @@
 <% end %>
 
 <% content_for :content do %>
-  <% cache ["v1-show", @user] do %>
+  <% cache ["v1.1-show", @user] do %>
   <%= render @user %>
   <ul>
   <% @user.questions.each do |question| %>
     <li>
       <div>
-        <strong>Question <%= question.number %></strong>: <%= question.question_stats.size %> clicks.
+        <strong>Question id: <%=question.id%>, number: <%= question.number %></strong>: <%= question.question_stats.size %> clicks.
         <% if question.optimal_answer? %>
           <span class="label label-success">Optimal</span>
         <% end %>
