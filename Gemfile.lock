@@ -59,6 +59,7 @@ GEM
       treetop (~> 1.4.8)
     mathjax-rails (0.0.4)
       railties (~> 3.0)
+    memcachier (0.0.2)
     mime-types (1.21)
     multi_json (1.7.2)
     pg (0.14.1)
@@ -122,6 +123,7 @@ DEPENDENCIES
   dalli
   jquery-rails
   mathjax-rails
+  memcachier
   pg
   rails (= 3.2.13)
   rubystats
