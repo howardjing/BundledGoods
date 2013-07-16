@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include User::Stats
-  
+
   attr_accessible :age, :gender, :lab_number, :major, :year
   has_many :questions, order: 'created_at ASC', dependent: :destroy
   has_many :answers, through: :questions
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   end
   
   def scorable_questions
-    questions.find_all { |question| !question.demo? }
+    questions.real
   end
 
   def optimal_answers
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def real_questions
-    questions.find_all { |q| !q.demo? } 
+    questions.real
   end
 
   private

@@ -6,11 +6,11 @@ class OverallUser
   end
 
   def real_questions
-    Question.all
+    Question.real
   end
 
   def question_stats
-    QuestionStat.all
+    QuestionStat.includes(:question).find_all { |s| s.real? }
   end
 
   def optimal_answers

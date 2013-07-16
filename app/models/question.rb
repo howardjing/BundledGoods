@@ -10,6 +10,8 @@ class Question < ActiveRecord::Base
   belongs_to :user, touch: true
   belongs_to :instruction
   
+  scope :real, lambda { joins(:instruction).merge(Instruction.real) }
+
   has_one :next_question, class_name: 'Question', foreign_key: 'previous_question_id'
   belongs_to :previous_question, class_name: 'Question'
   
@@ -21,7 +23,8 @@ class Question < ActiveRecord::Base
   validates_presence_of :instruction
   
   delegate :number, to: :instruction
-  
+
+
   # the values and bundle_effects of the various goods
   serialize :values, JSON
   serialize :effects, JSON
