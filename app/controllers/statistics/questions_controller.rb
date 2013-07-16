@@ -3,7 +3,7 @@ class Statistics::QuestionsController < Statistics::BaseController
   end
 
   def new
-    @numbers = params[:numbers]
+    @numbers = params[:numbers].split(",").map(&:to_i)
     @question = OverallQuestion.new(@numbers)
   end
 end
