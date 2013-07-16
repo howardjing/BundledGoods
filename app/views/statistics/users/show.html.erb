@@ -33,15 +33,25 @@
 
         <div><strong>Details</strong>
           <ul>
-          <% prev = nil %>
+          <% prev = question.time_started %>
+          <li>Question started 
+            <div class="pull-right">
+                (<%= question.time_started %>)
+            </div>
+          </li>
           <% question.question_stats.order(:created_at).each do |stat| %>
             <li><%= stat.content %> <%= prev %>
               <div class="pull-right">
-                (<%= stat.created_at %> <%= ",  +#{(stat.created_at - prev).round(2)} seconds"  if prev %>)
+                (<%= stat.created_at %> <%= ",  +#{(stat.created_at - prev).round(2)} seconds" %>)
               </div>
             </li>
             <% prev = stat.created_at %>
           <% end %>
+          <li>Answer created
+            <div class="pull-right">
+                (<%= question.answer.created_at %>, <%= ",  +#{(question.answer.created_at - prev).round(2)} seconds" if question.answer.created_at %>)
+            </div>
+          </li>
           </ul>
         </div>
       </div>

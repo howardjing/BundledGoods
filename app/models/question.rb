@@ -222,14 +222,11 @@ class Question < ActiveRecord::Base
   #   precision: :default to not round the overall time
   def overall_time(options = {})
     options[:precision] ||= 2
-    first = question_stats.ascending.first
-    last = question_stats.descending.first
-
-    if first && last
+    if answer && time_started
       if options[:precision] != :default
-        (last.created_at - first.created_at).round(options[:precision])
+        (answer.created_at - time_started).round(options[:precision])
       else
-        (last.created_at - first.created_at)
+        (answer.created_at - time_started)
       end
     end
   end
