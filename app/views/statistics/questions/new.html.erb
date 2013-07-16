@@ -1,0 +1,8 @@
+<%= content_for :header do %>
+  <% link_to "Question Statistics", statistics_questions_path %>
+<% end %>
+
+<%= content_for :content do %>
+  Question stats for range: <%= @numbers %>
+  <%= render 'statistics/users/user', user: @question %>
+<% end %>

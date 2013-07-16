@@ -1,6 +1,6 @@
-<% cache ["v1.1", user] do %>
+<% cache ["v1.2", user] do %>
 <div class="user-summary">
-  User <%= user.id %> had 
+  <%= user.name %> had 
   <strong><%= user.question_stats.size %></strong> total clicks and 
   <strong><%= user.optimal_answers.size %></strong> optimal answers out of
   <strong><%= user.real_questions.size %></strong> total.

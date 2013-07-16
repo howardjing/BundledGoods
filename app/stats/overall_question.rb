@@ -1,16 +1,23 @@
-class OverallUser
+class OverallQuestion
   include User::Stats
 
+  # an array of numbers to include
+  attr_reader :numbers
+
+  def initialize(numbers)
+    @numbers = numbers
+  end
+
   def cache_key
-    "overall-user-#{QuestionStat.count}"
+    "overall-question-#{QuestionStat.count}"
   end
 
   def name
-    "Overall User"
+    "Question range: #{numbers}"
   end
 
   def real_questions
-    Question.real
+    Question.joins(:instruction).where(instructions: { number: numbers }).real
   end
 
   def question_stats

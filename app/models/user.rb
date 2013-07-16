@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   after_create :generate_questions
   validates_presence_of :lab_number
   
+  def name
+    "User #{id}"
+  end
+
   def score
     if chosen_question.answer
       chosen_question.answer.value

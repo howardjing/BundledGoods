@@ -1,0 +1,10 @@
+<%= content_for :header do %>
+  <% link_to "Statistics", statistics_root_path %>
+<% end %>
+
+<%= content_for :content do %>
+  <% form_tag new_statistics_question_path, method: :get do %>
+    <%= label_tag :numbers, 'Question Numbers (comma separated, ie. 1,2,3)' %>
+    <%= text_field_tag :numbers %>
+  <% end %>
+<% end %>

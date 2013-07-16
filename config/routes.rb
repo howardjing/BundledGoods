@@ -15,6 +15,7 @@ Goods::Application.routes.draw do
         get :overall
       end
     end
+    resources :questions, only: [:index, :new]
   end  
 
   match 'instructions', to: 'pages#instructions'
