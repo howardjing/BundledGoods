@@ -9,7 +9,7 @@ class OverallQuestion
   end
 
   def cache_key
-    "overall-question-#{QuestionStat.count}"
+    "overall-question-#{numbers}-#{QuestionStat.count}"
   end
 
   def name
