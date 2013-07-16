@@ -10,7 +10,11 @@ Goods::Application.routes.draw do
 
   namespace :statistics do
     root to: 'users#index'
-    resources :users, only: [:index, :show]
+    resources :users, only: [:index, :show] do
+      collection do 
+        get :overall
+      end
+    end
   end  
 
   match 'instructions', to: 'pages#instructions'

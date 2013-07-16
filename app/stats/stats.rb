@@ -20,5 +20,4 @@ class Stats
     Question.everything.includes(:question_stats)
   end
 
-
 end

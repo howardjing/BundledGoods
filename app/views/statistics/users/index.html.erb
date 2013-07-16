@@ -1,5 +1,6 @@
 <% content_for :header do %>
 <h3>Users: <%= @users.count %></h3>
+<%= link_to 'Stats for overall user', overall_statistics_users_path %>
 <% end %>
 
 <% content_for :content do %>
@@ -7,6 +8,7 @@
   <div>
     <ul>
     <% @users.each do |user| %>
+      <%= link_to "User #{user.id}, lab #{user.lab_number}" , [:statistics, user] %>
       <%= render user %>
     <% end %>
     </ul>

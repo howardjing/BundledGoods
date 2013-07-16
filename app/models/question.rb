@@ -109,8 +109,13 @@ class Question < ActiveRecord::Base
   	!answer.nil?
   end
 
+  # answers are valued as 0 if they are left blank
   def answer_value
-  	answer.value if has_answer?
+  	if has_answer?
+      answer.value 
+    else
+      0
+    end
   end
   
   def optimal_answer?
@@ -118,7 +123,7 @@ class Question < ActiveRecord::Base
   end
   
   def answer_deviation_from_optimum
-  	optimal_value - answer_value if has_answer?
+  	optimal_value - answer_value
   end
   
   def combo_noeffect  #this will go in the menu

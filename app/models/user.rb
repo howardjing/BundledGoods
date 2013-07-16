@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include User::Stats
+  
   attr_accessible :age, :gender, :lab_number, :major, :year
   has_many :questions, order: 'created_at ASC', dependent: :destroy
   has_many :answers, through: :questions
@@ -22,31 +24,11 @@ class User < ActiveRecord::Base
   end
 
   def optimal_answers
-    questions.find_all { |q| q.optimal_answer? }
+    real_questions.find_all { |q| q.optimal_answer? }
   end
 
   def real_questions
     questions.find_all { |q| !q.demo? } 
-  end
-  # ==== Methods for stats =====
-
-  def initially_chose_combo_count
-    real_questions.find_all { |q| q.initial_selection == 'Combo' }.count
-  end
-
-  def finally_chose_combo_count
-    real_questions.find_all { |q| q.answer_choice == 'Combo' }.count
-  end
-
-  [:overall_time, :average_time_between_clicks,
-    :average_time_between_statement_clicks,
-    :average_time_between_selection_clicks].each do |statement|
-    define_method statement do 
-      questions = real_questions.find_all { |q| q.send(statement) != nil }
-      if questions.count > 0
-        (questions.map { |q| q.send(statement, precision: :default) }.sum / questions.count).round(2)
-      end
-    end
   end
 
   private

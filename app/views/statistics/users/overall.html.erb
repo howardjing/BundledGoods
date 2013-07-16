@@ -1,0 +1,7 @@
+<% content_for :header do %>
+  <%= link_to 'specific users stats', statistics_users_path %>
+<% end %>
+
+<% content_for :content do %>
+<%= render 'user', user: OverallUser.new %>
+<% end %>
