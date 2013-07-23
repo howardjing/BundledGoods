@@ -16,6 +16,7 @@ Goods::Application.routes.draw do
       end
     end
     resources :questions, only: [:index, :new]
+    resources :combos, only: [:index, :show]
   end  
 
   match 'instructions', to: 'pages#instructions'

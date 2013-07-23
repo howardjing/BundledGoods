@@ -1,0 +1,14 @@
+<%= content_for :header do %>
+  <h1><%= params[:id] %></h1>
+<% end %>
+
+<%= content_for :content do %>
+<% cache ["v1.0-combos-show", @user] do %>
+  <ul><b>Misc Details</b>
+  <% @user.misc_details.each do |k,v| %>
+    <li><%= k.to_s.humanize %>: <%= v %></li>
+  <% end %>
+  </ul>
+  <%= render 'statistics/users/user', user: @user %>
+<% end %>
+<% end %>

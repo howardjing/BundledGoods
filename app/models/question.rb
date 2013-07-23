@@ -172,6 +172,11 @@ class Question < ActiveRecord::Base
     seconds.sum / seconds.length
   end
   
+  # is the combo an optimal solution?
+  def combo_optimal?
+    optimal_value == combo_witheffect
+  end
+
   def optimal_value
     max = -99999 # really small number
     
@@ -200,6 +205,14 @@ class Question < ActiveRecord::Base
   end
 
   # ======= Methods for stats =========
+  def beta_question?
+    !display_timer?
+  end
+
+  # TODO: don't use the answer (use question_stat)
+  def chose_combo?
+    answer_choice == 'Combo'
+  end
 
   # either good or combo (or blank)
   def initial_selection

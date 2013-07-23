@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :content do %>
-  <% cache ["v1.1-show", @user] do %>
+  <% cache ["v1.0-users-show", @user] do %>
   <%= render @user %>
   <ul>
   <% @user.questions.each do |question| %>
