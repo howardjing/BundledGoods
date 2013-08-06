@@ -20,9 +20,9 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
 end
 
+gem 'anjlab-bootstrap-rails', '>= 2.3', :require => 'bootstrap-rails'
 gem 'jquery-rails'
 gem 'thin'
 gem 'memcachier'
