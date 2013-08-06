@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
   belongs_to :user, touch: true
   belongs_to :instruction
   
-  scope :real, lambda { joins(:instruction).merge(Instruction.real) }
+  scope :real, lambda { joins(:instruction).merge(Instruction.real).readonly(false) }
 
   has_one :next_question, class_name: 'Question', foreign_key: 'previous_question_id'
   belongs_to :previous_question, class_name: 'Question'
