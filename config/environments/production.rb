@@ -1,8 +1,12 @@
 Goods::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  config.cache_store = :dalli_store, ENV["MEMCACHIER_SERVERS"].split(","),
-                    {:username => ENV["MEMCACHIER_USERNAME"],
-                     :password => ENV["MEMCACHIER_PASSWORD"]}
+  if ENV["MEMCACHIER_SERVERS"].present?
+    config.cache_store = :dalli_store, ENV["MEMCACHIER_SERVERS"].split(","),
+                        {:username => ENV["MEMCACHIER_USERNAME"],
+                         :password => ENV["MEMCACHIER_PASSWORD"]}
+  else
+    config.cache_store = :dalli_store
+  end
   
   # Code is not reloaded between requests
   config.cache_classes = true
