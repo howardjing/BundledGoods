@@ -1,6 +1,12 @@
 class NotChoosingComboWhenShould 
   include User::Stats
 
+  def misc_details
+    details = {}
+    details[:question_ids] = real_questions.map(&:id)
+    details 
+  end
+
   # GONNA DO THIS LATER
   # You did not choose combo even though the optimal bundle was combo AND your answer was not optimal
   def cache_key
@@ -12,7 +18,9 @@ class NotChoosingComboWhenShould
   end
 
   def real_questions
-    Question.joins(:instruction).where(instructions: { number: numbers }).real
+    Question.joins(:instruction).real.find_all { |question|
+      question.combo_optimal? && !question.chose_combo?
+    }
   end
 
   %w(age year major gender).each do |attr|
@@ -20,4 +28,6 @@ class NotChoosingComboWhenShould
       "N/A"
     end
   end
+
+
 end
