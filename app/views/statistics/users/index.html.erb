@@ -2,7 +2,8 @@
 <h3>Users: <%= @users.count %></h3>
 <%= link_to 'Stats for overall user', overall_statistics_users_path %> |
 <%= link_to 'Stats for Questions', statistics_questions_path %> | 
-<%= link_to 'Combo Stats', statistics_combos_path %>
+<%= link_to 'Combo Stats', statistics_combos_path %> |
+<%= link_to 'Good Performers', statistics_medians_path %>
 <% end %>
 
 <% content_for :content do %>
