@@ -7,7 +7,9 @@ class Statistics::MediansController < Statistics::BaseController
 	end
 	def show
     if %w(average_time_between_statement_clicks overall_time).include? params[:id]
-      @user = MedianFinder.new(params[:id].humanize, lambda { |user| user.send(params[:id]) })
+      start_percentile = params[:start].try(:to_f) || 0.5
+      end_percentile = params[:end].try(:to_f) || 1
+      @user = PercentileFinder.new(start_percentile, end_percentile, params[:id].humanize, lambda { |user| user.send(params[:id]) })
     else
       redirect_to statistics_medians_path, notice: 'Invalid id'
     end
