@@ -27,8 +27,8 @@ class PercentileFinder
   end
 
   def within_percentile(sorted_array)
-    start_point = (sorted_array.length * start_percentile).ceil
-    end_point = (sorted_array.length * end_percentile).ceil
+    start_point = (sorted_array.length * (start_percentile/100.0)).ceil
+    end_point = (sorted_array.length * (end_percentile/100.0)).ceil
     sorted_array.slice(start_point, end_point)
   end
 

@@ -4,9 +4,9 @@
       <%= form_tag(statistics_median_path(option[:key]), method: :get) do %>
         <h3><%= option[:title] %></h3>
         <%= label_tag :start, 'Start percentile' %>
-        <%= number_field_tag :start, nil, placeholder: '0.5' %> <br>
+        <%= number_field_tag :start, 50, placeholder: '50' %> <br>
         <%= label_tag :end, 'End percentile' %>
-        <%= number_field_tag :end, nil, placeholder: '1' %> <br>
+        <%= number_field_tag :end, 100, placeholder: '100' %> <br>
         <%= submit_tag 'compute', class: 'btn' %>
       <% end %>
     </div>
