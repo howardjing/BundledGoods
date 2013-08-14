@@ -1,11 +1,13 @@
 class PercentileFinder
   include User::Stats
 
-  attr_reader :start_percentile, :end_percentile
+  attr_reader :questions, :start_percentile, :end_percentile
 
-  def initialize(start_percentile, end_percentile, name, statement)
+  # 6 questions total
+  def initialize(name, statement, questions=[1,2,4,5,6], start_percentile=50, end_percentile=100)
     @statement = statement #user.average_time_between_statement_clicks (lambda)
     @name = name.to_s
+    @questions = questions
     @start_percentile = start_percentile
     @end_percentile = end_percentile
   end
@@ -15,7 +17,7 @@ class PercentileFinder
   end
 
   def cache_key
-    "#{name.downcase.gsub(' ', '-')}-#{QuestionStat.count}"
+    "#{name.downcase.gsub(' ', '-')}-numbers-#{questions}-from-#{start_percentile}-to-#{end_percentile}-#{QuestionStat.count}"
   end
   
   def relevant_users
@@ -33,7 +35,10 @@ class PercentileFinder
   end
 
   def real_questions
-    @real_questions ||= Question.where(user_id: within_percentile(relevant_users).map(&:id)).real
+    @real_questions ||= Question
+      .where(user_id: within_percentile(relevant_users).map(&:id))
+      .joins(:instruction).where(instructions: { number: questions })
+      .real
   end
 
   %w(age year major gender).each do |attr|

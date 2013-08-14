@@ -3,6 +3,8 @@
     <div>
       <%= form_tag(statistics_median_path(option[:key]), method: :get) do %>
         <h3><%= option[:title] %></h3>
+        <%= label_tag :questions, 'Question numbers' %>
+        <%= text_field_tag :questions, "1,2,3,4,5,6", placeholder: "1,2,3,4,5,6" %><br>
         <%= label_tag :start, 'Start percentile' %>
         <%= number_field_tag :start, 50, placeholder: '50' %> <br>
         <%= label_tag :end, 'End percentile' %>
