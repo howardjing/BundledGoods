@@ -113,16 +113,79 @@ class Question < ActiveRecord::Base
   end
 
   # answers are valued as 0 if they are left blank
+  # def answer_value
+  # 	if has_answer?
+  #     answer.value 
+  #   else
+  #     0
+  #   end
+  # end
+
+  # answers should not take the beta timer into account, 
+  # since we didn't plan it this way, will have to resort to calculating
+  # the user's answer from their question_stats
+  # (this method is super convoluted)
+  def answer_choice
+    most_recent_answer = question_stats.selections.order('question_stats.created_at DESC').limit(1).first
+    
+    # unanswered question, default to 0
+    return false if most_recent_answer.blank?
+
+    # chose combo, so choose the combo
+    if most_recent_answer.combo?
+      return 'Combo' if most_recent_answer.selected?
+      return false # the person did not select anything so return 0
+    end
+
+    # choose good, so must find the bundle the user selected
+    if most_recent_answer.good?
+      last_time_chose_combo = question_stats.combo.order('question_stats.created_at DESC').limit(1).first
+      
+      # only look at goods chosen after the last time a combo was chosen
+      candidates = if last_time_chose_combo.blank?
+        question_stats.good.order('question_stats.created_at DESC')
+      else 
+        question_stats.good.created_after(last_time_chose_combo.created_at).order('question_stats.created_at DESC')
+      end
+
+      # find value of the last time each good was selected (but not necessarily true)
+      selected_goods = {}
+      candidates.each do |candidate|
+        selected_good = candidate.good_number
+        if selected_goods[selected_good].blank?
+          selected_goods[selected_good] = candidate
+        end
+      end
+
+      # the actual goods that were selected and whose values are true
+      chosen_good_numbers = []
+      selected_goods.each do |k,v|
+        chosen_good_numbers.push(k) if v.selected?
+      end
+
+      return false if chosen_good_numbers.empty?
+      return chosen_good_numbers.sort
+    end
+
+    # should never be reached, sanity check
+    raise Exception.new('Something went wrong with this method, fix it')
+  end
+
   def answer_value
-  	if has_answer?
-      answer.value 
+    choice = answer_choice
+    return 0 unless choice
+
+    if choice == 'Combo' 
+      return combo_witheffect
     else
-      0
+      return bundle(choice)
     end
   end
+
   
+  # optimal_answer should not take into account the beta timer
   def optimal_answer?
-  	has_answer? && answer_value == optimal_value
+  	answer_value == optimal_value
   end
   
   def answer_deviation_from_optimum
@@ -209,7 +272,6 @@ class Question < ActiveRecord::Base
     !display_timer?
   end
 
-  # TODO: don't use the answer (use question_stat)
   def chose_combo?
     answer_choice == 'Combo'
   end
@@ -224,11 +286,6 @@ class Question < ActiveRecord::Base
         .sort_by(&:created_at).first
         .stat_type
     end
-  end
-
-  # Good [1,2,3] or Combo
-  def answer_choice
-    answer.try(:choice)
   end
 
   # options: 
