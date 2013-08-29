@@ -17,7 +17,7 @@
           <ul>
             <li>Overall Time: <%= question.overall_time || "N/A" %> seconds</li>
             <li>
-              Final answer: <%= question.answer_choice || "N/A" %>, 
+              Final answer: <%= question.answer_choice || "N/A" %>, value: <%= question.answer_value || "N/A" %>,
               deviation from optimum: <%= question.answer_deviation_from_optimum || "N/A"%>
             </li>
             <li>Selected first: <%= question.initial_selection || "N/A" %></li>

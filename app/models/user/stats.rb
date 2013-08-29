@@ -16,6 +16,10 @@ module User::Stats
     average_deviation_from_optimum(incorrect_questions)
   end
 
+  def average_answer_value
+    (real_questions.map(&:answer_value).sum.to_f / real_questions.count).round(2)
+  end
+
   def proportion_statements_clicked
     (total_distinct_statements_clicked_count.to_f / total_statements_count).round(2)
   end
