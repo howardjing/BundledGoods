@@ -10,11 +10,13 @@ development:
   password: bundled
   database: goods_development
 stats:
+  host: localhost
   adapter: postgresql
   username: good
   password: bundled
   database: goods_development
 test:
+  host: localhost
   adapter: postgresql
   username: good
   password: bundled
