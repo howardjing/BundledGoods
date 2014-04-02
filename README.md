@@ -12,7 +12,7 @@ to start server in stats mode
 to kill processes after you're done
 
 ```
-ps ax | grep ehcache
+ps ax | grep memcached
 kill pid number here
 ps ax | grep rails
 kill pid number here
