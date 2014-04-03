@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210225325) do
+ActiveRecord::Schema.define(:version => 20140403043008) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20121210225325) do
     t.integer  "instruction_id",                          :null => false
     t.boolean  "display_timer",        :default => true
     t.boolean  "display_formula",      :default => false
+    t.boolean  "increasing"
+    t.text     "notes"
   end
 
   add_index "questions", ["instruction_id"], :name => "index_questions_on_instruction_id"
