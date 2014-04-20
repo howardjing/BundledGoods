@@ -1,4 +1,5 @@
 class QuestionStat < ActiveRecord::Base
+  STATEMENT_SHOWN_PREFIX = "Menu item was shown: bundle "
 
   belongs_to :question, touch: true
   validates_presence_of :question
@@ -7,6 +8,7 @@ class QuestionStat < ActiveRecord::Base
   scope :descending, lambda { order("question_stats.created_at DESC") }
 
   scope :statements, lambda { where("question_stats.content like 'Menu%'") }
+  scope :statements_shown, lambda { where("question_stats.content like '#{STATEMENT_SHOWN_PREFIX}%'")}
   scope :selections, lambda { where("question_stats.content like 'Good%' or question_stats.content like 'Combo%'") }
   scope :good, lambda { where("question_stats.content like 'Good%'") }
   scope :combo, lambda { where("question_stats.content like 'Combo%'") }
@@ -14,7 +16,7 @@ class QuestionStat < ActiveRecord::Base
   scope :good_selected,    lambda { where("question_stats.content like 'Good%true'") }
   scope :good_deselected,  lambda { where("question_stats.content like 'Good%false'") }
   scope :combo_selected,   lambda { where("question_stats.content like 'Combo%true'") }
-  scope :combo_deselected, lambda { where("question_stats.content like 'Combo%false'") } 
+  scope :combo_deselected, lambda { where("question_stats.content like 'Combo%false'") }
 
   scope :created_after, lambda { |created_at| where("question_stats.created_at > ?", created_at) }
 

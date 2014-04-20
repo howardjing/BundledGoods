@@ -20,6 +20,15 @@
               Final answer: <%= question.answer_choice || "N/A" %>, value: <%= question.answer_value || "N/A" %>,
               deviation from optimum: <%= question.answer_deviation_from_optimum || "N/A"%>
             </li>
+            <li>
+              bundles seen: <%= question.bundles_shown %>
+            </li>
+            <li>
+              optimum value from bundles seen: <%= question.optimal_value_from_bundles_shown %>
+            </li>
+            <li>
+              answered optimally given bundles shown: <%= question.optimal_answer_given_bundles_seen? %>
+            </li>
             <li>Selected first: <%= question.initial_selection || "N/A" %></li>
             <li>Average time between clicks: <%= question.average_time_between_clicks || "N/A" %> seconds</li>
             <li>
@@ -34,7 +43,7 @@
         <div><strong>Details</strong>
           <ul>
           <% prev = question.time_started %>
-          <li>Question started 
+          <li>Question started
             <div class="pull-right">
                 (<%= question.time_started %>)
             </div>
