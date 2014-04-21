@@ -342,7 +342,7 @@ class Question < ActiveRecord::Base
   end
 
   def combo_seen?(bundles = bundles_shown)
-    bundles.include?(combo)
+    bundles.map(&:to_s).include?(combo)
   end
 
   def combo
