@@ -29,6 +29,7 @@
             <li>
               answered optimally given bundles shown: <%= question.optimal_answer_given_bundles_seen? %>
             </li>
+            <li>Increasing with search? <%= question.increasing.nil? ? "N/A" : question.increasing.to_s %></li>
             <li>Selected first: <%= question.initial_selection || "N/A" %></li>
             <li>Average time between clicks: <%= question.average_time_between_clicks || "N/A" %> seconds</li>
             <li>
