@@ -1,10 +1,12 @@
 <% cache ["v1.2", user] do %>
 <div class="user-summary">
-  <%= user.name %> had 
-  <strong><%= user.question_stats.size %></strong> total clicks and 
+  <%= user.name %> had
+  <strong><%= user.question_stats.size %></strong> total clicks and
   <strong><%= user.optimal_answers.size %></strong> optimal answers out of
   <strong><%= user.real_questions.size %></strong> total.
-  <ul class="misc-details"> 
+  <strong><%= user.optimal_answers_given_bundles_seen.size %></strong> optimal answers given bundles seen, with
+  <strong><%= user.questions_increasing_in_value.size %></strong> questions increasing in value.
+  <ul class="misc-details">
     <% %w(age year major gender).each do |attr| %>
     <li><%= attr %>: <%= user.send(attr).blank? ? "N/A" : user.send(attr) %></li>
     <% end %>
