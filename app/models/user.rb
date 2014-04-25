@@ -27,18 +27,6 @@ class User < ActiveRecord::Base
     questions.real
   end
 
-  def optimal_answers
-    real_questions.find_all(&:optimal_answer?)
-  end
-
-  def optimal_answers_given_bundles_seen
-    real_questions.find_all(&:optimal_answer_given_bundles_seen?)
-  end
-
-  def questions_increasing_in_value
-    real_questions.find_all(&:increasing)
-  end
-
   def real_questions
     questions.real
   end

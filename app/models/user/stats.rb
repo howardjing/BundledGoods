@@ -37,13 +37,21 @@ module User::Stats
   end
 
   def optimal_answers
-    real_questions.find_all { |q| q.optimal_answer? }
+    real_questions.find_all(&:optimal_answer?)
+  end
+
+  def optimal_answers_given_bundles_seen
+    real_questions.find_all(&:optimal_answer_given_bundles_seen?)
+  end
+
+  def questions_increasing_in_value
+    real_questions.find_all(&:increasing)
   end
 
   [:overall_time, :average_time_between_clicks,
     :average_time_between_statement_clicks,
     :average_time_between_selection_clicks].each do |statement|
-    define_method statement do 
+    define_method statement do
       questions = real_questions.find_all { |q| q.send(statement) != nil }
       if questions.count > 0
         (questions.map { |q| q.send(statement, precision: :default) }.sum / questions.count).round(2)
