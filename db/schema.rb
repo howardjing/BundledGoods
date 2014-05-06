@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140403043008) do
+ActiveRecord::Schema.define(:version => 20140506041459) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20140403043008) do
     t.boolean  "display_formula",      :default => false
     t.boolean  "increasing"
     t.text     "notes"
+    t.string   "search_order"
   end
 
   add_index "questions", ["instruction_id"], :name => "index_questions_on_instruction_id"
