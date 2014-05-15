@@ -1,0 +1,4 @@
+questionStatId, questionId, creationTime, content
+<% QuestionStat.where('true = true').limit(10).each do |stat| %>
+<%= stat.id %>, <%= stat.question_id %>, <%= stat.created_at %>,  <%= escape_commas stat.content %>
+<% end %>

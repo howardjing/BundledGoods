@@ -1,0 +1,4 @@
+questionId, userId, number, interactionCount, time
+<% Question.where("1=1").limit(100).each do |q| %>
+<%= q.id %>, <%= q.user_id %>, <%= q.number %>, <%= q.question_stats.count %>, <%= q.overall_time %>
+<% end %>

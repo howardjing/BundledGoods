@@ -9,7 +9,14 @@ Goods::Application.routes.draw do
   resources :stats, only: [:create]
 
   namespace :statistics do
-    root to: 'users#index'
+    root to: 'users#index'     
+    resources :reports, only: [:none] do
+      collection do 
+        get :questions
+        get :interactions
+      end
+    end
+    
     resources :users, only: [:index, :show] do
       collection do 
         get :overall
