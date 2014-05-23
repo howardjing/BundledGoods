@@ -1,4 +1,4 @@
-questionStatId, questionId, creationTime, content
+userId, questionStatId, questionId, questionNumber, creationTime, content, 
 <% QuestionStat.where('true = true').limit(10).each do |stat| %>
-<%= stat.id %>, <%= stat.question_id %>, <%= stat.created_at %>,  <%= escape_commas stat.content %>
+<%= stat.question.user_id %>, <%= stat.id %>, <%= stat.question_id %>, <%= stat.question.number %> <%= stat.created_at %>,  <%= stat.content %>,  
 <% end %>

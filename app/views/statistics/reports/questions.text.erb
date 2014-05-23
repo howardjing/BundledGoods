@@ -1,4 +1,4 @@
-questionId, userId, number, interactionCount, time
+questionId, userId, number, labNumber, interactionCount, time, comboChosen, initialSelection, avgTimeBetweenClicks, avgTimeBetweenStatementClicks, avgTimeBetweenSelection, percentStatementClicked, optimalAnswerGivenBundlesSeen, answerValue, optimalAnswer, answerDeviationFromOptimum, optimalValueGivenBundlesShown, increasing, searchOrder
 <% Question.where("1=1").limit(100).each do |q| %>
-<%= q.id %>, <%= q.user_id %>, <%= q.number %>, <%= q.question_stats.count %>, <%= q.overall_time %>
+<%= q.id %>, <%= q.user_id %>, <%= q.number %>, <%= q.user.lab_number %>, <%= q.question_stats.count %>, <%= q.overall_time %>, <%= q.chose_combo? %>, <%= q.initial_selection %>, <%= q.average_time_between_clicks %>, <%= q.average_time_between_statement_clicks %>, <%= q.average_time_between_selection_clicks %>, <%= q.proportion_statements_clicked %>, <%= q.optimal_answer_given_bundles_seen? %>, <%= q.answer_value %>, <%= q.optimal_answer? %>, <%= q.answer_deviation_from_optimum %>, <%= q.optimal_value_from_bundles_shown %>, <%= q.increasing %>, <%= q.search_order %>
 <% end %>
